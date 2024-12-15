@@ -1,1199 +1,553 @@
-import { CoreMenu } from '@core/types';
-
-//? DOC: http://localhost:7777/demo/vuexy-angular-admin-dashboard-template/documentation/guide/development/navigation-menus.html#interface
+import { CoreMenu } from '@core/types'
 
 export const menu: CoreMenu[] = [
-  // Dashboard
   {
-    id: 'dashboard',
-    title: 'Dashboard',
-    translate: 'MENU.DASHBOARD.COLLAPSIBLE',
-    type: 'collapsible',
-    // role: ['Admin'], //? To hide collapsible based on user role
+    id: 'home',
+    title: 'Home',
+    translate: 'MENU.HOME',
+    type: 'item',
     icon: 'home',
-    badge: {
-      title: '2',
-      translate: 'MENU.DASHBOARD.BADGE',
-      classes: 'badge-light-warning badge-pill'
+    url: 'home'
+  },
+  {
+    id: 'sample',
+    title: 'Sample',
+    translate: 'MENU.SAMPLE',
+    type: 'item',
+    icon: 'file',
+    url: 'sample'
+  },
+    {
+      id: 'dashboard',
+      title: 'Dashboard',
+      translate: 'MENU.DASHBOARD.COLLAPSIBLE',
+      type: 'collapsible',
+      icon: 'home',
+      badge: {
+        title: '2',
+        translate: 'MENU.DASHBOARD.BADGE',
+        classes: 'badge-light-warning badge-pill'
+      },
+      children: [
+        {
+          id: 'analytics',
+          title: 'Analytics',
+          translate: 'MENU.DASHBOARD.ANALYTICS',
+          type: 'item',
+          role: ['Admin'], 
+          icon: 'circle',
+          url: 'dashboard/analytics'
+        },
+        {
+          id: 'ecommerce',
+          title: 'eCommerce',
+          translate: 'MENU.DASHBOARD.ECOMMERCE',
+          type: 'item',
+          icon: 'circle',
+          url: 'dashboard/ecommerce'
+        }
+      ]
     },
-    children: [
-      {
-        id: 'analytics',
-        title: 'Analytics',
-        translate: 'MENU.DASHBOARD.ANALYTICS',
-        type: 'item',
-        role: ['Admin'], //? To set multiple role: ['Admin', 'Client']
-        icon: 'circle',
-        url: 'dashboard/analytics'
-      },
-      {
-        // If role is not assigned will be display to all
-        id: 'ecommerce',
-        title: 'eCommerce',
-        translate: 'MENU.DASHBOARD.ECOMMERCE',
-        type: 'item',
-        icon: 'circle',
-        url: 'dashboard/ecommerce'
-      }
-    ]
-  },
-  // Apps & Pages
-  {
-    id: 'apps',
-    type: 'section',
-    title: 'Apps & Pages',
-    translate: 'MENU.APPS.SECTION',
-    icon: 'package',
-    children: [
-      {
-        id: 'email',
-        title: 'Email',
-        translate: 'MENU.APPS.EMAIL',
-        type: 'item',
-        icon: 'mail',
-        url: 'apps/email'
-      },
-      {
-        id: 'chat',
-        title: 'Chat',
-        translate: 'MENU.APPS.CHAT',
-        type: 'item',
-        icon: 'message-square',
-        url: 'apps/chat'
-      },
-      {
-        id: 'todo',
-        title: 'Todo',
-        translate: 'MENU.APPS.TODO',
-        type: 'item',
-        icon: 'check-square',
-        url: 'apps/todo'
-      },
-      {
-        id: 'calendar',
-        title: 'Calendar',
-        translate: 'MENU.APPS.CALENDAR',
-        type: 'item',
-        icon: 'calendar',
-        url: 'apps/calendar'
-      },
-      {
-        id: 'pages',
-        title: 'Pages',
-        translate: 'MENU.PAGES.SECTION',
-        type: 'collapsible',
-        icon: 'file-text',
-        children: [
-          {
-            id: 'authentication',
-            title: 'Authentication',
-            translate: 'MENU.PAGES.AUTH.COLLAPSIBLE',
-            type: 'collapsible',
-            icon: 'circle',
-            children: [
-              {
-                id: 'login-v1',
-                title: 'Login V1',
-                translate: 'MENU.PAGES.AUTH.LOGIN1',
-                type: 'item',
-                url: 'pages/authentication/login-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'login-v2',
-                title: 'Login V2',
-                translate: 'MENU.PAGES.AUTH.LOGIN2',
-                type: 'item',
-                url: 'pages/authentication/login-v2',
-                openInNewTab: true
-              },
-              {
-                id: 'register-v1',
-                title: 'Register V1',
-                translate: 'MENU.PAGES.AUTH.REGISTER1',
-                type: 'item',
-                url: 'pages/authentication/register-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'register-v2',
-                title: 'Register V2',
-                translate: 'MENU.PAGES.AUTH.REGISTER2',
-                type: 'item',
-                url: 'pages/authentication/register-v2',
-                openInNewTab: true
-              },
-              {
-                id: 'forgot-password-v1',
-                title: 'Forgot Password V1',
-                translate: 'MENU.PAGES.AUTH.FORGOTPASSWORD1',
-                type: 'item',
-                url: 'pages/authentication/forgot-password-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'forgot-password-v2',
-                title: 'Forgot Password V2',
-                translate: 'MENU.PAGES.AUTH.FORGOTPASSWORD2',
-                type: 'item',
-                url: 'pages/authentication/forgot-password-v2',
-                openInNewTab: true
-              },
-              {
-                id: 'reset-password-v1',
-                title: 'Reset Password V1',
-                translate: 'MENU.PAGES.AUTH.RESETPASSWORD1',
-                type: 'item',
-                url: 'pages/authentication/reset-password-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'reset-password-v2',
-                title: 'Reset Password V2',
-                translate: 'MENU.PAGES.AUTH.RESETPASSWORD2',
-                type: 'item',
-                url: 'pages/authentication/reset-password-v2',
-                openInNewTab: true
-              }
-            ]
-          },
-          {
-            id: 'account-settings',
-            title: 'Account Settings',
-            translate: 'MENU.PAGES.ACCOUNTSETTINGS',
-            type: 'item',
-            icon: 'circle',
-            url: 'pages/account-settings'
-          },
-          {
-            id: 'profile',
-            title: 'Profile',
-            translate: 'MENU.PAGES.PROFILE',
-            type: 'item',
-            icon: 'circle',
-            url: 'pages/profile'
-            // collapsed: true
-          },
-          {
-            id: 'faq',
-            title: 'FAQ',
-            translate: 'MENU.PAGES.FAQ',
-            type: 'item',
-            icon: 'circle',
-            url: 'pages/faq'
-          },
-          {
-            id: 'knowledgeBase',
-            title: 'Knowledge Base',
-            translate: 'MENU.PAGES.KB',
-            type: 'item',
-            icon: 'circle',
-            url: 'pages/knowledge-base'
-          },
-          {
-            id: 'pricing',
-            title: 'Pricing',
-            translate: 'MENU.PAGES.PRICING',
-            type: 'item',
-            icon: 'circle',
-            url: 'pages/pricing'
-          },
-
-          {
-            id: 'blog',
-            title: 'Blog',
-            translate: 'MENU.PAGES.BLOG.COLLAPSIBLE',
-            type: 'collapsible',
-            icon: 'circle',
-            children: [
-              {
-                id: 'blog-list',
-                title: 'List',
-                translate: 'MENU.PAGES.BLOG.LIST',
-                type: 'item',
-                url: 'pages/blog-list'
-              },
-              {
-                id: 'blog-details',
-                title: 'Detail',
-                translate: 'MENU.PAGES.BLOG.DETAILS',
-                type: 'item',
-                url: 'pages/blog-details'
-              },
-              {
-                id: 'blog-edit',
-                title: 'Edit',
-                translate: 'MENU.PAGES.BLOG.EDIT',
-                type: 'item',
-                url: 'pages/blog-edit'
-              }
-            ]
-          },
-
-          {
-            id: 'mail-template',
-            title: 'Mail Template',
-            translate: 'MENU.PAGES.MAIL.COLLAPSIBLE',
-            type: 'collapsible',
-            icon: 'circle',
-            children: [
-              {
-                id: 'mail-welcome',
-                title: 'Welcome',
-                translate: 'MENU.PAGES.MAIL.WELCOME',
-                type: 'item',
-                url: 'https://pixinvent.com/demo/vuexy-mail-template/mail-welcome.html',
-                externalUrl: true,
-                openInNewTab: true
-              },
-              {
-                id: 'mail-reset',
-                title: 'Reset Password',
-                translate: 'MENU.PAGES.MAIL.RESET',
-                type: 'item',
-                url: 'https://pixinvent.com/demo/vuexy-mail-template/mail-reset-password.html',
-                externalUrl: true,
-                openInNewTab: true
-              },
-              {
-                id: 'mail-verify',
-                title: 'Verify',
-                translate: 'MENU.PAGES.MAIL.VERIFY',
-                type: 'item',
-                url: 'https://pixinvent.com/demo/vuexy-mail-template/mail-verify-email.html',
-                externalUrl: true,
-                openInNewTab: true
-              },
-              {
-                id: 'mail-deactivate',
-                title: 'Deactivate',
-                translate: 'MENU.PAGES.MAIL.DEACTIVATE',
-                type: 'item',
-                url: 'https://pixinvent.com/demo/vuexy-mail-template/mail-deactivate-account.html',
-                externalUrl: true,
-                openInNewTab: true
-              },
-              {
-                id: 'mail-invoice',
-                title: 'Invoice',
-                translate: 'MENU.PAGES.MAIL.INVOICE',
-                type: 'item',
-                url: 'https://pixinvent.com/demo/vuexy-mail-template/mail-invoice.html',
-                externalUrl: true,
-                openInNewTab: true
-              },
-              {
-                id: 'mail-promotional',
-                title: 'Promotional',
-                translate: 'MENU.PAGES.MAIL.PROMOTIONAL',
-                type: 'item',
-                url: 'https://pixinvent.com/demo/vuexy-mail-template/mail-promotional.html',
-                externalUrl: true,
-                openInNewTab: true
-              }
-            ]
-          },
-
-          {
-            id: 'miscellaneous',
-            title: 'Miscellaneous',
-            translate: 'MENU.PAGES.MISC.COLLAPSIBLE',
-            type: 'collapsible',
-            icon: 'circle',
-            children: [
-              {
-                id: 'misc-comingsoon',
-                title: 'Coming Soon',
-                translate: 'MENU.PAGES.MISC.COMINGSOON',
-                type: 'item',
-                url: 'pages/miscellaneous/coming-soon',
-                openInNewTab: true
-              },
-
-              {
-                id: 'misc-not-authorized',
-                title: 'Not Authorized',
-                translate: 'MENU.PAGES.MISC.NOTAUTH',
-                type: 'item',
-                url: 'pages/miscellaneous/not-authorized',
-                openInNewTab: true
-              },
-              {
-                id: 'maintenance',
-                title: 'Maintenance',
-                translate: 'MENU.PAGES.MISC.MAINTENANCE',
-                type: 'item',
-                url: 'pages/miscellaneous/maintenance',
-                openInNewTab: true
-              },
-              {
-                id: 'error',
-                title: 'Error',
-                translate: 'MENU.PAGES.MISC.ERROR',
-                type: 'item',
-                url: 'pages/miscellaneous/error',
-                openInNewTab: true
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'invoice',
-        title: 'Invoice',
-        translate: 'MENU.APPS.INVOICE.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'file-text',
-        children: [
-          {
-            id: 'invoice-list',
-            title: 'List',
-            translate: 'MENU.APPS.INVOICE.LIST',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/invoice/list'
-          },
-          {
-            id: 'invoicePreview',
-            title: 'Preview',
-            translate: 'MENU.APPS.INVOICE.PREVIEW',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/invoice/preview'
-          },
-          {
-            id: 'invoiceEdit',
-            title: 'Edit',
-            translate: 'MENU.APPS.INVOICE.EDIT',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/invoice/edit'
-          },
-          {
-            id: 'invoiceAdd',
-            title: 'Add',
-            translate: 'MENU.APPS.INVOICE.ADD',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/invoice/add'
-          }
-        ]
-      },
-      {
-        id: 'e-commerce',
-        title: 'eCommerce',
-        translate: 'MENU.APPS.ECOMMERCE.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'shopping-cart',
-        children: [
-          {
-            id: 'shop',
-            title: 'Shop',
-            translate: 'MENU.APPS.ECOMMERCE.SHOP',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/shop'
-          },
-          {
-            id: 'details',
-            title: 'Details',
-            translate: 'MENU.APPS.ECOMMERCE.DETAIL',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/details'
-          },
-          {
-            id: 'wishList',
-            title: 'Wish List',
-            translate: 'MENU.APPS.ECOMMERCE.WISHLIST',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/wishlist'
-          },
-          {
-            id: 'checkout',
-            title: 'Checkout',
-            translate: 'MENU.APPS.ECOMMERCE.CHECKOUT',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/e-commerce/checkout'
-          }
-        ]
-      },
-      {
-        id: 'users',
-        title: 'User',
-        translate: 'MENU.APPS.USER.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'user',
-        children: [
-          {
-            id: 'list',
-            title: 'List',
-            translate: 'MENU.APPS.USER.LIST',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/user/user-list'
-          },
-          {
-            id: 'view',
-            title: 'View',
-            translate: 'MENU.APPS.USER.VIEW',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/user/user-view'
-          },
-          {
-            id: 'edit',
-            title: 'Edit',
-            translate: 'MENU.APPS.USER.EDIT',
-            type: 'item',
-            icon: 'circle',
-            url: 'apps/user/user-edit'
-          }
-        ]
-      }
-    ]
-  },
-  // User Interface
-  {
-    id: 'user-interface',
-    type: 'section',
-    title: 'User Interface',
-    translate: 'MENU.UI.SECTION',
-    icon: 'layers',
-    children: [
-      {
-        id: 'typography',
-        title: 'Typography',
-        translate: 'MENU.UI.TYPOGRAPHY',
-        type: 'item',
-        icon: 'type',
-        url: 'ui/content/typography'
-      },
-      {
-        id: 'colors',
-        title: 'Colors',
-        translate: 'MENU.UI.COLORS',
-        type: 'item',
-        icon: 'droplet',
-        url: 'ui/colors'
-      },
-      {
-        id: 'feather',
-        title: 'Feather',
-        translate: 'MENU.UI.FEATHER',
-        type: 'item',
-        icon: 'eye',
-        url: 'ui/icons/feather'
-      },
-      {
-        id: 'cards',
-        title: 'Cards',
-        translate: 'MENU.UI.CARDS.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'credit-card',
-        badge: {
-          title: 'New',
-          translate: 'MENU.UI.CARDS.BADGE',
-          classes: 'badge-light-success badge-pill'
+    {
+      id: 'users_section',
+      title: 'Users',
+      translate: 'MENU.USERS_SECTION',
+      type: 'collapsible',
+      icon: 'user',
+      children: [
+        {
+          id: 'users_list',
+          title: 'Users List',
+          translate: 'MENU.USERS.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'users'
         },
-        children: [
-          {
-            id: 'card-basic',
-            title: 'Basic',
-            translate: 'MENU.UI.CARDS.BASIC',
-            type: 'item',
-            icon: 'circle',
-            url: 'ui/card/card-basic'
-          },
-          {
-            id: 'card-advance',
-            title: 'Advance',
-            translate: 'MENU.UI.CARDS.ADVANCE',
-            type: 'item',
-            icon: 'circle',
-            url: 'ui/card/advance'
-          },
-          {
-            id: 'card-statistics',
-            title: 'Statistics',
-            translate: 'MENU.UI.CARDS.STATISTICS',
-            type: 'item',
-            icon: 'circle',
-            url: 'ui/card/statistics'
-          },
-          {
-            id: 'Card-analytics',
-            title: 'Analytics',
-            translate: 'MENU.UI.CARDS.ANALYTICS',
-            type: 'item',
-            icon: 'circle',
-            url: 'ui/card/analytics'
-          },
-          {
-            id: 'card-actions',
-            title: 'Actions',
-            translate: 'MENU.UI.CARDS.ACTIONS',
-            type: 'item',
-            icon: 'circle',
-            url: 'ui/card/actions'
-          }
-        ]
-      },
-      {
-        id: 'components',
-        title: 'Components',
-        translate: 'MENU.UI.COMPONENTS.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'archive',
-        children: [
-          {
-            id: 'components-alerts',
-            title: 'Alerts',
-            translate: 'MENU.UI.COMPONENTS.ALERTS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/alerts'
-          },
-          {
-            id: 'components-avatar',
-            title: 'Avatar',
-            translate: 'MENU.UI.COMPONENTS.AVATAR',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/avatar'
-          },
-          {
-            id: 'components-badges',
-            title: 'Badges',
-            translate: 'MENU.UI.COMPONENTS.BADGES',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/badges'
-          },
-          {
-            id: 'components-breadcrumbs',
-            title: 'Breadcrumbs',
-            translate: 'MENU.UI.COMPONENTS.BREADCRUMBS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/breadcrumbs'
-          },
-          {
-            id: 'components-buttons',
-            title: 'Buttons',
-            translate: 'MENU.UI.COMPONENTS.BUTTONS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/buttons'
-          },
-          {
-            id: 'components-carousel',
-            title: 'Carousel',
-            translate: 'MENU.UI.COMPONENTS.CAROUSEL',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/carousel'
-          },
-          {
-            id: 'components-collapse',
-            title: 'Collapse',
-            translate: 'MENU.UI.COMPONENTS.COLLAPSE',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/collapse'
-          },
-          {
-            id: 'components-divider',
-            title: 'Divider',
-            translate: 'MENU.UI.COMPONENTS.DIVIDER',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/divider'
-          },
-          {
-            id: 'components-drop-downs',
-            title: 'Dropdowns',
-            translate: 'MENU.UI.COMPONENTS.DROPDOWNS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/dropdowns'
-          },
-          {
-            id: 'components-list-group',
-            title: 'List Group',
-            translate: 'MENU.UI.COMPONENTS.GROUP',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/list-group'
-          },
-          {
-            id: 'components-media-objects',
-            title: 'Media Objects',
-            translate: 'MENU.UI.COMPONENTS.OBJECTS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/media-objects'
-          },
-          {
-            id: 'components-modals',
-            title: 'Modals',
-            translate: 'MENU.UI.COMPONENTS.MODALS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/modals'
-          },
-          {
-            id: 'components-navs',
-            title: 'Navs',
-            translate: 'MENU.UI.COMPONENTS.COMPONENT',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/navs'
-          },
-          {
-            id: 'components-pagination',
-            title: 'Pagination',
-            translate: 'MENU.UI.COMPONENTS.PAGINATION',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/pagination'
-          },
-          {
-            id: 'components-pill-badges',
-            title: 'Pill Badges',
-            translate: 'MENU.UI.COMPONENTS.PBADGES',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/pill-badges'
-          },
-          {
-            id: 'components-pills',
-            title: 'Pills',
-            translate: 'MENU.UI.COMPONENTS.PILLS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/pills'
-          },
-          {
-            id: 'components-popovers',
-            title: 'Popovers',
-            translate: 'MENU.UI.COMPONENTS.POPOVERS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/popovers'
-          },
-          {
-            id: 'components-progress',
-            title: 'Progress',
-            translate: 'MENU.UI.COMPONENTS.PROGRESS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/progress'
-          },
-          {
-            id: 'components-ratings',
-            title: 'Ratings',
-            translate: 'MENU.UI.COMPONENTS.RATINGS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/ratings'
-          },
-          {
-            id: 'components-spinner',
-            title: 'Spinner',
-            translate: 'MENU.UI.COMPONENTS.SPINNER',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/spinner'
-          },
-          {
-            id: 'components-tabs',
-            title: 'Tabs',
-            translate: 'MENU.UI.COMPONENTS.TABS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/tabs'
-          },
-          {
-            id: 'components-timeline',
-            title: 'Timeline',
-            translate: 'MENU.UI.COMPONENTS.TIMELINE',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/timeline'
-          },
-          {
-            id: 'components-toasts',
-            title: 'Toasts',
-            translate: 'MENU.UI.COMPONENTS.TOASTS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/toasts'
-          },
-          {
-            id: 'components-tooltips',
-            title: 'Tooltips',
-            translate: 'MENU.UI.COMPONENTS.TOOLTIPS',
-            type: 'item',
-            icon: 'circle',
-            url: 'components/tooltips'
-          }
-        ]
-      },
-      {
-        id: 'extensions',
-        title: 'Extension',
-        translate: 'MENU.UI.EX.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'plus-circle',
-        children: [
-          {
-            id: 'ex-sweet-alerts',
-            title: 'Sweet Alerts',
-            translate: 'MENU.UI.EX.SWEET_ALERTS',
-            icon: 'circle',
-            type: 'item',
-            url: '/extensions/sweet-alerts'
-          },
-          {
-            id: 'ex-blockui',
-            title: 'BlockUI',
-            translate: 'MENU.UI.EX.BLOCKUI',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/blockui'
-          },
-          {
-            id: 'ex-toastr',
-            title: 'Toastr',
-            translate: 'MENU.UI.EX.TOASTER',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/toastr'
-          },
-          {
-            id: 'ex-noui-slider',
-            title: 'Slider',
-            translate: 'MENU.UI.EX.SLIDER',
-            icon: 'circle',
-            type: 'item',
-            url: '/extensions/noui-slider'
-          },
-          {
-            id: 'ex-drag-drop',
-            title: 'Drag & Drop',
-            translate: 'MENU.UI.EX.DRAGDROP',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/drag-drop'
-          },
-          {
-            id: 'ex-tour',
-            title: 'Tour',
-            translate: 'MENU.UI.EX.TOUR',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/tour'
-          },
-          {
-            id: 'ex-clip-board',
-            title: 'Clipboard',
-            translate: 'MENU.UI.EX.CLIPBOARD',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/clipboard'
-          },
-          {
-            id: 'ex-media-player',
-            title: 'Media Player',
-            translate: 'MENU.UI.EX.MEDIAPLAYER',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/media-player'
-          },
-          {
-            id: 'ex-content-menu',
-            title: 'Context Menu',
-            translate: 'MENU.UI.EX.CONTEXTMENU',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/context-menu'
-          },
-          {
-            id: 'ex-swiper',
-            title: 'Swiper',
-            translate: 'MENU.UI.EX.SWIPER',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/swiper'
-          },
-          {
-            id: 'ex-tree-view',
-            title: 'Tree View',
-            translate: 'MENU.UI.EX.TREEVIEW',
-            icon: 'circle',
-            type: 'item',
-            url: 'extensions/tree-view'
-          },
-          {
-            id: 'i18n',
-            title: 'I18n',
-            translate: 'MENU.UI.EX.I18N',
-            icon: 'circle',
-            type: 'item',
-            url: '/extensions/i18n'
-          }
-        ]
-      },
-      {
-        id: 'page-layouts',
-        title: 'Page Layouts',
-        translate: 'MENU.UI.LAYOUTS.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'layout',
-        children: [
-          {
-            id: 'layout-collapsed-menu',
-            title: 'Collapsed Menu',
-            translate: 'MENU.UI.LAYOUTS.COLLAPSED_MENU',
-            icon: 'circle',
-            type: 'item',
-            url: 'ui/page-layouts/collapsed-menu'
-          },
-          {
-            id: 'layout-boxed',
-            title: 'Boxed Layout',
-            translate: 'MENU.UI.LAYOUTS.BOXED_LAYOUT',
-            icon: 'circle',
-            type: 'item',
-            url: 'ui/page-layouts/boxed-layout'
-          },
-          {
-            id: 'layout-without-menu',
-            title: 'Without Menu',
-            translate: 'MENU.UI.LAYOUTS.WITHOUT_MENU',
-            icon: 'circle',
-            type: 'item',
-            url: 'ui/page-layouts/without-menu'
-          },
-          {
-            id: 'layout-empty',
-            title: 'Layout Empty',
-            translate: 'MENU.UI.LAYOUTS.LAYOUT_EMPTY',
-            icon: 'circle',
-            type: 'item',
-            url: 'ui/page-layouts/layout-empty'
-          },
-          {
-            id: 'layout-blank',
-            title: 'Layout Blank',
-            translate: 'MENU.UI.LAYOUTS.LAYOUT_BLANK',
-            icon: 'circle',
-            type: 'item',
-            url: 'ui/page-layouts/layout-blank'
-          }
-        ]
-      }
-    ]
-  },
-  // Forms & Tables
-  {
-    id: 'forms-table',
-    type: 'section',
-    title: 'Forms & Tables',
-    translate: 'MENU.FT.SECTION',
-    icon: 'file-text',
-    children: [
-      {
-        id: 'form-elements',
-        title: 'Form Elements',
-        translate: 'MENU.FT.ELEMENT.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'copy',
-        children: [
-          {
-            id: 'form-elements-input',
-            title: 'Input',
-            translate: 'MENU.FT.ELEMENT.INPUT',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/input'
-          },
-          {
-            id: 'form-elements-inputgroups',
-            title: 'Input Groups',
-            translate: 'MENU.FT.ELEMENT.INPUTGROUPS',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/input-groups'
-          },
-          {
-            id: 'form-elements-inputmask',
-            title: 'Input Mask',
-            translate: 'MENU.FT.ELEMENT.INPUTMASK',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/input-mask'
-          },
-          {
-            id: 'form-elements-textarea',
-            title: 'Textarea',
-            translate: 'MENU.FT.ELEMENT.TEXTAREA',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/textarea'
-          },
-          {
-            id: 'form-elements-checkbox',
-            title: 'Checkbox',
-            translate: 'MENU.FT.ELEMENT.CHECKBOX',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/checkbox'
-          },
-          {
-            id: 'form-elements-radio',
-            title: 'Radio',
-            translate: 'MENU.FT.ELEMENT.RADIO',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/radio'
-          },
-          {
-            id: 'form-elements-switch',
-            title: 'Switch',
-            translate: 'MENU.FT.ELEMENT.SWITCH',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/switch'
-          },
-          {
-            id: 'form-elements-select',
-            title: 'Select',
-            translate: 'MENU.FT.ELEMENT.SELECT',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/select'
-          },
-          {
-            id: 'form-elements-numberInput',
-            title: 'Number Input',
-            translate: 'MENU.FT.ELEMENT.NUMBERINPUT',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/number-input'
-          },
-          {
-            id: 'form-elements-file-uploader',
-            title: 'File Uploader',
-            translate: 'MENU.FT.ELEMENT.FILEUPLOADER',
-            icon: 'circle',
-            type: 'item',
-            url: 'forms/form-elements/file-uploader'
-          },
-          {
-            id: 'form-elements-quill-editor',
-            title: 'Quill Editor',
-            translate: 'MENU.FT.ELEMENT.QUILLEDITOR',
-            icon: 'circle',
-            type: 'item',
-            url: 'forms/form-elements/quill-editor'
-          },
-          {
-            id: 'form-elements-flatpicker',
-            title: 'Flatpicker',
-            translate: 'MENU.FT.ELEMENT.FLATPICKER',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/flatpickr'
-          },
-          {
-            id: 'form-elements-date-time-icker',
-            title: 'Date & Time Picker',
-            translate: 'MENU.FT.ELEMENT.DATETIMEPICKER',
-            type: 'item',
-            icon: 'circle',
-            url: 'forms/form-elements/date-time-picker'
-          }
-        ]
-      },
-      {
-        id: 'form-layouts',
-        title: 'Form Layouts',
-        translate: 'MENU.FT.LAYOUTS',
-        type: 'item',
-        icon: 'box',
-        url: 'forms/form-layout'
-      },
-      {
-        id: 'form-wizard',
-        title: 'Form Wizard',
-        translate: 'MENU.FT.WIZARD',
-        type: 'item',
-        icon: 'package',
-        url: 'forms/form-wizard'
-      },
-      {
-        id: 'form-validation',
-        title: 'Form Validations',
-        translate: 'MENU.FT.VALIDATION',
-        type: 'item',
-        icon: 'check-circle',
-        url: 'forms/form-validation'
-      },
-      {
-        id: 'form-repeater',
-        title: 'Form Repeater',
-        translate: 'MENU.FT.REPEATER',
-        type: 'item',
-        icon: 'rotate-cw',
-        url: 'forms/form-repeater'
-      },
-      {
-        id: 'tables-table',
-        title: 'Table',
-        translate: 'MENU.FT.TABLE',
-        type: 'item',
-        icon: 'server',
-        url: 'tables/table'
-      },
-      {
-        id: 'tables-datatable',
-        title: 'DataTables',
-        translate: 'MENU.FT.DATATABLES',
-        type: 'item',
-        icon: 'grid',
-        url: 'tables/datatables'
-      }
-    ]
-  },
-  // Charts & Maps
-  {
-    id: 'charts-maps',
-    type: 'section',
-    title: 'Charts & Maps',
-    translate: 'MENU.CM.SECTION',
-    icon: 'bar-chart-2',
-    children: [
-      {
-        id: 'charts',
-        title: 'Charts',
-        translate: 'MENU.CM.CHARTS.COLLAPSIBLE',
-        type: 'collapsible',
-        icon: 'pie-chart',
-        badge: {
-          title: '2',
-          translate: 'MENU.CM.CHARTS.BADGE',
-          classes: 'badge-light-danger badge-pill'
+        {
+          id: 'add_user',
+          title: 'Add User',
+          translate: 'MENU.USERS.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'users/create'
+        }
+      ]
+    },
+    {
+      id: 'products_list',
+      title: 'Products',
+      translate: 'MENU.PRODUCTS.Title',
+      type: 'collapsible',
+      icon: 'shopping-cart',
+      children: [
+        {
+          id: 'products',
+          title: 'Product List',
+          translate: 'MENU.PRODUCTS.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'products'
         },
-        children: [
-          {
-            id: 'apex',
-            title: 'Apex',
-            translate: 'MENU.CM.CHARTS.APEX',
-            type: 'item',
-            icon: 'circle',
-            url: 'charts-and-maps/apex'
-          },
-          {
-            id: 'chartJs',
-            title: 'ChartJS',
-            translate: 'MENU.CM.CHARTS.CHARTJS',
-            type: 'item',
-            icon: 'circle',
-            url: 'charts-and-maps/chartjs'
-          }
-        ]
-      },
-      {
-        id: 'google-maps',
-        title: 'Google Maps',
-        translate: 'MENU.CM.MAPS',
-        icon: 'map',
-        type: 'item',
-        url: 'charts-and-maps/google-maps'
-      }
-    ]
-  },
-  // Others
-  {
-    id: 'others',
-    type: 'section',
-    title: 'Others',
-    translate: 'MENU.OTHERS.SECTION',
-    icon: 'box',
-    children: [
-      {
-        id: 'menu-levels',
-        title: 'Menu Levels',
-        translate: 'MENU.OTHERS.LEVELS.COLLAPSIBLE',
-        icon: 'menu',
-        type: 'collapsible',
-        children: [
-          {
-            id: 'second-level',
-            title: 'Second Level',
-            translate: 'MENU.OTHERS.LEVELS.SECOND',
-            icon: 'circle',
-            type: 'item',
-            url: '#'
-          },
-          {
-            id: 'second-level1',
-            title: 'Second Level',
-            translate: 'MENU.OTHERS.LEVELS.SECOND1.COLLAPSIBLE',
-            icon: 'circle',
-            type: 'collapsible',
-            children: [
-              {
-                id: 'third-level',
-                title: 'Third Level',
-                translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD',
-                type: 'item',
-                url: '#'
-              },
-              {
-                id: 'third-level1',
-                title: 'Third Level',
-                translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
-                type: 'item',
-                url: '#'
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'disabled-menu',
-        title: 'Disabled Menu',
-        translate: 'MENU.OTHERS.DISABLED',
-        icon: 'eye-off',
-        type: 'item',
-        url: '#',
-        disabled: true
-      },
-      {
-        id: 'documentation',
-        title: 'Documentation',
-        translate: 'MENU.OTHERS.DOCUMENTATION',
-        icon: 'file-text',
-        type: 'item',
-        url: 'https://pixinvent.com/demo/vuexy-angular-admin-dashboard-template/documentation',
-        externalUrl: true,
-        openInNewTab: true
-      },
-      {
-        id: 'raise-support',
-        title: 'Raise Support',
-        translate: 'MENU.OTHERS.SUPPORT',
-        icon: 'life-buoy',
-        type: 'item',
-        url: 'https://pixinvent.ticksy.com/',
-        externalUrl: true,
-        openInNewTab: true
-      }
-    ]
-  }
-];
+        {
+          id: 'products_at_home',
+          title: 'Products at Home',
+          translate: 'MENU.PRODUCTS.AT_HOME',
+          type: 'item',
+          icon: 'circle',
+          url: 'products-at-home'
+        }
+      ]
+    },
+    {
+      id: 'counselors',
+      title: 'Counselors',
+      translate: 'MENU.COUNSELORS.Title',
+      type: 'collapsible',
+      icon: 'user',
+      children: [
+        {
+          id: 'counselors_list',
+          title: 'Counselors List',
+          translate: 'MENU.COUNSELORS.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'counselors'
+        },
+        {
+          id: 'add_counselor',
+          title: 'Add Counselor',
+          translate: 'MENU.COUNSELORS.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'counselors/create'
+        }
+      ]
+    },
+    {
+      id: 'stores',
+      title: 'Stores',
+      translate: 'MENU.STORES.Title',
+      type: 'collapsible',
+      icon: 'shopping-cart',
+      children: [
+        {
+          id: 'stores_list',
+          title: 'Stores List',
+          translate: 'MENU.STORES.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'stores'
+        },
+        {
+          id: 'add_store',
+          title: 'Add Store',
+          translate: 'MENU.STORES.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'stores/create'
+        }
+      ]
+    },
+    {
+      id: 'stores_offers',
+      title: 'Store Offers',
+      translate: 'MENU.STORES_OFFERS.Title',
+      type: 'collapsible',
+      icon: 'gift',
+      children: [
+        {
+          id: 'stores_offers_list',
+          title: 'Offers List',
+          translate: 'MENU.STORES_OFFERS.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'storesOffers'
+        }
+      ]
+    },
+    {
+      id: 'voucher',
+      title: 'Voucher',
+      translate: 'MENU.VOUCHER.Title',
+      type: 'collapsible',
+      icon: 'gift',
+      children: [
+        {
+          id: 'voucher_type',
+          title: 'Voucher Types',
+          translate: 'MENU.VOUCHER.TYPE',
+          type: 'item',
+          icon: 'circle',
+          url: 'voucher-type'
+        },
+        {
+          id: 'voucher_list',
+          title: 'Voucher List',
+          translate: 'MENU.VOUCHER.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'voucher'
+        }
+      ]
+    },
+  
+    {
+      id: 'cancelation_reasons',
+      title: 'Cancellation Reasons',
+      translate: 'MENU.cancelation_reasons.Title',
+      type: 'collapsible',
+      icon: 'bookmark',
+      children: [
+        {
+          id: 'reasons_list',
+          title: 'Reason List',
+          translate: 'MENU.cancelation_reasons.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'cancelation_reasons'
+        },
+        {
+          id: 'add_reason',
+          title: 'Add Reason',
+          translate: 'MENU.cancelation_reasons.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'cancelation_reasons/create'
+        }
+      ]
+    },
+    {
+      id: 'companies',
+      title: 'Companies',
+      translate: 'MENU.COMPANIES.Title',
+      type: 'collapsible',
+      icon: 'list',
+      children: [
+        {
+          id: 'companies_list',
+          title: 'Company List',
+          translate: 'MENU.COMPANIES.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'companies'
+        },
+        {
+          id: 'archived_companies',
+          title: 'Archived Companies',
+          translate: 'MENU.COMPANIES.ARCHIVED',
+          type: 'item',
+          icon: 'circle',
+          url: 'arc-companies'
+        },
+        {
+          id: 'add_company',
+          title: 'Add Company',
+          translate: 'MENU.COMPANIES.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'companies/create'
+        }
+      ]
+    },
+    {
+      id: 'consulting',
+      title: 'consulting',
+      translate: 'MENU.consulting.Title',
+      type: 'collapsible',
+      icon: 'grid',
+      children: [
+        {
+          id: 'consulting_list',
+          title: 'Service List',
+          translate: 'MENU.consulting.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'consulting'
+        }
+      ]
+    },
+    {
+      id: 'SECTION',
+      title: 'SECTION',
+      translate: 'MENU.SECTION.Title',
+      type: 'collapsible',
+      icon: 'grid',
+      children: [
+        {
+          id: 'SECTION_TYPES',
+          title: 'Service TYPES',
+          translate: 'MENU.SECTION.TYPES',
+          type: 'item',
+          icon: 'circle',
+          url: 'SECTION/TYPES'
+        },
+        {
+          id: 'SECTION_list',
+          title: 'Service List',
+          translate: 'MENU.SECTION.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'SECTION'
+        },
+        {
+          id: 'add_service',
+          title: 'Add Service',
+          translate: 'MENU.SECTION.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'SECTION/create'
+        }
+      ]
+    },
+    {
+      id: 'services',
+      title: 'Services',
+      translate: 'MENU.SERVICES.Title',
+      type: 'collapsible',
+      icon: 'grid',
+      children: [
+        {
+          id: 'services_list',
+          title: 'Service List',
+          translate: 'MENU.SERVICES.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'services'
+        },
+        {
+          id: 'add_service',
+          title: 'Add Service',
+          translate: 'MENU.SERVICES.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'services/create'
+        }
+      ]
+    },
+ 
+    {
+      id: 'tags',
+      title: 'Tags',
+      translate: 'MENU.TAGS.Title',
+      type: 'collapsible',
+      icon: 'list',
+      children: [
+        {
+          id: 'tags_list',
+          title: 'Tags List',
+          translate: 'MENU.TAGS.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'tags'
+        },
+        {
+          id: 'add_tag',
+          title: 'Add Tag',
+          translate: 'MENU.TAGS.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'tags/create'
+        }
+      ]
+    },
+   {
+      id: 'articles',
+      title: 'Articles',
+      translate: 'MENU.ARTICLES.Title',
+      type: 'collapsible',
+      icon: 'book-open',
+      children: [
+        {
+          id: 'articles_list',
+          title: 'Articles List',
+          translate: 'MENU.ARTICLES.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'articles'
+        },
+        {
+          id: 'mini_articles',
+          title: 'Mini Articles',
+          translate: 'MENU.ARTICLES.Plant_groups',
+          type: 'item',
+          icon: 'circle',
+          url: 'Plant_groups/Articles'
+        },
+        {
+          id: 'add_article',
+          title: 'Add Article',
+          translate: 'MENU.ARTICLES.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'Plant_groups/create'
+        },
+        {
+          id: 'various_article',
+          title: 'various Article',
+          translate: 'MENU.ARTICLES.various',
+          type: 'item',
+          icon: 'circle',
+          url: 'various'
+        },
+        {
+          id: 'add_article',
+          title: 'Add Article',
+          translate: 'MENU.ARTICLES.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'various/create'
+        },
+      ]
+    },
+    {
+      id: 'offers',
+      title: 'offers',
+      translate: 'MENU.offers.Title',
+      type: 'collapsible',
+      icon: 'list',
+      children: [
+        {
+          id: 'offers_list',
+          title: 'offers List',
+          translate: 'MENU.offers.LIST',
+          type: 'item',
+          icon: 'circle',
+          url: 'offers'
+        },
+        {
+          id: 'add_offers',
+          title: 'Add offers',
+          translate: 'MENU.offers.ADD',
+          type: 'item',
+          icon: 'circle',
+          url: 'offers/create'
+        }
+      ]
+    },
+    {
+      id: "plantcards",
+      title: "language.plantcards",
+      translate: "MENU.PLANTCARDS.TITLE",
+      type: "collapsible",
+      icon: "book",
+      children: [
+        {
+          id: "plantcards_list",
+          title: "web.list",
+          translate: "MENU.PLANTCARDS.LIST",
+          type: "item",
+          icon: "circle",
+          url: "plantcards"
+        },
+        {
+          id: "add_plantcard",
+          title: "web.add",
+          translate: "MENU.PLANTCARDS.ADD",
+          type: "item",
+          icon: "circle",
+          url: "plantcards/create"
+        },
+        {
+          id: "plantleaverscolor",
+          title: "language.plantleaverscolor",
+          translate: "MENU.PLANTCARDS.LEAVERSCOLOR.TITLE",
+          type: "collapsible",
+          icon: "edit",
+          children: [
+            {
+              id: "plantleaverscolor_list",
+              title: "web.list",
+              translate: "MENU.PLANTCARDS.LEAVERSCOLOR.LIST",
+              type: "item",
+              icon: "circle",
+              url: "plantleaverscolor"
+            },
+            {
+              id: "add_plantleaverscolor",
+              title: "web.add",
+              translate: "MENU.PLANTCARDS.LEAVERSCOLOR.ADD",
+              type: "item",
+              icon: "circle",
+              url: "plantleaverscolor/create"
+            }
+          ]
+        },
+        {
+          id: "plantleaversform",
+          title: "language.plantleaversform",
+          translate: "MENU.PLANTCARDS.LEAVERSFORM.TITLE",
+          type: "collapsible",
+          icon: "codepen",
+          children: [
+            {
+              id: "plantleaversform_list",
+              title: "web.list",
+              translate: "MENU.PLANTCARDS.LEAVERSFORM.LIST",
+              type: "item",
+              icon: "circle",
+              url: "plantleaversform"
+            },
+            {
+              id: "add_plantleaversform",
+              title: "web.add",
+              translate: "MENU.PLANTCARDS.LEAVERSFORM.ADD",
+              type: "item",
+              icon: "circle",
+              url: "plantleaversform/create"
+            }
+          ]
+        },
+        {
+          id: "flowerform",
+          title: "language.flowerform",
+          translate: "MENU.PLANTCARDS.FLOWERFORM.TITLE",
+          type: "collapsible",
+          icon: "command",
+          children: [
+            {
+              id: "flowerform_list",
+              title: "web.list",
+              translate: "MENU.PLANTCARDS.FLOWERFORM.LIST",
+              type: "item",
+              icon: "circle",
+              url: "flowerform"
+            },
+            {
+              id: "add_flowerform",
+              title: "web.add",
+              translate: "MENU.PLANTCARDS.FLOWERFORM.ADD",
+              type: "item",
+              icon: "circle",
+              url: "flowerform/create"
+            }
+          ]
+        },
+        {
+          id: "flowercolor",
+          title: "language.flowercolor",
+          translate: "MENU.PLANTCARDS.FLOWERCOLOR.TITLE",
+          type: "collapsible",
+          icon: "disc",
+          children: [
+            {
+              id: "flowercolor_list",
+              title: "web.list",
+              translate: "MENU.PLANTCARDS.FLOWERCOLOR.LIST",
+              type: "item",
+              icon: "circle",
+              url: "flowercolor"
+            },
+            {
+              id: "add_flowercolor",
+              title: "web.add",
+              translate: "MENU.PLANTCARDS.FLOWERCOLOR.ADD",
+              type: "item",
+              icon: "circle",
+              url: "flowercolor/create"
+            }
+          ]
+        }
+      ]
+    }
+    
+]

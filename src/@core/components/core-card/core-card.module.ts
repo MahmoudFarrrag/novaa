@@ -9,8 +9,11 @@ import { CoreCardComponent } from '@core/components/core-card/core-card.componen
 import { CoreBlockUiComponent } from '@core/components/core-card/core-block-ui/core-block-ui.component';
 
 @NgModule({
-    declarations: [CoreCardComponent, CoreBlockUiComponent],
-    imports: [CommonModule, NgbModule, BlockUIModule.forRoot({ template: CoreBlockUiComponent }), CoreCommonModule],
-    exports: [CoreCardComponent]
+  declarations: [CoreCardComponent, CoreBlockUiComponent],
+  imports: [CommonModule, NgbModule, BlockUIModule.forRoot({ template: CoreBlockUiComponent }), CoreCommonModule],
+  exports: [CoreCardComponent],
+  entryComponents: [
+    CoreBlockUiComponent // Make sure to add ng-block-ui custom block component to the entry components
+  ]
 })
 export class CoreCardModule {}

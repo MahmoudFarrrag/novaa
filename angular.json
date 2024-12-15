@@ -22,7 +22,7 @@
               "node-waves",
               "app/main/ui/icons/feather/feather.component",
               "@angularclass/hmr",
-              "quill",
+              "ngx-quill",
               "lodash",
               "uuid",
               "nouislider",
@@ -37,8 +37,7 @@
               "fast-deep-equal",
               "plyr",
               "sweetalert2",
-              "bs-stepper",
-              "feather-icons"
+              "bs-stepper"
             ],
             "outputPath": "dist/vuexy",
             "index": "src/index.html",

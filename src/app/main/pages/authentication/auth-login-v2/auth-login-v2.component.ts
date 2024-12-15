@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { takeUntil, first } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
-import { AuthenticationService } from 'app/auth/service';
+import { Router } from '@angular/router';
 import { CoreConfigService } from '@core/services/config.service';
 
 @Component({
@@ -35,14 +34,8 @@ export class AuthLoginV2Component implements OnInit {
     private _coreConfigService: CoreConfigService,
     private _formBuilder: UntypedFormBuilder,
     private _route: ActivatedRoute,
-    private _router: Router,
-    private _authenticationService: AuthenticationService
+    private _router: Router
   ) {
-    // redirect to home if already logged in
-    if (this._authenticationService.currentUserValue) {
-      this._router.navigate(['/']);
-    }
-
     this._unsubscribeAll = new Subject();
 
     // Configure the layout
@@ -85,18 +78,11 @@ export class AuthLoginV2Component implements OnInit {
 
     // Login
     this.loading = true;
-    this._authenticationService
-      .login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this._router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.error = error;
-          this.loading = false;
-        }
-      );
+
+    // redirect to home page
+    setTimeout(() => {
+      this._router.navigate(['/']);
+    }, 100);
   }
 
   // Lifecycle Hooks
@@ -107,8 +93,8 @@ export class AuthLoginV2Component implements OnInit {
    */
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      email: ['admin@demo.com', [Validators.required, Validators.email]],
-      password: ['admin', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
