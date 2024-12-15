@@ -1,59 +1,91 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 
-import { LayoutModule } from './views/layout/layout.module';
-import { AuthGuard } from './core/guard/auth.guard';
+import 'hammerjs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
+import { ContextMenuModule } from '@ctrl/ngx-rightclick';
 
-import { AppComponent } from './app.component';
-import { ErrorPageComponent } from './views/pages/error-page/error-page.component';
+import { CoreModule } from '@core/core.module';
+import { CoreCommonModule } from '@core/common.module';
+import { CoreSidebarModule, CoreThemeCustomizerModule } from '@core/components';
+import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
 
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { StudentsComponent } from './views/main-pages/students/students/students.component';
-import { StudentsDevicesComponent } from './views/main-pages/students/students-devices/students-devices.component';
-import { StudentsActivationCodesComponent } from './views/main-pages/students/students-activation-codes/students-activation-codes.component';
-import { NotificationsComponent } from './views/main-pages/notifications/notifications.component';
-import { StudentsNotificationsComponent } from './views/main-pages/students/students-notifications/students-notifications.component';
+import { coreConfig } from 'app/app-config';
+import { AuthGuard } from 'app/auth/helpers/auth.guards';
+import { fakeBackendProvider } from 'app/auth/helpers'; // used to create fake backend
+import { JwtInterceptor, ErrorInterceptor } from 'app/auth/helpers';
+import { AppComponent } from 'app/app.component';
+import { LayoutModule } from 'app/layout/layout.module';
+import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
+
+import { ContextMenuComponent } from 'app/main/extensions/context-menu/context-menu.component';
+import { AnimatedCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/animated-custom-context-menu/animated-custom-context-menu.component';
+import { BasicCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/basic-custom-context-menu/basic-custom-context-menu.component';
+import { SubMenuCustomContextMenuComponent } from './main/extensions/context-menu/custom-context-menu/sub-menu-custom-context-menu/sub-menu-custom-context-menu.component';
+import { AuthenticationService } from './auth/service';
+
+const appRoutes: Routes = [
+ 
+  {
+    path: 'pages',
+    loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./ganatak-dashboard/ganatak-dashboard.module').then(m => m.GanatakDashboardModule)
+    // [AuthGuard]: [AuthGuard]
+  },
+  
+  
+  {
+    path: '**',
+    redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
+  }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ErrorPageComponent,
-    StudentsComponent,
-    StudentsDevicesComponent,
-    StudentsActivationCodesComponent,
-    NotificationsComponent,
-    StudentsNotificationsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule  ,  HttpClientModule,
-    FormsModule,
-    CommonModule,
-    FormsModule 
-
-  ],
-  providers: [
-    AuthGuard,
-    {
-      provide: HIGHLIGHT_OPTIONS, // https://www.npmjs.com/package/ngx-highlightjs
-      useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/core'),
-        languages: {
-          xml: () => import('highlight.js/lib/languages/xml'),
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          scss: () => import('highlight.js/lib/languages/scss'),
-        }
-      }
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ContextMenuComponent,
+        BasicCustomContextMenuComponent,
+        AnimatedCustomContextMenuComponent,
+        SubMenuCustomContextMenuComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        // HttpClientInMemoryWebApiModule.forRoot(FakeDbService, {
+        //     delay: 0,
+        //     passThruUnknownUrl: true
+        // }),
+        RouterModule.forRoot(appRoutes),
+        NgbModule,
+        // ToastrModule.forRoot(),
+        TranslateModule.forRoot(),
+        ContextMenuModule,
+        CoreModule.forRoot(coreConfig),
+        CoreCommonModule,
+        CoreSidebarModule,
+        CoreThemeCustomizerModule,
+        CardSnippetModule,
+        LayoutModule,
+        ContentHeaderModule
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        AuthenticationService,
+        ToastrService 
+        // ! IMPORTANT: Provider used to create fake backend, comment while using real API
+        fakeBackendProvider
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
