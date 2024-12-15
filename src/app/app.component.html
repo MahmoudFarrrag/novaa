@@ -1,5 +1,5 @@
 <!-- vertical-layout -->
-<ng-container *ngIf="coreConfig.layout.type === 'vertical'">
+<ng-container *ngIf="coreConfig.layout.type === 'vertical'"  [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
   <vertical-layout></vertical-layout>
 </ng-container>
 <!-- / vertical-layout -->

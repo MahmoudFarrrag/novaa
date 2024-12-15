@@ -17,37 +17,34 @@ export const menu: CoreMenu[] = [
     icon: 'file',
     url: 'sample'
   },
-    {
-      id: 'dashboard',
-      title: 'Dashboard',
-      translate: 'MENU.DASHBOARD.COLLAPSIBLE',
-      type: 'collapsible',
-      icon: 'home',
-      badge: {
-        title: '2',
-        translate: 'MENU.DASHBOARD.BADGE',
-        classes: 'badge-light-warning badge-pill'
+  {
+    id: "avatars",
+    title: "Avatars",
+    translate: "MENU.Avatars",
+    type: "collapsible",
+    icon: "image",
+    children: [
+      {
+        id: "avatars-list",
+        title: "List",
+        translate: "MENU.List",
+        type: "item",
+        icon: "circle",
+        url: "settings/avatars",
       },
-      children: [
-        {
-          id: 'analytics',
-          title: 'Analytics',
-          translate: 'MENU.DASHBOARD.ANALYTICS',
-          type: 'item',
-          role: ['Admin'], 
-          icon: 'circle',
-          url: 'dashboard/analytics'
-        },
-        {
-          id: 'ecommerce',
-          title: 'eCommerce',
-          translate: 'MENU.DASHBOARD.ECOMMERCE',
-          type: 'item',
-          icon: 'circle',
-          url: 'dashboard/ecommerce'
-        }
-      ]
-    },
+      {
+        id: "avatars-add",
+        title: "Add",
+        translate: "MENU.Add",
+        type: "item",
+        icon: "circle",
+        url: "settings/add-avatar",
+      },
+    ],
+  },
+
+
+  
     {
       id: 'users_section',
       title: 'Users',

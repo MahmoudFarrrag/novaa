@@ -15,10 +15,8 @@ import { CoreTranslationService } from '@core/services/translation.service';
 
 import { menu } from 'app/menu/menu';
 import { locale as menuEnglish } from 'app/menu/i18n/en';
-import { locale as menuFrench } from 'app/menu/i18n/fr';
-import { locale as menuGerman } from 'app/menu/i18n/de';
-import { locale as menuPortuguese } from 'app/menu/i18n/pt';
 import { locale as menuArabic } from 'app/menu/i18n/ar';
+import { localStorageService } from '@core/services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Private
   private _unsubscribeAll: Subject<any>;
+  public currentLang = this.localStorage.getItem('currentLang');
 
   /**
    * Constructor
@@ -58,7 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private _coreLoadingScreenService: CoreLoadingScreenService,
     private _coreMenuService: CoreMenuService,
     private _coreTranslationService: CoreTranslationService,
-    private _translateService: TranslateService
+    private _translateService: TranslateService,
+    private localStorage: localStorageService
   ) {
     // Get the application main menu
     this.menu = menu;
@@ -70,13 +70,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this._coreMenuService.setCurrentMenu('main');
 
     // Add languages to the translation service
-    this._translateService.addLangs(['en', 'fr', 'de', 'pt' , 'ar']);
+    this._translateService.addLangs(['en' , 'ar']);
 
     // This language will be used as a fallback when a translation isn't found in the current language
     this._translateService.setDefaultLang('en');
 
     // Set the translations for the menu
-    this._coreTranslationService.translate(menuEnglish, menuFrench, menuGerman, menuPortuguese , menuArabic);
+    this._coreTranslationService.translate(menuEnglish, menuArabic);
 
     // Set the private defaults
     this._unsubscribeAll = new Subject();
@@ -89,9 +89,12 @@ export class AppComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    // Init wave effect (Ripple effect)
+    // Init wave effect (Ripple effect) 
     Waves.init();
+    const htmlTag = this.document.getElementsByTagName("body")[0] as HTMLHtmlElement;
 
+    htmlTag.style.direction = this.currentLang == 'ar' ? 'rtl' : 'ltr';
+    htmlTag.style.textAlign = this.currentLang == 'ar' ? 'right' : 'left';
     // Subscribe to config changes
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       this.coreConfig = config;

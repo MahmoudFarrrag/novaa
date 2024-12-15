@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, HostBinding, HostListener, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostBinding, HostListener, ViewEncapsulation, Inject } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 
 import * as _ from 'lodash';
@@ -15,6 +15,8 @@ import { User } from 'app/auth/models';
 
 import { coreConfig } from 'app/app-config';
 import { Router } from '@angular/router'; 
+import { localStorageService } from '@core/services/local-storage.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -35,6 +37,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public languageOptions: any;
   public navigation: any;
   public selectedLanguage: any;
+  lang: any;
+  currentLang: string;
 
   @HostBinding('class.fixed-top')
   public isFixed = false;
@@ -81,30 +85,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private _coreMediaService: CoreMediaService,
     private _coreSidebarService: CoreSidebarService,
     private _mediaObserver: MediaObserver,
-    public _translateService: TranslateService
+    public _translateService: TranslateService,
+    private localStorage: localStorageService,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this._authenticationService.currentUser.subscribe(x => (this.currentUser = x));
 
+  
     this.languageOptions = {
       en: {
         title: 'English',
-        flag: 'us'
+        flag: 'us',
       },
-      fr: {
-       
-      },
-      de: {
-        
-      },
-      pt: {
-        
-      },
-      ar: { // Added Arabic
+      ar: {
         title: 'Arabic',
-        flag: 'ae' // Example flag icon
-      }
+        flag: 'ae',
+      },
     };
-
     // Set the private defaults
     this._unsubscribeAll = new Subject();
   }
@@ -126,16 +123,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
    *
    * @param language
    */
-  setLanguage(language): void {
-    // Set the selected language for the navbar on change
-    this.selectedLanguage = language;
+  setLanguage(lang: string): void {
+    this._translateService.use(lang);
+    this.currentLang = lang;
+    this.localStorage.setItem('currentLang', lang);
+  
+    // Update the `dir` attribute
+    const htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
+    htmlTag.lang = lang; // Apply the language to the HTML tag
 
-    // Use the selected language id for translations
-    this._translateService.use(language);
-
-    this._coreConfigService.setConfig({ app: { appLanguage: language } }, { emitEvent: true });
+    htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    htmlTag.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    htmlTag.style.textAlign = lang === 'ar' ? 'right' : 'left';
   }
-
+  
+  
+  
   /**
    * Toggle Dark Skin
    */
@@ -177,6 +180,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
+
+
+      // Get the saved language or fallback to default
+  const savedLang = this.localStorage.getItem('currentLang') || 'en';
+  this.setLanguage(savedLang);
+
+
     // get the currentUser details from localStorage
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -196,7 +206,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         }, 0);
       }
     });
-
+  
     // Horizontal Layout Only: Add class fixed-top to navbar below large screen
     if (this.coreConfig.layout.type == 'horizontal') {
       // On every media(screen) change
