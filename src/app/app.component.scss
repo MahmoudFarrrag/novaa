@@ -1,0 +1,12 @@
+:host {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  html[dir='rtl'] {
+    body {
+      direction: rtl;
+    }
+    .navbar {
+      text-align: right;
+    }
+  }

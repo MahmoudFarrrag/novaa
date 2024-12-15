@@ -5,140 +5,139 @@ export const locale = {
   data: {
     MENU: {
       DASHBOARD: {
-        COLLAPSIBLE: "لوحة التحكم",
+        COLLAPSIBLE: "Dashboard",
         BADGE: "2",
-        ANALYTICS: "الإحصائيات",
-        ECOMMERCE: "التجارة الإلكترونية"
+        ANALYTICS: "Analytics",
+        ECOMMERCE: "E-Commerce"
       },
-      USERS_SECTION: "العملاء",
+      USERS_SECTION: "Customers",
       USERS: {
-        LIST: "قائمة المستخدمين",
-        ADD: "إضافة مستخدم"
+        LIST: "Users List",
+        ADD: "Add User"
       },
       PRODUCTS: {
-        Title: "المنتجات",
-        LIST: "قائمة المنتجات",
-        AT_HOME: "منتجات في المنزل"
+        Title: "Products",
+        LIST: "Products List",
+        AT_HOME: "Products at Home"
       },
       COUNSELORS: {
-        Title: "المستشارين",
-        LIST: "قائمة الاستشاريين",
-        ADD: "إضافة استشاري"
+        Title: "Consultants",
+        LIST: "Consultants List",
+        ADD: "Add Consultant"
       },
       STORES: {
-        Title: "المتاجر",
-        LIST: "قائمة المتاجر",
-        ADD: "إضافة متجر"
+        Title: "Stores",
+        LIST: "Stores List",
+        ADD: "Add Store"
       },
       STORES_OFFERS: {
-        Title: "عروض المتاجر",
-        LIST: "قائمة العروض"
-      }, VOUCHER: {
-        Title: "العروض الترويجية",
-        TYPE: "أنواع العروض الترويجية",
-        LIST: "قائمة العروض الترويجية"
-      }, cancelation_reasons: {
-        Title: "سبب الالغاء",
-        LIST: "قائمة أسباب الإلغاء",
-        ADD: "إضافة سبب"
+        Title: "Store Offers",
+        LIST: "Offers List"
+      },
+      VOUCHER: {
+        Title: "Promotions",
+        TYPE: "Promotion Types",
+        LIST: "Promotions List"
+      },
+      cancelation_reasons: {
+        Title: "Cancellation Reason",
+        LIST: "Cancellation Reasons List",
+        ADD: "Add Reason"
       },
       COMPANIES: {
-        Title: "الشركات",
-        LIST: "قائمة الشركات",
-        ARCHIVED: "الشركات المؤرشفة",
-        "ADD": "إضافة شركة"
+        Title: "Companies",
+        LIST: "Companies List",
+        ARCHIVED: "Archived Companies",
+        ADD: "Add Company"
       },
       consulting: {
-        Title: "الاستشارات",
-        LIST: "قائمة الاستشارات",
-      }, SERVICES: {
-        Title: "الخدمات",
-        LIST: "قائمة الخدمات",
-        ADD: "إضافة خدمة"
+        Title: "Consulting",
+        LIST: "Consulting List",
+      },
+      SERVICES: {
+        Title: "Services",
+        LIST: "Services List",
+        ADD: "Add Service"
       },
       SECTION: {
-        Title: "الاقسام",
-        LIST: "قائمة الاقسام",
-        TYPES: "انواع القسائم",
-        ADD: "إضافة قسم"
-
+        Title: "Sections",
+        LIST: "Sections List",
+        TYPES: "Voucher Types",
+        ADD: "Add Section"
       },
       ARTICLES: {
-        Title: "المقالات",
-        LIST: "قائمة المقالات",
-        Plant_groups: "المجموعات النباتية",
-        ADD: "إضافة ",
-        various: "مقالات زراعية متنوعة",
+        Title: "Articles",
+        LIST: "Articles List",
+        Plant_groups: "Plant Groups",
+        ADD: "Add",
+        various: "Various Agricultural Articles",
       },
       TAGS: {
-        Title: "التاجات",
-        LIST: "قائمة التاجات",
-        ADD: "إضافة علامة"
+        Title: "Tags",
+        LIST: "Tags List",
+        ADD: "Add Tag"
       },
       offers: {
-        Title: "العروض",
-        LIST: "قائمة العروض",
-        ADD: "إضافة عروض"
+        Title: "Offers",
+        LIST: "Offers List",
+        ADD: "Add Offers"
       },
       reasone_canceled: {
-        Title: "سبب الالغاء",
-        LIST: "قائمة ",
-        ADD: "إضافة"
+        Title: "Cancellation Reason",
+        LIST: "List",
+        ADD: "Add"
       },
-
-      "PLANTCARDS": {
-        "TITLE": "بطاقات النباتات",
-        "LIST": "قائمة بطاقات النباتات",
-        "ADD": "إضافة بطاقة نبات",
-        "LEAVERSCOLOR": {
-          "TITLE": "ألوان أوراق النباتات",
-          "LIST": "قائمة ألوان أوراق النباتات",
-          "ADD": "إضافة لون لأوراق النباتات"
+      PLANTCARDS: {
+        TITLE: "Plant Cards",
+        LIST: "Plant Cards List",
+        ADD: "Add Plant Card",
+        LEAVERSCOLOR: {
+          TITLE: "Leaf Colors",
+          LIST: "Leaf Colors List",
+          ADD: "Add Leaf Color"
         },
-        "LEAVERSFORM": {
-          "TITLE": "أشكال أوراق النباتات",
-          "LIST": "قائمة أشكال أوراق النباتات",
-          "ADD": "إضافة شكل لأوراق النباتات"
+        LEAVERSFORM: {
+          TITLE: "Leaf Shapes",
+          LIST: "Leaf Shapes List",
+          ADD: "Add Leaf Shape"
         },
-        "FLOWERFORM": {
-          "TITLE": "أشكال الأزهار",
-          "LIST": "قائمة أشكال الأزهار",
-          "ADD": "إضافة شكل للأزهار"
+        FLOWERFORM: {
+          TITLE: "Flower Shapes",
+          LIST: "Flower Shapes List",
+          ADD: "Add Flower Shape"
         },
-        "FLOWERCOLOR": {
-          "TITLE": "ألوان الأزهار",
-          "LIST": "قائمة ألوان الأزهار",
-          "ADD": "إضافة لون للأزهار"
+        FLOWERCOLOR: {
+          TITLE: "Flower Colors",
+          LIST: "Flower Colors List",
+          ADD: "Add Flower Color"
         },
-        "ENVIRONMENTLIGHT": {
-          "TITLE": "إضاءة البيئة",
-          "LIST": "قائمة إضاءة البيئة",
-          "ADD": "إضافة إضاءة بيئة"
+        ENVIRONMENTLIGHT: {
+          TITLE: "Environmental Light",
+          LIST: "Environmental Light List",
+          ADD: "Add Environmental Light"
         },
-        "ENVIRONMENTTEMP": {
-          "TITLE": "درجة حرارة البيئة",
-          "LIST": "قائمة درجات حرارة البيئة",
-          "ADD": "إضافة درجة حرارة بيئة"
+        ENVIRONMENTTEMP: {
+          TITLE: "Environmental Temperature",
+          LIST: "Environmental Temperature List",
+          ADD: "Add Environmental Temperature"
         },
-        "ENVIRONMENHUMIDITY": {
-          "TITLE": "رطوبة البيئة",
-          "LIST": "قائمة رطوبة البيئة",
-          "ADD": "إضافة رطوبة بيئة"
+        ENVIRONMENHUMIDITY: {
+          TITLE: "Environmental Humidity",
+          LIST: "Environmental Humidity List",
+          ADD: "Add Environmental Humidity"
         },
-        "REPRODUCTIONS": {
-          "TITLE": "التكاثر",
-          "LIST": "قائمة طرق التكاثر",
-          "ADD": "إضافة طريقة تكاثر"
+        REPRODUCTIONS: {
+          TITLE: "Reproduction",
+          LIST: "Reproduction Methods List",
+          ADD: "Add Reproduction Method"
         },
-        "PLANTCARDSOIL": {
-          "TITLE": "أنواع التربة",
-          "LIST": "قائمة أنواع التربة",
-          "ADD": "إضافة نوع تربة"
+        PLANTCARDSOIL: {
+          TITLE: "Soil Types",
+          LIST: "Soil Types List",
+          ADD: "Add Soil Type"
         }
- 
-
       }
-
+        
     }
   }
 

@@ -14,7 +14,7 @@ import { CoreMediaService } from '@core/services/media.service';
 import { User } from 'app/auth/models';
 
 import { coreConfig } from 'app/app-config';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-navbar',
@@ -63,7 +63,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   // Private
   private _unsubscribeAll: Subject<any>;
 
-  /**
+  /** 
    * Constructor
    *
    * @param {Router} _router
@@ -91,16 +91,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
         flag: 'us'
       },
       fr: {
-        title: 'French',
-        flag: 'fr'
+       
       },
       de: {
-        title: 'German',
-        flag: 'de'
+        
       },
       pt: {
-        title: 'Portuguese',
-        flag: 'pt'
+        
+      },
+      ar: { // Added Arabic
+        title: 'Arabic',
+        flag: 'ae' // Example flag icon
       }
     };
 
