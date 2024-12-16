@@ -59,7 +59,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     this._activateMenuDropdown();
   }
 
-  /**
+  /** 
    * Toggle sidebar on hamburger button click
    */
   toggleSidebar(e: Event) {
