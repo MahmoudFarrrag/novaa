@@ -65,7 +65,7 @@ export const menu: CoreMenu[] = [
         translate: "Stores",
         type: "item",
         icon: "circle",
-        url: "settings/avatars",
+        url: "counselors",
       },
       {
         id: "avatars-add",
@@ -73,7 +73,7 @@ export const menu: CoreMenu[] = [
         translate: "MENU.DASHBOARD.add",
         type: "item",
         icon: "circle",
-        url: "settings/add-avatar",
+        url: "add-counselors",
       },
     ],
   },

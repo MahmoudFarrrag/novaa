@@ -22,6 +22,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdsComponent } from './main/ganatak-dashboard/wajad/ads/ads.component';
 import { AddAdsComponent } from './main/ganatak-dashboard/add-pages/add-ads/add-ads.component';
+import { CounselorsComponent } from './main/ganatak-dashboard/wajad/counselors/counselors.component';
+import { AddCounselorsComponent } from './main/ganatak-dashboard/add-pages/add-counselors/add-counselors.component';
 
 const appRoutes: Routes = [
   {
@@ -40,10 +42,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent , AdsComponent,AddAdsComponent],
+  declarations: [AppComponent , AdsComponent,AddAdsComponent , CounselorsComponent , AddCounselorsComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     HttpClientModule,
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled', // Add options right here

@@ -11,6 +11,8 @@ import { HomeComponent } from './home.component';
 import { AdsComponent } from '../ganatak-dashboard/wajad/ads/ads.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddAdsComponent } from '../ganatak-dashboard/add-pages/add-ads/add-ads.component';
+import { CounselorsComponent } from '../ganatak-dashboard/wajad/counselors/counselors.component';
+import { AddCounselorsComponent } from '../ganatak-dashboard/counselors/add-counselors/add-counselors.component';
 
 const routes = [
   {
@@ -26,6 +28,16 @@ const routes = [
   {
     path: 'ads',
     component: AdsComponent,
+    data: { animation: 'ads' }
+  },
+  {
+    path: 'counselors',
+    component: CounselorsComponent,
+    data: { animation: 'ads' }
+  },
+  {
+    path: 'add-counselors',
+    component: AddCounselorsComponent,
     data: { animation: 'ads' }
   },
   {
