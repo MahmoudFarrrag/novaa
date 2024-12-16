@@ -32,6 +32,10 @@ import { OffersComponent } from '../ganatak-dashboard/wajad/offers/offers.compon
 import { CategoriesComponent } from '../ganatak-dashboard/wajad/categories/categories.component';
 import { AddCategpriesComponent } from '../ganatak-dashboard/add-pages/add-categpries/add-categpries.component';
 import { AddOffersComponent } from '../ganatak-dashboard/add-pages/add-offers/add-offers.component';
+import { PlantCardsComponent } from '../ganatak-dashboard/wajad/plant-cards/plant-cards.component';
+import { AddLanguagePlantcardsComponent } from '../ganatak-dashboard/add-pages/add-language-plantcards/add-language-plantcards.component';
+import { UsersComponent } from '../ganatak-dashboard/wajad/users/users.component';
+import { AddUsersComponent } from '../ganatak-dashboard/add-pages/add-users/add-users.component';
 
 const routes = [
   {
@@ -165,16 +169,26 @@ const routes = [
   component: AddOffersComponent,
   data: { animation: 'ads' }
 } , 
-// {
-//   path: 'planetCards',
-//   component: plane,
-//   data: { animation: 'ads' }
-// } , 
-// {
-//   path: 'planetCards-add',
-//   component: ,
-//   data: { animation: 'ads' }
-// } , 
+{
+  path: 'planetCards',
+  component: PlantCardsComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'planetCards-add',
+  component: AddLanguagePlantcardsComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'users',
+  component: UsersComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'users-add',
+  component: AddUsersComponent,
+  data: { animation: 'ads' }
+} , 
 
   
 ]; 
