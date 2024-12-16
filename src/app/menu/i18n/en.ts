@@ -8,7 +8,22 @@ export const locale = {
         COLLAPSIBLE: "Dashboard",
         BADGE: "2",
         ANALYTICS: "Analytics",
-        ECOMMERCE: "E-Commerce"
+        ECOMMERCE: "E-Commerce",
+        "users": "Users",
+        "list": "List",
+        "add": "Add",
+        "ads": "Ads",
+        "counselors": "Counselors",
+        "stores_offers": "Stores Offers",
+        "cancelation_reason": "Cancelation Reason",
+        "companies": "Companies",
+        "consulting": "Consulting",
+        "categories": "Categories",
+        "services": "Services",
+        "tags": "Tags",
+        "articles": "Articles",
+        "offers": "Offers", 
+        "plantcards": "Plant Cards"
       },
       USERS_SECTION: "Customers",
       USERS: {
@@ -135,7 +150,8 @@ export const locale = {
           TITLE: "Soil Types",
           LIST: "Soil Types List",
           ADD: "Add Soil Type"
-        }
+        },
+        
       }
         
     }

@@ -95,6 +95,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
     htmlTag.style.direction = this.currentLang == 'ar' ? 'rtl' : 'ltr';
     htmlTag.style.textAlign = this.currentLang == 'ar' ? 'right' : 'left';
+
+
+      // Check if the language is stored in localStorage
+      const lang = localStorage.getItem('selectedLanguage');
+
+      // If there's a language in localStorage, use it
+      if (lang) {
+        this._translateService.use(lang);
+      } else {
+        // Default language if no language is saved
+        this._translateService.use('en');
+      }
+    
     // Subscribe to config changes
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       this.coreConfig = config;

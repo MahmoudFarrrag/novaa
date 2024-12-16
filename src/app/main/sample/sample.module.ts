@@ -8,6 +8,9 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 
 import { SampleComponent } from './sample.component';
 import { HomeComponent } from './home.component';
+import { AdsComponent } from '../ganatak-dashboard/wajad/ads/ads.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AddAdsComponent } from '../ganatak-dashboard/add-pages/add-ads/add-ads.component';
 
 const routes = [
   {
@@ -19,12 +22,22 @@ const routes = [
     path: 'home',
     component: HomeComponent,
     data: { animation: 'home' }
+  },
+  {
+    path: 'ads',
+    component: AdsComponent,
+    data: { animation: 'ads' }
+  },
+  {
+    path: 'add-ads',
+    component: AddAdsComponent,
+    data: { animation: 'ads' }
   }
-];
+]; 
 
 @NgModule({
   declarations: [SampleComponent, HomeComponent],
-  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule],
+  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule,NgxDatatableModule],
   exports: [SampleComponent, HomeComponent]
 })
 export class SampleModule {}

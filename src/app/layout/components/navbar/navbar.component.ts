@@ -129,9 +129,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.localStorage.setItem('currentLang', lang);
   
     // Update the `dir` attribute
-    const htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
-    htmlTag.lang = lang; // Apply the language to the HTML tag
-
+    const htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;  
+    
     htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     htmlTag.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
     htmlTag.style.textAlign = lang === 'ar' ? 'right' : 'left';

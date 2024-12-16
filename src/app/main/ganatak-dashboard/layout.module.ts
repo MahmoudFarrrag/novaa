@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BaseComponent } from './base/base.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -85,6 +85,8 @@ import { AddPaperformComponent } from './add-pages/add-paperform/add-paperform.c
 import { AddSizesComponent } from './add-pages/add-sizes/add-sizes.component';
 import { AddLanguageCounselorspaymentComponent } from './add-pages/add-language-counselorspayment/add-language-counselorspayment.component';
 import { AddSlidersComponent } from './add-pages/add-sliders/add-sliders.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { BrowserModule } from '@angular/platform-browser';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -92,16 +94,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [BaseComponent, NavbarComponent, SidebarComponent, FooterComponent, ContentAnimateDirective, UsersComponent, AddStudentsComponent, ActivationCodesComponent, AddDevicesComponent, AddCountriesComponent, AddOnbourdingsComponent, AddActivationCodesComponent, AdsComponent, CounselorsComponent, StoresComponent, VouchersComponent, StoresOffersComponent, CancelationReasonComponent, CompaniesComponent, ConsultingComponent, CategoriesComponent, ServicesComponent, TagsComponent, ArticlesComponent, OffersComponent, LanguageComponent, TermsConditionsComponent, AboutComponent, NotificationsComponent, CurrenciesComponent, CountriesComponent, CitiesComponent, LanguagePlansComponent, OpenScreensComponent, LanguageLightComponent, GanatakCommunityComponent, LanguageRootComponent, LanguageSeedComponent, LanguageSoilComponent, LanguageStemComponent, PaperformComponent, SizesComponent, LanguageCounselorspaymentComponent, SlidersComponent, AddUsersComponent, AddAdsComponent, AddCounselorsComponent, AddStoresComponent, AddStoresOffersComponent, AddVouchersComponent, AddCancelationReasonComponent, AddCompaniesComponent, AddConsultingComponent, AddCategpriesComponent, AddServicesComponent, AddTagsComponent, AddArticlesComponent, AddOffersComponent, AddLanguagePlantcardsComponent, AddCurrenciesComponent, AddCitiesComponent, AddLanguagePlansComponent, AddOpenScreensComponent, AddLanguageLightComponent, AddGanatakCommunityComponent, AddLanguageRootComponent, AddLanguageSeedComponent, AddLanguageSoilComponent, AddLanguageStemComponent, AddPaperformComponent, AddSizesComponent, AddLanguageCounselorspaymentComponent, AddSlidersComponent],
+  declarations: [ BaseComponent, NavbarComponen, SidebarComponent, FooterComponent, ContentAnimateDirective, UsersComponent, AddStudentsComponent, ActivationCodesComponent, AddDevicesComponent, AddCountriesComponent, AddOnbourdingsComponent, AddActivationCodesComponent, AdsComponent, CounselorsComponent, StoresComponent, VouchersComponent, StoresOffersComponent, CancelationReasonComponent, CompaniesComponent, ConsultingComponent, CategoriesComponent, ServicesComponent, TagsComponent, ArticlesComponent, OffersComponent, LanguageComponent, TermsConditionsComponent, AboutComponent, NotificationsComponent, CurrenciesComponent, CountriesComponent, CitiesComponent, LanguagePlansComponent, OpenScreensComponent, LanguageLightComponent, GanatakCommunityComponent, LanguageRootComponent, LanguageSeedComponent, LanguageSoilComponent, LanguageStemComponent, PaperformComponent, SizesComponent, LanguageCounselorspaymentComponent, SlidersComponent, AddUsersComponent, AddAdsComponent, AddCounselorsComponent, AddStoresComponent, AddStoresOffersComponent, AddVouchersComponent, AddCancelationReasonComponent, AddCompaniesComponent, AddConsultingComponent, AddCategpriesComponent, AddServicesComponent, AddTagsComponent, AddArticlesComponent, AddOffersComponent, AddLanguagePlantcardsComponent, AddCurrenciesComponent, AddCitiesComponent, AddLanguagePlansComponent, AddOpenScreensComponent, AddLanguageLightComponent, AddGanatakCommunityComponent, AddLanguageRootComponent, AddLanguageSeedComponent, AddLanguageSoilComponent, AddLanguageStemComponent, AddPaperformComponent, AddSizesComponent, AddLanguageCounselorspaymentComponent, AddSlidersComponent],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     NgbDropdownModule,
     NgbCollapseModule, 
-    PerfectScrollbarModule,
-    FeatherIconModule
+    PerfectScrollbarModule, 
+    FeatherIconModule,
+    NgxDatatableModule ,    FormsModule,ReactiveFormsModule,
+    BrowserModule,ReactiveFormsModule 
   ],
+  
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

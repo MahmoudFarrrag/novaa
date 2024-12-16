@@ -9,6 +9,21 @@ export const locale = {
         ECOMMERCE: "التجارة الإلكترونية",
         "HOME": "الرئيسية ",
         "SAMPLE": "عينة ",
+        "users": "المستخدمين",
+        "list": "القائمة",
+        "add": "إضافة",
+        "ads": "الإعلانات",
+        "counselors": "المستشارين",
+        "stores_offers": "عروض المتاجر",
+        "cancelation_reason": "سبب الإلغاء",
+        "companies": "الشركات",
+        "consulting": "الاستشارات",
+        "categories": "الفئات",
+        "services": "الخدمات",
+        "tags": "العلامات",
+        "articles": "المقالات",
+        "offers": "العروض",
+        "plantcards": "بطاقات النباتات"
 
       },
       USERS_SECTION: "العملاء",
@@ -136,7 +151,7 @@ export const locale = {
           "LIST": "قائمة أنواع التربة",
           "ADD": "إضافة نوع تربة"
         },
-        
+
         
 
 

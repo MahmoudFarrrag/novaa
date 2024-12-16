@@ -18,6 +18,10 @@ import { coreConfig } from 'app/app-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdsComponent } from './main/ganatak-dashboard/wajad/ads/ads.component';
+import { AddAdsComponent } from './main/ganatak-dashboard/add-pages/add-ads/add-ads.component';
 
 const appRoutes: Routes = [
   {
@@ -36,7 +40,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent , AdsComponent,AddAdsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -59,7 +63,9 @@ const appRoutes: Routes = [
 
     // App modules
     LayoutModule,
-    SampleModule
+    SampleModule,
+    NgxDatatableModule,
+     FormsModule,ReactiveFormsModule
   ],
 
   bootstrap: [AppComponent]
