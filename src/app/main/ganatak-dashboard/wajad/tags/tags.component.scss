@@ -1,0 +1,19 @@
+@import "@core/scss/angular/libs/datatables.component.scss";
+
+.datatable-scroll {
+    width: auto !important;
+}
+
+.rounded-pill {
+    padding: 5px 10px;
+}
+
+.bg-light-success {
+    background-color: #00c49f !important;
+    color: #d9ffe1 !important;
+}
+
+.bg-light-danger {
+    background-color: #f44336 !important;
+    color: #ffcaca !important;
+}

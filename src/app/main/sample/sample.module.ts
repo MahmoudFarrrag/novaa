@@ -13,6 +13,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddAdsComponent } from '../ganatak-dashboard/add-pages/add-ads/add-ads.component';
 import { CounselorsComponent } from '../ganatak-dashboard/wajad/counselors/counselors.component';
 import { AddCounselorsComponent } from '../ganatak-dashboard/counselors/add-counselors/add-counselors.component';
+import { UsersComponent } from '../ganatak-dashboard/wajad/users/users.component';
+import { PlantCardsComponent } from '../ganatak-dashboard/wajad/plant-cards/plant-cards.component';
 
 const routes = [
   {

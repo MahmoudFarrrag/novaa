@@ -4,14 +4,15 @@ import { ApisService } from '@core/services/apis.service';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 
 @Component({
-  selector: 'app-companies',
-  templateUrl: './companies.component.html',
-  styleUrls: ['./companies.component.scss'],
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss'],
     encapsulation: ViewEncapsulation.None,
+  
 })
-export class CompaniesComponent implements OnInit {
+export class UsersComponent implements OnInit {
   public arrCoupons: any[] = [];
-
+ 
   constructor( 
     private apisService: ApisService,
     // private loadingService: Loadingscr,

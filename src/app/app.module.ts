@@ -24,6 +24,28 @@ import { AdsComponent } from './main/ganatak-dashboard/wajad/ads/ads.component';
 import { AddAdsComponent } from './main/ganatak-dashboard/add-pages/add-ads/add-ads.component';
 import { CounselorsComponent } from './main/ganatak-dashboard/wajad/counselors/counselors.component';
 import { AddCounselorsComponent } from './main/ganatak-dashboard/add-pages/add-counselors/add-counselors.component';
+import { StoresOffersComponent } from './main/ganatak-dashboard/wajad/stores-offers/stores-offers.component';
+import { AddStoresOffersComponent } from './main/ganatak-dashboard/add-pages/add-stores-offers/add-stores-offers.component';
+import { CancelationReasonComponent } from './main/ganatak-dashboard/wajad/cancelation-reason/cancelation-reason.component';
+import { AddCancelationReasonComponent } from './main/ganatak-dashboard/add-pages/add-cancelation-reason/add-cancelation-reason.component';
+import { CompaniesComponent } from './main/ganatak-dashboard/wajad/companies/companies.component';
+import { AddCompaniesComponent } from './main/ganatak-dashboard/add-pages/add-companies/add-companies.component';
+import { ConsultingComponent } from './main/ganatak-dashboard/wajad/consulting/consulting.component';
+import { AddConsultingComponent } from './main/ganatak-dashboard/add-pages/add-consulting/add-consulting.component';
+import { CategoriesComponent } from './main/ganatak-dashboard/wajad/categories/categories.component';
+import { AddCategpriesComponent } from './main/ganatak-dashboard/add-pages/add-categpries/add-categpries.component';
+import { ServicesComponent } from './main/ganatak-dashboard/wajad/services/services.component';
+import { AddServicesComponent } from './main/ganatak-dashboard/add-pages/add-services/add-services.component';
+import { TagsComponent } from './main/ganatak-dashboard/wajad/tags/tags.component';
+import { AddTagsComponent } from './main/ganatak-dashboard/add-pages/add-tags/add-tags.component';
+import { ArticlesComponent } from './main/ganatak-dashboard/wajad/articles/articles.component';
+import { AddArticlesComponent } from './main/ganatak-dashboard/add-pages/add-articles/add-articles.component';
+import { OffersComponent } from './main/ganatak-dashboard/wajad/offers/offers.component';
+import { AddOffersComponent } from './main/ganatak-dashboard/add-pages/add-offers/add-offers.component';
+import { AddLanguagePlantcardsComponent } from './main/ganatak-dashboard/add-pages/add-language-plantcards/add-language-plantcards.component';
+import { AddUsersComponent } from './main/ganatak-dashboard/add-pages/add-users/add-users.component';
+import { UsersComponent } from './main/ganatak-dashboard/wajad/users/users.component';
+import { PlantCardsComponent } from './main/ganatak-dashboard/wajad/plant-cards/plant-cards.component';
 
 const appRoutes: Routes = [
   {
@@ -42,7 +64,13 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent , AdsComponent,AddAdsComponent , CounselorsComponent , AddCounselorsComponent],
+  declarations: [AppComponent , AdsComponent,AddAdsComponent , CounselorsComponent , 
+    AddCounselorsComponent ,StoresOffersComponent, AddStoresOffersComponent,CancelationReasonComponent,
+  AddCancelationReasonComponent,CompaniesComponent,AddCompaniesComponent,ConsultingComponent,
+AddConsultingComponent,CategoriesComponent,AddCategpriesComponent,ServicesComponent,AddServicesComponent,
+TagsComponent,AddTagsComponent,ArticlesComponent,AddArticlesComponent,OffersComponent,AddOffersComponent,
+AddLanguagePlantcardsComponent,AddUsersComponent,UsersComponent,PlantCardsComponent
+],
   imports: [
     BrowserModule,
     BrowserAnimationsModule, 
