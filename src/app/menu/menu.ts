@@ -57,7 +57,7 @@ export const menu: CoreMenu[] = [
     title: "Counselors",
     translate:  "MENU.DASHBOARD.counselors",
     type: "collapsible",
-    icon: "image",
+    icon: "package",
     children: [
       {
         id: "avatars-list",
@@ -82,7 +82,7 @@ export const menu: CoreMenu[] = [
     title: "Stores Offers",
     translate:  "MENU.DASHBOARD.stores_offers",
     type: "collapsible",
-    icon: "image",
+    icon: "dollar-sign",
     children: [
       {
         id: "avatars-list",
@@ -107,7 +107,7 @@ export const menu: CoreMenu[] = [
     title: "Cancelation Reason",
     translate:  "MENU.DASHBOARD.cancelation_reason",
     type: "collapsible",
-    icon: "image",
+    icon: "tablet",
     children: [
       {
         id: "avatars-list",
@@ -132,7 +132,7 @@ export const menu: CoreMenu[] = [
     title: "Companies",
     translate:  "MENU.DASHBOARD.companies",
     type: "collapsible",
-    icon: "image",
+    icon: "hexagon",
     children: [
       {
         id: "avatars-list",
@@ -157,7 +157,7 @@ export const menu: CoreMenu[] = [
     title: "Consulting",
     translate:  "MENU.DASHBOARD.consulting",
     type: "collapsible",
-    icon: "image",
+    icon: "credit-card",
     children: [
       {
         id: "avatars-list",
@@ -182,7 +182,7 @@ export const menu: CoreMenu[] = [
     title: "Categories",
     translate:  "MENU.DASHBOARD.categories",
     type: "collapsible",
-    icon: "image",
+    icon: "percent",
     children: [
       {
         id: "avatars-list",
@@ -207,7 +207,7 @@ export const menu: CoreMenu[] = [
     title: "Services",
     translate:  "MENU.DASHBOARD.services",
     type: "collapsible",
-    icon: "image",
+    icon: "map-pin",
     children: [
       {
         id: "avatars-list",
@@ -232,7 +232,7 @@ export const menu: CoreMenu[] = [
     title: "Tags",
     translate:  "MENU.DASHBOARD.tags",
     type: "collapsible",
-    icon: "image",
+    icon: "video",
     children: [
       {
         id: "avatars-list",
@@ -257,7 +257,7 @@ export const menu: CoreMenu[] = [
     title: "Articles",
     translate:  "MENU.DASHBOARD.articles",
     type: "collapsible",
-    icon: "image",
+    icon: "upload",
     children: [
       {
         id: "avatars-list",
@@ -282,7 +282,7 @@ export const menu: CoreMenu[] = [
     title: "Offers",
     translate: "MENU.DASHBOARD.offers",
     type: "collapsible",
-    icon: "image",
+    icon: "settings",
     children: [
       {
         id: "avatars-list",
@@ -307,7 +307,7 @@ export const menu: CoreMenu[] = [
     title: "Plant Cards",
     translate:  "MENU.DASHBOARD.plantcards",
     type: "collapsible",
-    icon: "image",
+    icon: "flag",
     children: [
       {
         id: "avatars-list",
