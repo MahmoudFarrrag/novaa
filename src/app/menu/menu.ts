@@ -4,7 +4,7 @@ export const menu: CoreMenu[] = [
 
   {
     id: "avatars",
-    title: "Avatars",
+    title: "Users",
     translate: "MENU.DASHBOARD.users",
     type: "collapsible",
     icon: "users",
