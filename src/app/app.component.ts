@@ -28,6 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
   menu: any;
   defaultLanguage: 'en'; // This language will be used as a fallback when a translation isn't found in the current language
   appLanguage: 'en'; // Set application default language i.e fr
+  lang = 'ar';
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -80,6 +81,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // Set the private defaults
     this._unsubscribeAll = new Subject();
+    this.lang = this.localStorage.getItem('lang') || 'ar';
+    this._translateService.setDefaultLang(this.lang);
   }
 
   // Lifecycle hooks

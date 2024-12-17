@@ -41,3 +41,24 @@ body {
   line-height: 1.45;
   font-weight: bold;
 }
+
+.card-text{
+  text-align: start;
+}
+
+html:dir(rtl) .content.app-content {
+  margin-left: 0px;
+  margin-right: 250px;
+}
+
+html:dir(rtl) .main-menu.menu-light .navigation li a > * {
+  margin-left: 10px;
+}
+
+html:dir(rtl) .header-navbar.floating-nav {
+ 
+  left: -15px;
+  margin-left: 47px;
+  right: 10px;
+
+}

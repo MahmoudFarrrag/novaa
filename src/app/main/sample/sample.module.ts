@@ -36,6 +36,10 @@ import { PlantCardsComponent } from '../ganatak-dashboard/wajad/plant-cards/plan
 import { AddLanguagePlantcardsComponent } from '../ganatak-dashboard/add-pages/add-language-plantcards/add-language-plantcards.component';
 import { UsersComponent } from '../ganatak-dashboard/wajad/users/users.component';
 import { AddUsersComponent } from '../ganatak-dashboard/add-pages/add-users/add-users.component';
+import { SettingsDetailsComponent } from '../ganatak-dashboard/wajad/settings-details/settings-details.component';
+import { TermsConditionsComponent } from '../ganatak-dashboard/wajad/terms-conditions/terms-conditions.component';
+import { AboutComponent } from '../ganatak-dashboard/wajad/about/about.component';
+import { NotificationsComponent } from '../ganatak-dashboard/wajad/notifications/notifications.component';
 
 const routes = [
   {
@@ -187,6 +191,26 @@ const routes = [
 {
   path: 'users-add',
   component: AddUsersComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'settings',
+  component: SettingsDetailsComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'terms-conditions',
+  component: TermsConditionsComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'about',
+  component: AboutComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'notifications',
+  component: NotificationsComponent,
   data: { animation: 'ads' }
 } , 
 

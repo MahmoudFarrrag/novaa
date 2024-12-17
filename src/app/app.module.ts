@@ -46,6 +46,10 @@ import { AddLanguagePlantcardsComponent } from './main/ganatak-dashboard/add-pag
 import { AddUsersComponent } from './main/ganatak-dashboard/add-pages/add-users/add-users.component';
 import { UsersComponent } from './main/ganatak-dashboard/wajad/users/users.component';
 import { PlantCardsComponent } from './main/ganatak-dashboard/wajad/plant-cards/plant-cards.component';
+import { SettingsDetailsComponent } from './main/ganatak-dashboard/wajad/settings-details/settings-details.component';
+import { TermsConditionsComponent } from './main/ganatak-dashboard/wajad/terms-conditions/terms-conditions.component';
+import { NotificationsComponent } from './main/ganatak-dashboard/wajad/notifications/notifications.component';
+import { AboutComponent } from './main/ganatak-dashboard/wajad/about/about.component';
 
 const appRoutes: Routes = [
   {
@@ -69,7 +73,9 @@ const appRoutes: Routes = [
   AddCancelationReasonComponent,CompaniesComponent,AddCompaniesComponent,ConsultingComponent,
 AddConsultingComponent,CategoriesComponent,AddCategpriesComponent,ServicesComponent,AddServicesComponent,
 TagsComponent,AddTagsComponent,ArticlesComponent,AddArticlesComponent,OffersComponent,AddOffersComponent,
-AddLanguagePlantcardsComponent,AddUsersComponent,UsersComponent,PlantCardsComponent
+AddLanguagePlantcardsComponent,AddUsersComponent,UsersComponent,PlantCardsComponent,
+SettingsDetailsComponent,TermsConditionsComponent,NotificationsComponent,AboutComponent,
+
 ],
   imports: [
     BrowserModule,

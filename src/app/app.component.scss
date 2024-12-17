@@ -18,3 +18,11 @@
   // html[dir='rtl'] .navbar {
   //   text-align: right;
   // }
+
+  .movertl{
+    &.rtl {
+        margin-right: 150px;
+    
+    
+      } 
+}

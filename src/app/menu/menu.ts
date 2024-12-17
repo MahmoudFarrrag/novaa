@@ -328,6 +328,452 @@ export const menu: CoreMenu[] = [
     ],
   },
  
+  {
+    id: "settings",
+    title: "Settings",
+    translate: "Settings",
+    type: "collapsible", // Allows the menu to be clickable and expandable
+    icon: "help-circle",
+    children: [
+      {
+        id: "show-details",
+        title: "Show Details",
+        translate: "Show Details",
+        type: "item",
+        icon: "circle",
+        url: "settings",
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Terms & Conditions",
+        translate: "Terms & Conditions",
+        type: "collapsible", // Expandable item with children
+        icon: "lock",
+        children: [
+          {
+            id: "terms-show-details",
+            title: "Show Details",
+            translate: "Show Details",
+            type: "item",
+            icon: "circle",
+            url: "terms-conditions",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "About",
+        translate: "About",
+        type: "collapsible", // Expandable item with children
+        icon: "file-text",
+        children: [
+          {
+            id: "terms-show-details",
+            title: "Show Details",
+            translate: "Show Details",
+            type: "item",
+            icon: "circle",
+            url: "about",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Notifications",
+        translate: "Notifications",
+        type: "collapsible", // Expandable item with children
+        icon: "shuffle",
+        children: [
+          {
+            id: "terms-show-details",
+            title: "Show Details",
+            translate: "Show Details",
+            type: "item",
+            icon: "circle",
+            url: "notifications",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Currencies",
+        translate: "Currencies",
+        type: "collapsible", // Expandable item with children
+        icon: "package",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Countries",
+        translate: "Countries",
+        type: "collapsible", // Expandable item with children
+        icon: "gift",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Cities",
+        translate: "Cities",
+        type: "collapsible", // Expandable item with children
+        icon: "grid",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Language.plans",
+        translate: "Language.plans",
+        type: "collapsible", // Expandable item with children
+        icon: "calendar",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Open Screens",
+        translate: "Open Screens",
+        type: "collapsible", // Expandable item with children
+        icon: "video",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Language.light",
+        translate: "Language.light",
+        type: "collapsible", // Expandable item with children
+        icon: "list",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Ganatak community",
+        translate: "Ganatak community",
+        type: "collapsible", // Expandable item with children
+        icon: "help-circle",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "language.root",
+        translate: "language.root",
+        type: "collapsible", // Expandable item with children
+        icon: "paperclip",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "language.seed",
+        translate: "language.seed",
+        type: "collapsible", // Expandable item with children
+        icon: "check-square",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "language.soil",
+        translate: "language.soil",
+        type: "collapsible", // Expandable item with children
+        icon: "file-text",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "language.stem",
+        translate: "language.stem",
+        type: "collapsible", // Expandable item with children
+        icon: "bookmark",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Paperform",
+        translate: "Paperform",
+        type: "collapsible", // Expandable item with children
+        icon: "book",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Sizes",
+        translate: "Sizes",
+        type: "collapsible", // Expandable item with children
+        icon: "book-open",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Language.counselorspayment",
+        translate: "Language.counselorspayment",
+        type: "collapsible", // Expandable item with children
+        icon: "bar-chart-2",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+      {
+        id: "terms-and-conditions",
+        title: "Sliders",
+        translate: "Sliders",
+        type: "collapsible", // Expandable item with children
+        icon: "sliders",
+        children: [
+          {
+            id: "avatars-list",
+            title: "List",
+            translate: "MENU.DASHBOARD.list",
+            type: "item",
+            icon: "circle",
+            url: "Consulting",
+          },
+          {
+            id: "avatars-add",
+            title: "Add",
+            translate: "MENU.DASHBOARD.add",
+            type: "item",
+            icon: "circle",
+            url: "Consulting-add",
+          },
+        ],
+      },
+
+
+    ],
+  },
+ 
 
 
     

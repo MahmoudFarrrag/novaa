@@ -1,5 +1,8 @@
+<div [dir]="lang === 'ar' ? 'ltr' : 'rtl'">
+
+
 <!-- vertical-layout -->
-<ng-container *ngIf="coreConfig.layout.type === 'vertical'"  [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+<ng-container *ngIf="coreConfig.layout.type === 'vertical'"  >
   <vertical-layout></vertical-layout>
 </ng-container>
 <!-- / vertical-layout -->
@@ -9,7 +12,7 @@
   <horizontal-layout></horizontal-layout>
 </ng-container>
 <!-- / horizontal-layout -->
-
+</div>
 <!-- theme customizer --> 
 <core-sidebar
   name="themeCustomizer"

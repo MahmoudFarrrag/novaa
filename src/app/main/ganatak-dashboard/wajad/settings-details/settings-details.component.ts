@@ -4,13 +4,13 @@ import { ApisService } from '@core/services/apis.service';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 
 @Component({
-  selector: 'app-terms-conditions',
-  templateUrl: './terms-conditions.component.html',
-  styleUrls: ['./terms-conditions.component.scss'],
+  selector: 'app-settings-details',
+  templateUrl: './settings-details.component.html',
+  styleUrls: ['./settings-details.component.scss'],
     encapsulation: ViewEncapsulation.None,
   
 })
-export class TermsConditionsComponent implements OnInit {
+export class SettingsDetailsComponent implements OnInit {
   public arrCoupons: any[] = [];
 
   constructor( 
