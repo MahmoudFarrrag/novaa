@@ -50,6 +50,21 @@ import { SettingsDetailsComponent } from './main/ganatak-dashboard/wajad/setting
 import { TermsConditionsComponent } from './main/ganatak-dashboard/wajad/terms-conditions/terms-conditions.component';
 import { NotificationsComponent } from './main/ganatak-dashboard/wajad/notifications/notifications.component';
 import { AboutComponent } from './main/ganatak-dashboard/wajad/about/about.component';
+import { CurrenciesComponent } from './main/ganatak-dashboard/wajad/currencies/currencies.component';
+import { CountriesComponent } from './main/ganatak-dashboard/wajad/countries/countries.component';
+import { CitiesComponent } from './main/ganatak-dashboard/wajad/cities/cities.component';
+import { LanguagePlansComponent } from './main/ganatak-dashboard/wajad/language-plans/language-plans.component';
+import { OpenScreensComponent } from './main/ganatak-dashboard/wajad/open-screens/open-screens.component';
+import { LanguageLightComponent } from './main/ganatak-dashboard/wajad/language-light/language-light.component';
+import { GanatakCommunityComponent } from './main/ganatak-dashboard/wajad/ganatak-community/ganatak-community.component';
+import { LanguageRootComponent } from './main/ganatak-dashboard/wajad/language-root/language-root.component';
+import { LanguageSeedComponent } from './main/ganatak-dashboard/wajad/language-seed/language-seed.component';
+import { LanguageSoilComponent } from './main/ganatak-dashboard/wajad/language-soil/language-soil.component';
+import { LanguageStemComponent } from './main/ganatak-dashboard/wajad/language-stem/language-stem.component';
+import { PaperformComponent } from './main/ganatak-dashboard/wajad/paperform/paperform.component';
+import { SizesComponent } from './main/ganatak-dashboard/wajad/sizes/sizes.component';
+import { LanguageCounselorspaymentComponent } from './main/ganatak-dashboard/wajad/language-counselorspayment/language-counselorspayment.component';
+import { SlidersComponent } from './main/ganatak-dashboard/wajad/sliders/sliders.component';
 
 const appRoutes: Routes = [
   {
@@ -75,6 +90,10 @@ AddConsultingComponent,CategoriesComponent,AddCategpriesComponent,ServicesCompon
 TagsComponent,AddTagsComponent,ArticlesComponent,AddArticlesComponent,OffersComponent,AddOffersComponent,
 AddLanguagePlantcardsComponent,AddUsersComponent,UsersComponent,PlantCardsComponent,
 SettingsDetailsComponent,TermsConditionsComponent,NotificationsComponent,AboutComponent,
+CurrenciesComponent,CountriesComponent,CitiesComponent,LanguagePlansComponent,OpenScreensComponent,
+LanguageLightComponent,GanatakCommunityComponent,LanguageRootComponent,LanguageSeedComponent,
+LanguageSoilComponent,LanguageStemComponent,PaperformComponent,SizesComponent,LanguageCounselorspaymentComponent,
+SlidersComponent
 
 ],
   imports: [

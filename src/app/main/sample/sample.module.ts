@@ -40,6 +40,21 @@ import { SettingsDetailsComponent } from '../ganatak-dashboard/wajad/settings-de
 import { TermsConditionsComponent } from '../ganatak-dashboard/wajad/terms-conditions/terms-conditions.component';
 import { AboutComponent } from '../ganatak-dashboard/wajad/about/about.component';
 import { NotificationsComponent } from '../ganatak-dashboard/wajad/notifications/notifications.component';
+import { CurrenciesComponent } from '../ganatak-dashboard/wajad/currencies/currencies.component';
+import { CountriesComponent } from '../ganatak-dashboard/wajad/countries/countries.component';
+import { CitiesComponent } from '../ganatak-dashboard/wajad/cities/cities.component';
+import { LanguagePlansComponent } from '../ganatak-dashboard/wajad/language-plans/language-plans.component';
+import { OpenScreensComponent } from '../ganatak-dashboard/wajad/open-screens/open-screens.component';
+import { LanguageLightComponent } from '../ganatak-dashboard/wajad/language-light/language-light.component';
+import { GanatakCommunityComponent } from '../ganatak-dashboard/wajad/ganatak-community/ganatak-community.component';
+import { LanguageRootComponent } from '../ganatak-dashboard/wajad/language-root/language-root.component';
+import { LanguageSeedComponent } from '../ganatak-dashboard/wajad/language-seed/language-seed.component';
+import { LanguageSoilComponent } from '../ganatak-dashboard/wajad/language-soil/language-soil.component';
+import { LanguageStemComponent } from '../ganatak-dashboard/wajad/language-stem/language-stem.component';
+import { PaperformComponent } from '../ganatak-dashboard/wajad/paperform/paperform.component';
+import { SizesComponent } from '../ganatak-dashboard/wajad/sizes/sizes.component';
+import { SlidersComponent } from '../ganatak-dashboard/wajad/sliders/sliders.component';
+import { LanguageCounselorspaymentComponent } from '../ganatak-dashboard/wajad/language-counselorspayment/language-counselorspayment.component';
 
 const routes = [
   {
@@ -211,6 +226,81 @@ const routes = [
 {
   path: 'notifications',
   component: NotificationsComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'currencies',
+  component: CurrenciesComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'countries',
+  component: CountriesComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'cities',
+  component: CitiesComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'plans',
+  component: LanguagePlansComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'open-screen',
+  component: OpenScreensComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'light',
+  component: LanguageLightComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'ganatak',
+  component: GanatakCommunityComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'root',
+  component: LanguageRootComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'seed',
+  component: LanguageSeedComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'soil',
+  component: LanguageSoilComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'stem',
+  component: LanguageStemComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'paperform',
+  component: PaperformComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'sizes',
+  component: SizesComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'counselorPayment',
+  component: LanguageCounselorspaymentComponent,
+  data: { animation: 'ads' }
+} , 
+{
+  path: 'sliders',
+  component: SlidersComponent,
   data: { animation: 'ads' }
 } , 
 

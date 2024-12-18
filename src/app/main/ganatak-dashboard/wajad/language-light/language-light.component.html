@@ -1,1 +1,153 @@
-<p>language-light works!</p>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <section id="ngx-datatable-kitchen-sink">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Language Light</h4>
+            <button class="btn btn-primary" (click)="addCoupon()">
+              Add Language Light
+            </button>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Language Light List</p>
+          </div>
+        </div>
+  
+        <div class="row d-flex justify-content-between">
+          <div class="col-md-2 col-sm-12 mb-1 mb-md-0">
+            <div class="form-group">
+              <label for="itemsPerPage" class="mr-2">show</label>
+              <div class="d-flex align-items-center">
+                <select
+                  id="itemsPerPage"
+                  class="form-control form-control-sm mr-2"
+                  [(ngModel)]="itemsPerPage"
+                >
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                <span>Entries</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="searchInput" class="mr-2">Search</label>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="search"
+                class="form-control form-control-sm"
+                (keyup)="filterUpdate($event)"
+                (search)="filterUpdate($event)"
+              />
+            </div> 
+          </div>
+        </div>
+  
+        <ngx-datatable
+          [rows]="arrCoupons" 
+          [rowHeight]="58"
+          class="bootstrap core-bootstrap bg-white"
+          [limit]="itemsPerPage"
+          [columnMode]="ColumnMode.force"
+          [headerHeight]="40"
+          [footerHeight]="50"
+          [scrollbarH]="true"
+        >
+          <ngx-datatable-column
+            name="ID"
+            prop="id"
+            [width]="20"
+          ></ngx-datatable-column>
+  
+          <ngx-datatable-column
+            name="Code"
+            prop="code"
+            [width]="50"
+          >
+            <ng-template ngx-datatable-cell-template let-row="row">
+              <div class="cell-line-height">
+                <p class="font-medium-1 font-weight-bold mb-25">
+                  {{ row.code }}
+                </p>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+  
+         
+        
+          <ngx-datatable-column
+            name="status"
+            prop="status"
+            [width]="50" 
+          >
+            <ng-template ngx-datatable-cell-template let-row="row">
+              <div class="cell-line-height">
+                <p
+                  class="mb-25 text-capitalize rounded-pill font-medium-1 font-weight-bold"
+                  [ngClass]="{
+                    'bg-light-success': row.is_valid,
+                    'bg-light-danger': !row.is_valid
+                  }"
+                >
+                  {{
+                    row.is_valid
+                      ? ("MENU.Active" | translate)
+                      : ("MENU.Expired" | translate)
+                  }}
+                </p>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <ngx-datatable-column
+            name="exp"
+            prop="expiry_date"
+            [width]="50"
+          >
+            <ng-template ngx-datatable-cell-template let-row="row">
+              <div class="cell-line-height">
+                <p class="mb-25">
+                  {{ row.expires_at | date : "dd MMM yyyy" }}
+                </p>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <ngx-datatable-column
+            name="actions"
+            [width]="20"
+          >
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div ngbDropdown container="body">
+                <button
+                  type="button"
+                  class="btn btn-sm hide-arrow"
+                  ngbDropdownToggle
+                >
+                  <i data-feather="more-vertical"></i>
+                </button>
+                <div ngbDropdownMenu>
+                  <a
+                    ngbDropdownItem
+                    [routerLink]="['/main/coupons/edit', row.id]"
+                  >
+                    <i data-feather="edit-2" class="mr-50"></i
+                    ><span>{{ "MENU.Edit" | translate }}</span>
+                  </a>
+                  <a ngbDropdownItem (click)="confirmDelete(row.id)">
+                    <i data-feather="trash" class="mr-50"></i
+                    ><span>{{ "MENU.Delete" | translate }}</span>
+                  </a>
+                </div>
+              </div> 
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable> 
+      </section>
+    </div>
+  </div>
+  
