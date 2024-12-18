@@ -58,7 +58,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/users',
+    redirectTo: '/pages',
     pathMatch: 'full'
   },
   {
@@ -68,14 +68,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent , AdsComponent,AddAdsComponent , CounselorsComponent , 
-    AddCounselorsComponent ,StoresOffersComponent, AddStoresOffersComponent,CancelationReasonComponent,
-  AddCancelationReasonComponent,CompaniesComponent,AddCompaniesComponent,ConsultingComponent,
-AddConsultingComponent,CategoriesComponent,AddCategpriesComponent,ServicesComponent,AddServicesComponent,
-TagsComponent,AddTagsComponent,ArticlesComponent,AddArticlesComponent,OffersComponent,AddOffersComponent,
-AddLanguagePlantcardsComponent,AddUsersComponent,UsersComponent,PlantCardsComponent,
-SettingsDetailsComponent,TermsConditionsComponent,NotificationsComponent,AboutComponent,
-
+  declarations: [UsersComponent , TermsConditionsComponent, ConsultingComponent, CounselorsComponent, NotificationsComponent, OffersComponent, PlantCardsComponent , ServicesComponent, SettingsDetailsComponent,TagsComponent,StoresOffersComponent,CompaniesComponent,CategoriesComponent,CancelationReasonComponent,ArticlesComponent,AdsComponent,AboutComponent,AddUsersComponent,AddTagsComponent,AddStoresOffersComponent,AddServicesComponent,AddOffersComponent,AddLanguagePlantcardsComponent,AddCounselorsComponent,AddConsultingComponent,AddCompaniesComponent,AddCategpriesComponent,AddCancelationReasonComponent,AddArticlesComponent,AddAdsComponent,AppComponent
 ],
   imports: [
     BrowserModule,
@@ -101,7 +94,7 @@ SettingsDetailsComponent,TermsConditionsComponent,NotificationsComponent,AboutCo
     LayoutModule,
     SampleModule,
     NgxDatatableModule,
-     FormsModule,ReactiveFormsModule
+     FormsModule,ReactiveFormsModule, 
   ],
 
   bootstrap: [AppComponent]

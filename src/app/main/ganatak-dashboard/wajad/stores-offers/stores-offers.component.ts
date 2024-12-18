@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ApisService } from '@core/services/apis.service';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 
+
+
 @Component({
   selector: 'app-stores-offers',
   templateUrl: './stores-offers.component.html',
