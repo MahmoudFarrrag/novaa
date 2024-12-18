@@ -40,37 +40,37 @@ import { AddUsersComponent } from '../ganatak-dashboard/add-pages/add-users/add-
 import { SettingsDetailsComponent } from '../ganatak-dashboard/wajad/settings-details/settings-details.component';
 import { TermsConditionsComponent } from '../ganatak-dashboard/wajad/terms-conditions/terms-conditions.component';
 import { AboutComponent } from '../ganatak-dashboard/wajad/about/about.component';
-
-import { LanguagePlansAddComponent } from '../ganatak-dashboard/wajad/language-plans-add/language-plans-add.component';
 import { OpenScreensListComponent } from '../ganatak-dashboard/wajad/open-screens-list/open-screens-list.component';
-import { OpenScreensAddComponent } from '../ganatak-dashboard/wajad/open-screens-add/open-screens-add.component';
 import { LanguagePlansComponent } from '../ganatak-dashboard/wajad/language-plans/language-plans.component';
 import { LanguageLightComponent } from '../ganatak-dashboard/wajad/language-light/language-light.component';
-import { LanguageLightAddComponent } from '../ganatak-dashboard/wajad/language-light-add/language-light-add.component';
 
 import { LanguageRootComponent } from '../ganatak-dashboard/wajad/language-root/language-root.component';
-import { LanguageRootAddComponent } from '../ganatak-dashboard/wajad/language-root-add/language-root-add.component';
 import { LanguageSeedComponent } from '../ganatak-dashboard/wajad/language-seed/language-seed.component';
-import { LanguageSeedAddComponent } from '../ganatak-dashboard/wajad/language-seed-add/language-seed-add.component';
 import { LanguageSoilComponent } from '../ganatak-dashboard/wajad/language-soil/language-soil.component';
-import { LanguageSoilAddComponent } from '../ganatak-dashboard/wajad/language-soil-add/language-soil-add.component';
 import { LanguageStemComponent } from '../ganatak-dashboard/wajad/language-stem/language-stem.component';
-import { LanguageStemAddComponent } from '../ganatak-dashboard/wajad/language-stem-add/language-stem-add.component';
-import { PaperFormAddComponent } from '../ganatak-dashboard/wajad/paper-form-add/paper-form-add.component';
 import { PaperFormListComponent } from '../ganatak-dashboard/wajad/paper-form-list/paper-form-list.component';
 import { SizesComponent } from '../ganatak-dashboard/wajad/sizes/sizes.component';
-import { SizesAddComponent } from '../ganatak-dashboard/wajad/sizes-add/sizes-add.component';
-import { SlidersComponent } from '../ganatak-dashboard/wajad/sliders/sliders.component';
-import { SlidersAddComponent } from '../ganatak-dashboard/wajad/sliders-add/sliders-add.component';
 import { LanguageCounselorspaymentComponent } from '../ganatak-dashboard/wajad/language-counselorspayment/language-counselorspayment.component';
-import { LanguageCounselorsAddComponent } from '../ganatak-dashboard/wajad/language-counselors-add/language-counselors-add.component';
 import { CurrenciesListComponent } from '../ganatak-dashboard/wajad/currencies-list/currencies-list.component';
-import { CountriesAddComponent } from '../ganatak-dashboard/wajad/countries-add/countries-add.component';
 import { CountriesListComponent } from '../ganatak-dashboard/wajad/countries-list/countries-list.component';
 import { CitiesListComponent } from '../ganatak-dashboard/wajad/cities-list/cities-list.component';
-import { CitiesAddComponent } from '../ganatak-dashboard/wajad/cities-add/cities-add.component';
 import { GanatakCommunityListComponent } from '../ganatak-dashboard/wajad/ganatak-community-list/ganatak-community-list.component';
-import { GanatakCommunityAddComponent } from '../ganatak-dashboard/wajad/ganatak-community-add/ganatak-community-add.component';
+import { AddCurrenciesComponent } from '../ganatak-dashboard/add-pages/add-currencies/add-currencies.component';
+import { AddCountriesComponent } from '../ganatak-dashboard/add-pages/add-countries/add-countries.component';
+import { AddCitiesComponent } from '../ganatak-dashboard/add-pages/add-cities/add-cities.component';
+import { AddLanguagePlansComponent } from '../ganatak-dashboard/add-pages/add-language-plans/add-language-plans.component';
+import { AddOpenScreensComponent } from '../ganatak-dashboard/add-pages/add-open-screens/add-open-screens.component';
+import { AddLanguageLightComponent } from '../ganatak-dashboard/add-pages/add-language-light/add-language-light.component';
+import { AddGanatakCommunityComponent } from '../ganatak-dashboard/add-pages/add-ganatak-community/add-ganatak-community.component';
+import { AddLanguageSeedComponent } from '../ganatak-dashboard/add-pages/add-language-seed/add-language-seed.component';
+import { AddLanguageSoilComponent } from '../ganatak-dashboard/add-pages/add-language-soil/add-language-soil.component';
+import { AddLanguageStemComponent } from '../ganatak-dashboard/add-pages/add-language-stem/add-language-stem.component';
+import { AddPaperformComponent } from '../ganatak-dashboard/add-pages/add-paperform/add-paperform.component';
+import { AddSizesComponent } from '../ganatak-dashboard/add-pages/add-sizes/add-sizes.component';
+import { AddSlidersComponent } from '../ganatak-dashboard/add-pages/add-sliders/add-sliders.component';
+import { AddLanguageCounselorspaymentComponent } from '../ganatak-dashboard/add-pages/add-language-counselorspayment/add-language-counselorspayment.component';
+import { AddLanguageRootComponent } from '../ganatak-dashboard/add-pages/add-language-root/add-language-root.component';
+import { SlidersComponent } from '../ganatak-dashboard/wajad/sliders/sliders.component';
 
 const routes = [
   {
@@ -244,10 +244,15 @@ const routes = [
   component: CurrenciesListComponent,
   data: { animation: 'ads' }
 } , 
+{
+  path: 'curriences-add',
+  component: AddCurrenciesComponent,
+  data: { animation: 'ads' }
+} ,
 
 {
   path: 'countires-add',
-  component: CountriesAddComponent,
+  component: AddCountriesComponent,
   data: { animation: 'ads' }
 } , 
 
@@ -265,7 +270,7 @@ const routes = [
 
 {
   path: 'cities-add',
-  component: CitiesAddComponent,
+  component: AddCitiesComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -276,20 +281,20 @@ const routes = [
 } ,
 
 {
-  path: 'languagePlans-list',
-  component: LanguagePlansAddComponent,
+  path: 'languagePlans-add',
+  component: AddLanguagePlansComponent,
   data: { animation: 'ads' }
 } ,
 
 {
   path: 'openScreens-list',
-  component: OpenScreensAddComponent,
+  component: OpenScreensListComponent,
   data: { animation: 'ads' }
 } ,
 
 {
   path: 'openScreens-add',
-  component: OpenScreensListComponent,
+  component: AddOpenScreensComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -301,7 +306,7 @@ const routes = [
 
 {
   path: 'languageLight-add',
-  component:LanguageLightAddComponent,
+  component:AddLanguageLightComponent,
   data: { animation: 'ads' }
 } ,
   
@@ -312,7 +317,7 @@ const routes = [
 } ,
 {
   path: 'ganatakCommunity-add',
-  component: GanatakCommunityAddComponent,
+  component: AddGanatakCommunityComponent,
   data: { animation: 'ads' }
 } ,
 {
@@ -322,7 +327,7 @@ const routes = [
 } ,
 {
   path: 'languageRoot-add',
-  component: LanguageRootAddComponent,
+  component: AddLanguageRootComponent,
   data: { animation: 'ads' }
 } ,
 {
@@ -333,7 +338,7 @@ const routes = [
 
 {
   path: 'languageSeed-add',
-  component: LanguageSeedAddComponent,
+  component: AddLanguageSeedComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -345,7 +350,7 @@ const routes = [
 
 {
   path: 'languageSoil-add',
-  component: LanguageSoilAddComponent,
+  component: AddLanguageSoilComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -357,7 +362,7 @@ const routes = [
 
 {
   path: 'languageStem-add',
-  component: LanguageStemAddComponent,
+  component: AddLanguageStemComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -369,7 +374,7 @@ const routes = [
 
 {
   path: 'paperForm-add',
-  component: PaperFormAddComponent,
+  component: AddPaperformComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -381,7 +386,7 @@ const routes = [
 
 {
   path: 'sizes-add',
-  component: SizesAddComponent,
+  component: AddSizesComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -393,7 +398,7 @@ const routes = [
 
 {
   path: 'sliders-add',
-  component: SlidersAddComponent,
+  component: AddSlidersComponent,
   data: { animation: 'ads' }
 } ,
 
@@ -404,7 +409,7 @@ const routes = [
 } ,
 {
   path: 'languageConsulers-add',
-  component: LanguageCounselorsAddComponent,
+  component: AddLanguageCounselorspaymentComponent,
   data: { animation: 'ads' }
 } ,
 ]; 
