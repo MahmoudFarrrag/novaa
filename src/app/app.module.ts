@@ -50,6 +50,36 @@ import { SettingsDetailsComponent } from './main/ganatak-dashboard/wajad/setting
 import { TermsConditionsComponent } from './main/ganatak-dashboard/wajad/terms-conditions/terms-conditions.component';
 import { NotificationsComponent } from './main/ganatak-dashboard/wajad/notifications/notifications.component';
 import { AboutComponent } from './main/ganatak-dashboard/wajad/about/about.component';
+import { CurrenciesComponent } from './main/ganatak-dashboard/wajad/currencies/currencies.component';
+import { CountriesComponent } from './main/ganatak-dashboard/wajad/countries/countries.component';
+import { CitiesComponent } from './main/ganatak-dashboard/wajad/cities/cities.component';
+import { LanguagePlansComponent } from './main/ganatak-dashboard/wajad/language-plans/language-plans.component';
+import { OpenScreensComponent } from './main/ganatak-dashboard/wajad/open-screens/open-screens.component';
+import { LanguageLightComponent } from './main/ganatak-dashboard/wajad/language-light/language-light.component';
+import { GanatakCommunityComponent } from './main/ganatak-dashboard/wajad/ganatak-community/ganatak-community.component';
+import { LanguageRootComponent } from './main/ganatak-dashboard/wajad/language-root/language-root.component';
+import { LanguageSeedComponent } from './main/ganatak-dashboard/wajad/language-seed/language-seed.component';
+import { LanguageSoilComponent } from './main/ganatak-dashboard/wajad/language-soil/language-soil.component';
+import { LanguageStemComponent } from './main/ganatak-dashboard/wajad/language-stem/language-stem.component';
+import { PaperformComponent } from './main/ganatak-dashboard/wajad/paperform/paperform.component';
+import { SizesComponent } from './main/ganatak-dashboard/wajad/sizes/sizes.component';
+import { LanguageCounselorspaymentComponent } from './main/ganatak-dashboard/wajad/language-counselorspayment/language-counselorspayment.component';
+import { SlidersComponent } from './main/ganatak-dashboard/wajad/sliders/sliders.component';
+import { AddCurrenciesComponent } from './main/ganatak-dashboard/add-pages/add-currencies/add-currencies.component';
+import { AddCountriesComponent } from './main/ganatak-dashboard/add-pages/add-countries/add-countries.component';
+import { AddCitiesComponent } from './main/ganatak-dashboard/add-pages/add-cities/add-cities.component';
+import { AddLanguagePlansComponent } from './main/ganatak-dashboard/add-pages/add-language-plans/add-language-plans.component';
+import { AddOpenScreensComponent } from './main/ganatak-dashboard/add-pages/add-open-screens/add-open-screens.component';
+import { AddLanguageLightComponent } from './main/ganatak-dashboard/add-pages/add-language-light/add-language-light.component';
+import { AddGanatakCommunityComponent } from './main/ganatak-dashboard/add-pages/add-ganatak-community/add-ganatak-community.component';
+import { AddLanguageRootComponent } from './main/ganatak-dashboard/add-pages/add-language-root/add-language-root.component';
+import { AddLanguageSeedComponent } from './main/ganatak-dashboard/add-pages/add-language-seed/add-language-seed.component';
+import { AddLanguageSoilComponent } from './main/ganatak-dashboard/add-pages/add-language-soil/add-language-soil.component';
+import { AddLanguageStemComponent } from './main/ganatak-dashboard/add-pages/add-language-stem/add-language-stem.component';
+import { AddPaperformComponent } from './main/ganatak-dashboard/add-pages/add-paperform/add-paperform.component';
+import { AddSizesComponent } from './main/ganatak-dashboard/add-pages/add-sizes/add-sizes.component';
+import { AddLanguageCounselorspaymentComponent } from './main/ganatak-dashboard/add-pages/add-language-counselorspayment/add-language-counselorspayment.component';
+import { AddSlidersComponent } from './main/ganatak-dashboard/add-pages/add-sliders/add-sliders.component';
 
 const appRoutes: Routes = [
   {
@@ -68,7 +98,18 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UsersComponent , TermsConditionsComponent, ConsultingComponent, CounselorsComponent, NotificationsComponent, OffersComponent, PlantCardsComponent , ServicesComponent, SettingsDetailsComponent,TagsComponent,StoresOffersComponent,CompaniesComponent,CategoriesComponent,CancelationReasonComponent,ArticlesComponent,AdsComponent,AboutComponent,AddUsersComponent,AddTagsComponent,AddStoresOffersComponent,AddServicesComponent,AddOffersComponent,AddLanguagePlantcardsComponent,AddCounselorsComponent,AddConsultingComponent,AddCompaniesComponent,AddCategpriesComponent,AddCancelationReasonComponent,AddArticlesComponent,AddAdsComponent,AppComponent
+  declarations: [AppComponent , AdsComponent,AddAdsComponent , CounselorsComponent , 
+    AddCounselorsComponent ,StoresOffersComponent, AddStoresOffersComponent,CancelationReasonComponent,
+  AddCancelationReasonComponent,CompaniesComponent,AddCompaniesComponent,ConsultingComponent,
+AddConsultingComponent,CategoriesComponent,AddCategpriesComponent,ServicesComponent,AddServicesComponent,
+TagsComponent,AddTagsComponent,ArticlesComponent,AddArticlesComponent,OffersComponent,AddOffersComponent,
+AddLanguagePlantcardsComponent,AddUsersComponent,UsersComponent,PlantCardsComponent,
+SettingsDetailsComponent,TermsConditionsComponent,NotificationsComponent,AboutComponent,
+CurrenciesComponent,CountriesComponent,CitiesComponent,LanguagePlansComponent,OpenScreensComponent,
+LanguageLightComponent,GanatakCommunityComponent,LanguageRootComponent,LanguageSeedComponent,
+LanguageSoilComponent,LanguageStemComponent,PaperformComponent,SizesComponent,LanguageCounselorspaymentComponent,
+SlidersComponent , AddCurrenciesComponent , AddCountriesComponent,AddCitiesComponent, AddLanguagePlansComponent , AddOpenScreensComponent, AddLanguageLightComponent, AddGanatakCommunityComponent, AddLanguageRootComponent , AddLanguageSeedComponent,AddLanguageSoilComponent,AddLanguageStemComponent, AddPaperformComponent, AddSizesComponent ,AddCounselorsComponent,AddLanguageCounselorspaymentComponent,AddSizesComponent,AddCounselorsComponent, AddSlidersComponent
+
 ],
   imports: [
     BrowserModule,

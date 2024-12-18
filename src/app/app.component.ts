@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
   defaultLanguage: 'en'; // This language will be used as a fallback when a translation isn't found in the current language
   appLanguage: 'en'; // Set application default language i.e fr
   lang = 'ar';
-
+  // currentLang = 'en';
   // Private
   private _unsubscribeAll: Subject<any>;
   public currentLang = this.localStorage.getItem('currentLang');
@@ -94,11 +94,12 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Init wave effect (Ripple effect) 
     Waves.init();
+
+    
     const htmlTag = this.document.getElementsByTagName("body")[0] as HTMLHtmlElement;
 
     htmlTag.style.direction = this.currentLang == 'ar' ? 'rtl' : 'ltr';
     htmlTag.style.textAlign = this.currentLang == 'ar' ? 'right' : 'left';
-
 
       // Check if the language is stored in localStorage
       const lang = localStorage.getItem('selectedLanguage');
@@ -257,8 +258,26 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // Set the application page title
     this._title.setTitle(this.coreConfig.app.appTitle);
+
+
+     // Watch for changes in the language setting in localStorage
+  this.detectLanguageChange();
   }
 
+  detectLanguageChange(): void {
+    // Save the initial language
+    let currentLang = this.currentLang;
+  
+    setInterval(() => {
+      const newLang = this.localStorage.getItem('currentLang');
+      if (newLang && newLang !== currentLang) {
+        // If the language has changed, reload the page
+        currentLang = newLang;
+        location.reload();
+      }
+    }, 1000); // Check every second (adjust interval as needed)
+  }
+  
   /**
    * On destroy
    */

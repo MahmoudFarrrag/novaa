@@ -62,3 +62,21 @@ html:dir(rtl) .header-navbar.floating-nav {
   right: 10px;
 
 }
+html:dir(rtl) .navbar-expand-lg .navbar-nav {
+  margin-right: 750px;
+}
+
+html:dir(rtl) .header-navbar .navbar-container .dropdown-language .nav-link .flag-icon {
+  margin-left: 10px;
+}
+
+html:dir(rtl) .avatar {
+  margin-right: 10px;
+
+}
+// html:dir(rtl)   .menuSide {
+//   text-align: start;
+
+// }
+
+

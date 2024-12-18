@@ -331,14 +331,14 @@ export const menu: CoreMenu[] = [
   {
     id: "settings",
     title: "Settings",
-    translate: "Settings",
+    translate: "MENU.DASHBOARD.Settings",
     type: "collapsible", // Allows the menu to be clickable and expandable
     icon: "help-circle",
     children: [
       {
         id: "show-details",
         title: "Show Details",
-        translate: "Show Details",
+        translate: "MENU.DASHBOARD.ShowDetails",
         type: "item",
         icon: "circle",
         url: "settings",
@@ -346,14 +346,14 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Terms & Conditions",
-        translate: "Terms & Conditions",
+        translate: "MENU.DASHBOARD.TermsAndConditions",
         type: "collapsible", // Expandable item with children
         icon: "lock",
         children: [
           {
             id: "terms-show-details",
             title: "Show Details",
-            translate: "Show Details",
+            translate: "MENU.DASHBOARD.ShowDetails",
             type: "item",
             icon: "circle",
             url: "terms-conditions",
@@ -363,14 +363,14 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "About",
-        translate: "About",
+        translate: "MENU.DASHBOARD.About",
         type: "collapsible", // Expandable item with children
         icon: "file-text",
         children: [
           {
             id: "terms-show-details",
             title: "Show Details",
-            translate: "Show Details",
+            translate: "MENU.DASHBOARD.ShowDetails",
             type: "item",
             icon: "circle",
             url: "about",
@@ -380,14 +380,14 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Notifications",
-        translate: "Notifications",
+        translate: "MENU.DASHBOARD.Notifications",
         type: "collapsible", // Expandable item with children
         icon: "shuffle",
         children: [
           {
             id: "terms-show-details",
             title: "Show Details",
-            translate: "Show Details",
+            translate: "MENU.DASHBOARD.ShowDetails",
             type: "item",
             icon: "circle",
             url: "notifications",
@@ -397,7 +397,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Currencies",
-        translate: "Currencies",
+        translate: "MENU.DASHBOARD.Currencies",
         type: "collapsible", // Expandable item with children
         icon: "package",
         children: [
@@ -407,7 +407,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "curriences-list",
+            url: "currencies",
           },
           {
             id: "avatars-add",
@@ -422,7 +422,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Countries",
-        translate: "Countries",
+        translate: "MENU.DASHBOARD.Countries",
         type: "collapsible", // Expandable item with children
         icon: "gift",
         children: [
@@ -432,7 +432,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "countries-list",
+            url: "countries",
           },
           {
             id: "avatars-add",
@@ -447,7 +447,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Cities",
-        translate: "Cities",
+        translate: "MENU.DASHBOARD.Cities",
         type: "collapsible", // Expandable item with children
         icon: "grid",
         children: [
@@ -457,7 +457,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "cities-list",
+            url: "cities",
           },
           {
             id: "avatars-add",
@@ -472,7 +472,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Language.plans",
-        translate: "Language.plans",
+        translate: "MENU.DASHBOARD.plans",
         type: "collapsible", // Expandable item with children
         icon: "calendar",
         children: [
@@ -482,7 +482,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languagePlans-list",
+            url: "plans",
           },
           {
             id: "avatars-add",
@@ -497,7 +497,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Open Screens",
-        translate: "Open Screens",
+        translate: "MENU.DASHBOARD.OpenScreens",
         type: "collapsible", // Expandable item with children
         icon: "video",
         children: [
@@ -507,7 +507,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "openScreens-list",
+            url: "open-screen",
           },
           {
             id: "avatars-add",
@@ -522,7 +522,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Language.light",
-        translate: "Language.light",
+        translate: "MENU.DASHBOARD.light",
         type: "collapsible", // Expandable item with children
         icon: "list",
         children: [
@@ -532,7 +532,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languageLight-lis",
+            url: "light",
           },
           {
             id: "avatars-add",
@@ -547,7 +547,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Ganatak community",
-        translate: "Ganatak community",
+        translate: "MENU.DASHBOARD.GanatakCommunity",
         type: "collapsible", // Expandable item with children
         icon: "help-circle",
         children: [
@@ -557,7 +557,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "ganatakCommunity-list",
+            url: "ganatak",
           },
           {
             id: "avatars-add",
@@ -572,7 +572,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "language.root",
-        translate: "language.root",
+        translate: "MENU.DASHBOARD.root",
         type: "collapsible", // Expandable item with children
         icon: "paperclip",
         children: [
@@ -582,7 +582,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languageRoot-list",
+            url: "root",
           },
           {
             id: "avatars-add",
@@ -597,7 +597,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "language.seed",
-        translate: "language.seed",
+        translate: "MENU.DASHBOARD.seed",
         type: "collapsible", // Expandable item with children
         icon: "check-square",
         children: [
@@ -607,7 +607,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languageSeed-list",
+            url: "seed",
           },
           {
             id: "avatars-add",
@@ -622,7 +622,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "language.soil",
-        translate: "language.soil",
+        translate: "MENU.DASHBOARD.soil",
         type: "collapsible", // Expandable item with children
         icon: "file-text",
         children: [
@@ -632,7 +632,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languageSoil-list",
+            url: "soil",
           },
           {
             id: "avatars-add",
@@ -647,7 +647,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "language.stem",
-        translate: "language.stem",
+        translate: "MENU.DASHBOARD.stem",
         type: "collapsible", // Expandable item with children
         icon: "bookmark",
         children: [
@@ -657,7 +657,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languageStem-list",
+            url: "stem",
           },
           {
             id: "avatars-add",
@@ -672,7 +672,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Paperform",
-        translate: "Paperform",
+        translate: "MENU.DASHBOARD.Paperform",
         type: "collapsible", // Expandable item with children
         icon: "book",
         children: [
@@ -682,7 +682,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "paperForm-list",
+            url: "paperform",
           },
           {
             id: "avatars-add",
@@ -697,7 +697,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Sizes",
-        translate: "Sizes",
+        translate: "MENU.DASHBOARD.Sizes",
         type: "collapsible", // Expandable item with children
         icon: "book-open",
         children: [
@@ -707,7 +707,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "sizes-list",
+            url: "sizes",
           },
           {
             id: "avatars-add",
@@ -722,7 +722,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Language.counselorspayment",
-        translate: "Language.counselorspayment",
+        translate: "MENU.DASHBOARD.counselorspayment",
         type: "collapsible", // Expandable item with children
         icon: "bar-chart-2",
         children: [
@@ -732,7 +732,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "languageConsulers-list",
+            url: "counselorPayment",
           },
           {
             id: "avatars-add",
@@ -747,7 +747,7 @@ export const menu: CoreMenu[] = [
       {
         id: "terms-and-conditions",
         title: "Sliders",
-        translate: "Sliders",
+        translate: "MENU.DASHBOARD.Sliders",
         type: "collapsible", // Expandable item with children
         icon: "sliders",
         children: [
@@ -757,7 +757,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.list",
             type: "item",
             icon: "circle",
-            url: "sliders-list",
+            url: "sliders",
           },
           {
             id: "avatars-add",

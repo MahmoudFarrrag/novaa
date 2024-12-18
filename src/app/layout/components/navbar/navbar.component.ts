@@ -124,6 +124,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * @param language
    */
   setLanguage(lang: string): void {
+  
     this._translateService.use(lang);
     this.currentLang = lang;
     this.localStorage.setItem('currentLang', lang);
@@ -134,6 +135,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     htmlTag.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
     htmlTag.style.textAlign = lang === 'ar' ? 'right' : 'left';
+
+    
+ 
   }
   
   
@@ -179,7 +183,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-
+    console.log(this.languageOptions); // Should only contain 'en' and 'ar'
+  console.log(this._translateService.getLangs()); 
 
       // Get the saved language or fallback to default
   const savedLang = this.localStorage.getItem('currentLang') || 'en';
