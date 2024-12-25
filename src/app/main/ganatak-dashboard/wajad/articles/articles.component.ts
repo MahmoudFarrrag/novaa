@@ -36,9 +36,16 @@ export class ArticlesComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
-    const service_id = 1;
-    this.getLevels();
-
+    // this.getLevels();
+    this.apisService.article().subscribe({ 
+      next:(response:any)=> { 
+        this.levels = response.data || [] ;
+        console.log('response is' , this.levels)
+      }, 
+      error:(err)=> { 
+        console.log('error in fetching', err)
+      }
+    })
   }
 
  
@@ -52,17 +59,17 @@ export class ArticlesComponent implements OnInit {
   //     },
   //   });
   // }
-  getLevels() {
-    this.apisService.article().subscribe({
-      next: (response: ApiResponse) => {
-        this.levels = response.data;
-        console.log(this.levels);
-      },
-      error: (err) => {
-        console.error('Error fetching levels:', err);
-      }
-    });
-  }
+  // getLevels() {
+  //   this.apisService.article().subscribe({
+  //     next: (response: ApiResponse) => {
+  //       this.levels = response.data;
+  //       console.log(this.levels);
+  //     },
+  //     error: (err) => {
+  //       console.error('Error fetching levels:', err);
+  //     }
+  //   });
+  // }
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);
