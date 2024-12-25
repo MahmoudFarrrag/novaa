@@ -39,6 +39,15 @@ export class AdsComponent  implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.apisService.requestAds().subscribe({ 
+      next:(response:any)=> { 
+        this.arrCoupons = response.data || [] ;
+        console.log('response is' , this.arrCoupons)
+      }, 
+      error:(err)=> { 
+        console.log('error in fetching', err)
+      }
+    })
   }
 
  

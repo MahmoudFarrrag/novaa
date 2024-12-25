@@ -46,7 +46,7 @@ export class ApisService {
   // }
  
   article(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.domain + 'articles',);
+    return this.http.post<ApiResponse>(this.domain + 'articles', {});
   }
   
   store(): Observable<ApiResponse> {
@@ -58,6 +58,11 @@ export class ApisService {
   companies(service_id: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'service-companies', {service_id: service_id});
   }
+
+  requestAds():Observable<any> { 
+    return this.http.post<any>(this.domain +'user-sliders',{});
+  }
+  
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });
   // }
