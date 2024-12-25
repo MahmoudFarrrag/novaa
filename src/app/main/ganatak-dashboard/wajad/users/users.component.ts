@@ -22,15 +22,32 @@ export class UsersComponent implements OnInit {
   public currentPage = 1; 
   public itemsPerPage = 10;
   public totalItems = 0;
+  public ColumnMode = ColumnMode;
+  public SelectionType = SelectionType;
 
+ 
+  public levels: any[] = [];
   public tempData = [];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
-  public ColumnMode = ColumnMode;
-  public SelectionType = SelectionType;
+ 
 
   ngOnInit(): void {
+    this.getLevels();
+
+  }
+
+ 
+
+
+  getLevels() {
+    this.apisService.users().subscribe({
+      next: (response) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+    });
   }
 
  

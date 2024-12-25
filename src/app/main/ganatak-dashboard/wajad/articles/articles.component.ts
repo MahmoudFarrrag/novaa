@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { ApisService } from '@core/services/apis.service';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 
+interface ApiResponse {
+  data: any;  // Define the type of 'data' based on your API response structure, e.g., `any[]` or a specific shape.
+}
+
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -24,6 +28,7 @@ export class ArticlesComponent implements OnInit {
   public totalItems = 0;
 
   public tempData = [];
+  public levels: any[] = [];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -31,9 +36,33 @@ export class ArticlesComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    const service_id = 1;
+    this.getLevels();
+
   }
 
  
+
+
+  // getLevels() {
+  //   this.apisService.article().subscribe({
+  //     next: (response) => {
+  //       this.levels = response.data;
+  //       console.log(this.levels);
+  //     },
+  //   });
+  // }
+  getLevels() {
+    this.apisService.article().subscribe({
+      next: (response: ApiResponse) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+      error: (err) => {
+        console.error('Error fetching levels:', err);
+      }
+    });
+  }
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);
