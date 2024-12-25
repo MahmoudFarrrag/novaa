@@ -33,6 +33,11 @@ export class ApisService {
     return this.http.post(this.domain + '/dashboard/companies',{});
   }
  
+
+  requestAds():Observable<any> { 
+    return this.http.post<any>(this.domain +'user-sliders',{});
+  }
+  
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });
   // }
