@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {  map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from 'environments/environment';
 
 
 
@@ -13,10 +14,10 @@ import { Router } from '@angular/router';
 export class ApisService {
   apiUrl: string;
 
-
+ 
   
   // domain
-  // private domain = environment.productionDomain;
+  private domain = environment.productionDomain;
 
   
   DepartmentsAdd: any[] = [];
@@ -28,9 +29,9 @@ export class ApisService {
 
 
 
-  // company() {
-  //   return this.http.post(this.domain + '/dashboard/companies',{});
-  // }
+  company() {
+    return this.http.post(this.domain + '/dashboard/companies',{});
+  }
  
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });

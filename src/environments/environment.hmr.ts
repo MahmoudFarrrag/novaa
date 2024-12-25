@@ -1,4 +1,6 @@
 export const environment = {
   production: false,
-  hmr: true
+  hmr: true,
+  productionDomain: "http://api.ganatak.com/public/api/",
+  developmentDomain: "http://api.ganatak.com/public/api/",
 };
