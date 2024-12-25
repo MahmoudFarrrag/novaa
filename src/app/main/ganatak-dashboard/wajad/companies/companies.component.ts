@@ -17,6 +17,7 @@ export class CompaniesComponent implements OnInit {
     // private loadingService: Loadingscr,
     private router: Router
   ) {} 
+  public levels: any[] = [];
 
   public currentPage = 1; 
   public itemsPerPage = 10;
@@ -30,6 +31,21 @@ export class CompaniesComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    const service_id = 1; 
+    this.getLevels(service_id);
+
+  }
+
+ 
+
+
+  getLevels(service_id:any) {
+    this.apisService.companies(service_id ).subscribe({
+      next: (response) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+    });
   }
 
  

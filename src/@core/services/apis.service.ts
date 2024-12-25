@@ -5,7 +5,9 @@ import {  map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 
-
+interface ApiResponse {
+  data: any;  // Define the type of 'data' based on your API response structure, e.g., `any[]` or a specific shape.
+}
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,29 @@ export class ApisService {
     return this.http.post<any>(this.domain +'user-sliders',{});
   }
   
+  // levels(): Observable<any> {
+  //   return this.authenticatedGet(
+  //     `${this.domain}/api/dashboard-auth-api/levels`
+  //   );
+  // }
+
+  // article() {
+  //   return this.http.post(this.domain + '/articles',{});
+  // }
+ 
+  article(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.domain + 'articles',);
+  }
+  
+  store(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'active-store-products', {});
+  }
+  users(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'user/login', {});
+  }
+  companies(service_id: any): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'service-companies', {service_id: service_id});
+  }
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });
   // }
