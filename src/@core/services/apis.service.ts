@@ -52,8 +52,8 @@ export class ApisService {
   store(): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'active-store-products', {});
   }
-  users(): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.domain + 'user/login', {});
+  users(): Observable<any> {
+    return this.http.post<any>(this.domain + 'user/login', {});
   }
   companies(service_id: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'service-companies', {service_id: service_id});

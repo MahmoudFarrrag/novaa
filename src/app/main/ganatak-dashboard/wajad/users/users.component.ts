@@ -33,11 +33,21 @@ export class UsersComponent implements OnInit {
 
  
 
+  // ngOnInit(): void {
+  //   this.getLevels();
+
+  // }
   ngOnInit(): void {
-    this.getLevels();
-
+    this.apisService.users().subscribe({ 
+      next:(response:any)=> { 
+        this.arrCoupons = response.data || [] ;
+        console.log('response is' , this.arrCoupons)
+      }, 
+      error:(err)=> { 
+        console.log('error in fetching', err)
+      }
+    })
   }
-
  
 
 
