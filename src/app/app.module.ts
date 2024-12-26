@@ -80,6 +80,7 @@ import { AddPaperformComponent } from './main/ganatak-dashboard/add-pages/add-pa
 import { AddSizesComponent } from './main/ganatak-dashboard/add-pages/add-sizes/add-sizes.component';
 import { AddLanguageCounselorspaymentComponent } from './main/ganatak-dashboard/add-pages/add-language-counselorspayment/add-language-counselorspayment.component';
 import { AddSlidersComponent } from './main/ganatak-dashboard/add-pages/add-sliders/add-sliders.component';
+import { VouchersComponent } from './main/ganatak-dashboard/wajad/vouchers/vouchers.component';
 
 const appRoutes: Routes = [
   {
@@ -108,7 +109,7 @@ SettingsDetailsComponent,TermsConditionsComponent,NotificationsComponent,AboutCo
 CurrenciesComponent,CountriesComponent,CitiesComponent,LanguagePlansComponent,OpenScreensComponent,
 LanguageLightComponent,GanatakCommunityComponent,LanguageRootComponent,LanguageSeedComponent,
 LanguageSoilComponent,LanguageStemComponent,PaperformComponent,SizesComponent,LanguageCounselorspaymentComponent,
-SlidersComponent , AddCurrenciesComponent , AddCountriesComponent,AddCitiesComponent, AddLanguagePlansComponent , AddOpenScreensComponent, AddLanguageLightComponent, AddGanatakCommunityComponent, AddLanguageRootComponent , AddLanguageSeedComponent,AddLanguageSoilComponent,AddLanguageStemComponent, AddPaperformComponent, AddSizesComponent ,AddCounselorsComponent,AddLanguageCounselorspaymentComponent,AddSizesComponent,AddCounselorsComponent, AddSlidersComponent
+SlidersComponent , AddCurrenciesComponent , AddCountriesComponent,AddCitiesComponent, AddLanguagePlansComponent , AddOpenScreensComponent, AddLanguageLightComponent, AddGanatakCommunityComponent, AddLanguageRootComponent , AddLanguageSeedComponent,AddLanguageSoilComponent,AddLanguageStemComponent, AddPaperformComponent, AddSizesComponent ,AddCounselorsComponent,AddLanguageCounselorspaymentComponent,AddSizesComponent,AddCounselorsComponent, AddSlidersComponent , VouchersComponent , AddCounselorsComponent
 
 ],
   imports: [

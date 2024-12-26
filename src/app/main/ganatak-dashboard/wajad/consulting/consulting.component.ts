@@ -31,6 +31,18 @@ export class ConsultingComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.getconsulting()
+  }
+  getconsulting() { 
+    this.apisService.requestConsultations().subscribe({ 
+      next:(response:any)=> { 
+        this.arrCoupons= response.data || []
+        console.log(this.arrCoupons)
+      }, 
+      error(err) {
+          console.log("fetching error", err)
+      },
+    })
   }
 
  

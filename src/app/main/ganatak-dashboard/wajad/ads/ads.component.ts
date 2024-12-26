@@ -36,7 +36,7 @@ export class AdsComponent  implements OnInit {
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   public ColumnMode = ColumnMode;
-  public SelectionType = SelectionType;
+  public SelectionType = SelectionType;v
 
   ngOnInit(): void {
     this.apisService.requestAds().subscribe({ 

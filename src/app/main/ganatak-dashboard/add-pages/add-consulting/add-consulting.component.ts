@@ -24,7 +24,7 @@ export class AddConsultingComponent implements OnInit {
     constructor(private router: Router, private apisService: ApisService) { }
   
     ngOnInit(): void {
-      // this.postCountires();
+      // this.postCountires(); 
   
     }
     // postCountires() {

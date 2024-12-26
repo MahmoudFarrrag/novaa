@@ -63,6 +63,25 @@ export class ApisService {
   companies(service_id: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'service-companies', {service_id: service_id});
   }
+  //Consulting List
+  requestConsultations() : Observable<ApiResponse> {
+    //waiting for the token
+    // const Authorization = '1myQSGIIuD22gI3iruJXWOILoysWAOtF02y1P7XX' 
+    // const httpheaders :HttpHeaders = new HttpHeaders ().set(
+    //   'Authorization' , `Bearer ${Authorization}`
+    // )
+    return this.http.post<ApiResponse>(this.domain+ 'user/user-consultants', {} )
+  }
+ //edit consultation
+  requestConsultationDetail(consulting_id : any): Observable<ApiResponse>{ 
+    return this.http.post<ApiResponse>(this.domain+ 'user/consultant-details' ,{consulting_id:consulting_id} )
+  }
+  //make consultation
+  requestConsultationBook() : Observable<ApiResponse> {  
+    const headers = HttpHeaders
+    return this.http.post<ApiResponse>(this.domain+'user/make-consultant',{})
+  }
+  
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });
   // }

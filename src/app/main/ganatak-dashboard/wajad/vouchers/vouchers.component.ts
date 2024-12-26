@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApisService } from '@core/services/apis.service';
+import { DatatableComponent, ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-vouchers',
@@ -8,7 +9,15 @@ import { ApisService } from '@core/services/apis.service';
   styleUrls: ['./vouchers.component.scss']
 })
 export class VouchersComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public currentPage = 1; 
+  public itemsPerPage = 10;
+  public totalItems = 0;
+
+  public tempData = [];
+  @ViewChild(DatatableComponent) table: DatatableComponent;
+  
+    public ColumnMode = ColumnMode;
+    public SelectionType = SelectionType;
 
   constructor( 
     private apisService: ApisService,
@@ -34,5 +43,16 @@ export class VouchersComponent implements OnInit {
     });
   }
 
+  addCoupon() {
+    this.router.navigate(["main/coupons/add-coupon"]);
+  }
+
+  filterUpdate(event) {
+    const val = event.target.value.toLowerCase();
+    this.levels = this.tempData.filter((d) =>
+      d.code.toLowerCase().includes(val)
+    );
+    this.table.offset = 0;
+  }
 
 }
