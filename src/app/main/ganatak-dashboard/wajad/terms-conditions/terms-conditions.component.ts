@@ -31,9 +31,22 @@ export class TermsConditionsComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.requestTerms()
   }
 
- 
+  requestTerms() { 
+    this.apisService.requestTerms().subscribe({ 
+      next:(response:any) => {
+        this.arrCoupons= response || [];
+        console.log(this.arrCoupons)
+          
+      },
+      error:(err)=> {
+        console.log("Error in Fetching" , err)
+          
+      },
+    })
+  } 
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);

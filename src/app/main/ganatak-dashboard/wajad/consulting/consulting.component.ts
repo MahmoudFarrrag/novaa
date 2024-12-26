@@ -35,10 +35,7 @@ export class ConsultingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getconsulting()
-    const consulting_id = 1; 
-
-    this.getconsultingg(consulting_id)
-    this.getconsultings()
+   
   }
   getconsulting() { 
     this.apisService.requestConsultations().subscribe({ 

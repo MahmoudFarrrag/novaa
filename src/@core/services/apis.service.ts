@@ -82,6 +82,37 @@ export class ApisService {
     return this.http.post<ApiResponse>(this.domain+'user/consultant-details',{})
   }
   
+  requestTerms(): Observable<ApiResponse> { 
+    return this.http.post<ApiResponse>(this.domain+'terms-app' , {})
+  }
+
+  requestTagArticles(tag_id :any) : Observable<ApiResponse> { 
+    //authorization needed
+    
+    return this.http.post<ApiResponse>(this.domain+'tag-articles',{tag_id:tag_id})
+  }
+
+  requestTagProducts(tag_id:any):Observable<ApiResponse>{
+    //authorization needed 
+    return this.http.post<ApiResponse>(this.domain+'tag-products',{tag_id:tag_id})
+  }
+
+  requestNotificationsCount():Observable<ApiResponse>{
+    //authorization needed 
+    return this.http.post<ApiResponse>(this.domain+'user-notifications-count',{})
+  }
+
+  requestNotifications(page:any):Observable<ApiResponse>{
+    //authorization needed  
+    return this.http.post<ApiResponse>(this.domain+'user-notifications',{page:page})
+  }
+
+  requestNotificationSee(notification_id:any):Observable<ApiResponse>{
+    //authorization needed  
+    return this.http.post<ApiResponse>(this.domain+'user-seen-notifications',{notification_id:notification_id})
+  }
+
+
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });
   // }
