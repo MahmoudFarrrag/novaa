@@ -390,7 +390,7 @@ export const menu: CoreMenu[] = [
             translate: "MENU.DASHBOARD.ShowDetails",
             type: "item",
             icon: "circle",
-            url: "notifications",
+            url: "Notifications",
           },
         ],
       },

@@ -116,6 +116,12 @@ const routes = [
     component: VouchersComponent,
     data: { animation: 'ads' }
   },
+
+  {
+    path: 'Notifications',
+    component: NotificationsComponent,
+    data: { animation: 'ads' }
+  },
   {
     path: 'StoresOffers-add',
     component: AddStoresOffersComponent,

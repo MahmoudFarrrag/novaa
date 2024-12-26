@@ -31,9 +31,36 @@ export class TagsComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    // Tag id needed 
+    // this.tagsArticles(tag_id)
+    // this.tagsProducts(tag_id)
   }
 
- 
+ tagsArticles(tag_id:any){ 
+  this.apisService.requestTagArticles(tag_id).subscribe({
+    next:(reponse:any)=> {
+      this.arrCoupons=reponse.data || {} ;
+      console.log(this.arrCoupons)        
+    },
+    error:(err)=> {
+      console.log("Error in fetching data",err)
+        
+    },
+  })
+ }
+
+ tagsProducts(tag_id:any){ 
+  this.apisService.requestTagArticles(tag_id).subscribe({
+    next:(reponse:any)=> {
+      this.arrCoupons=reponse.data || {} ;
+      console.log(this.arrCoupons)        
+    },
+    error:(err)=> {
+      console.log("Error in fetching data",err)
+        
+    },
+  })
+ }
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);

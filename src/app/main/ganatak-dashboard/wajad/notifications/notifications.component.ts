@@ -31,9 +31,52 @@ export class NotificationsComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.notificationsCount()
+
+    
+    // parameters needed
+    // this.notifications()
+    // this.seenNotifications()
+
+
   }
 
- 
+  notificationsCount(){ 
+    this.apisService.requestNotificationsCount().subscribe({
+      next:(response)=> {
+        this.arrCoupons=response.data || []
+      },
+      error:(err)=> {
+        console.log("Error in fetching",err)
+        
+          
+      },
+    })
+  }
+  notifications(page:number){
+    this.apisService.requestNotifications(page).subscribe({ 
+      next:(response)=> {
+        this.arrCoupons= response.data || []
+      },
+      error:(err)=> {
+        console.log("Error in Fetching data", err)
+      },
+    }) 
+
+  }
+
+  seenNotifications(notification_id:number){ 
+    this.apisService.requestNotificationSee(notification_id).subscribe({ 
+      next:(reponse)=> {
+        this.arrCoupons=reponse.data || []; 
+        console.log(this.arrCoupons)
+          
+      },
+      error:(err)=> {
+      console.log('Fetching Error', err)          
+      },
+    })
+  }
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);

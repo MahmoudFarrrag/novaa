@@ -1,119 +1,78 @@
 <div class="content-wrapper container-xxl p-0">
-    <div class="content-body">
-      <section id="ngx-datatable-kitchen-sink">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Vouchers</h4>
-            <button class="btn btn-primary" (click)="addCoupon()">
-              Add Vouchers
-            </button>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Vouchers List</p>
-          </div>
+  <div class="content-body">
+    <section id="ngx-datatable-kitchen-sink">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Vouchers</h4>
+          <button class="btn btn-primary" (click)="addCoupon()">
+            Add Vouchers
+          </button>
         </div>
-  
-        <div class="row d-flex justify-content-between">
-          <div class="col-md-2 col-sm-12 mb-1 mb-md-0">
-            <div class="form-group">
-              <label for="itemsPerPage" class="mr-2">show</label>
-              <div class="d-flex align-items-center">
-                <select
-                  id="itemsPerPage"
-                  class="form-control form-control-sm mr-2"
-                  [(ngModel)]="itemsPerPage"
-                >
-                  <option value="10">10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                </select>
-                <span>Entries</span>
-              </div>
+        <div class="card-body">
+          <p class="card-text">Vouchers List</p>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-between">
+        <div class="col-md-2 col-sm-12 mb-1 mb-md-0">
+          <div class="form-group">
+            <label for="itemsPerPage" class="mr-2">show</label>
+            <div class="d-flex align-items-center">
+              <select id="itemsPerPage" class="form-control form-control-sm mr-2" [(ngModel)]="itemsPerPage">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+              <span>Entries</span>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="form-group">
-              <label for="searchInput" class="mr-2">Search</label>
-              <input
-                id="searchInput"
-                type="search"
-                placeholder="search"
-                class="form-control form-control-sm"
-                (keyup)="filterUpdate($event)"
-                (search)="filterUpdate($event)"
-              />
-            </div> 
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="searchInput" class="mr-2">Search</label>
+            <input id="searchInput" type="search" placeholder="search" class="form-control form-control-sm"
+              (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
           </div>
         </div>
-  
-        <ngx-datatable 
-          [rows]="levels"
-          [rowHeight]="150"
-          class="bootstrap core-bootstrap bg-white"
-          [limit]="itemsPerPage"
-          [columnMode]="ColumnMode.force"
-          [headerHeight]="40"
-          [footerHeight]="50"
-          [scrollbarH]="true"
-          
-        >
+      </div>
 
-          <ngx-datatable-column
-            name="ID"
-            prop="id"
-            [width]="20"
-          ></ngx-datatable-column>
-          
+      <ngx-datatable [rows]="levels" [rowHeight]="150" class="bootstrap core-bootstrap bg-white" [limit]="itemsPerPage"
+        [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [scrollbarH]="true">
 
-          <ngx-datatable-column
-            name="Name"
-            prop="name"
-            [width]="150"
-          ></ngx-datatable-column>
-          
-          <ngx-datatable-column
-          name="Image"
-          [width]="100"
-        >
+        <ngx-datatable-column name="ID" prop="id" [width]="20"></ngx-datatable-column>
+
+
+        <ngx-datatable-column name="Name" prop="name" [width]="150"></ngx-datatable-column>
+
+        <ngx-datatable-column name="Image" [width]="100">
           <ng-template ngx-datatable-cell-template let-row="row">
             <div class="cell-line-height text-center">
-                <img [src]="row.images[0]?.image" alt="Ad Image" width="100" height="100" />
+              <img [src]="row.images[0]?.image" alt="Ad Image" width="100" height="100" />
             </div>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column
-        name="Description"
-        prop="description"
-        [width]="250" 
-      >
-        <ng-template ngx-datatable-cell-template let-row="row">
-          <div style="white-space: normal; word-wrap: break-word; overflow: hidden;">
-                            {{ row.description }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
+        <ngx-datatable-column name="Description" prop="description" [width]="250">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            <div style="white-space: normal; word-wrap: break-word; overflow: hidden;">
+              {{ row.description }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
 
-        <ngx-datatable-column
-        name="Category Name "
-        prop="category.name"
-        [width]="150"
-      ></ngx-datatable-column>
-          
-          <ngx-datatable-column
-            name="Price"
-            prop="price"
-            width="100"
-          >
-            <ng-template ngx-datatable-cell-template let-row="row">
-              <div class="cell-line-height text-center">
-                {{ row.price | currency:'EGP'}}
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
-      
-        </ngx-datatable>
-       
-      </section>
-    </div>
+        <ngx-datatable-column name="Category Name " prop="category.name" [width]="150"></ngx-datatable-column>
+        <ngx-datatable-column name="Store Name" prop="store.name" width="150"></ngx-datatable-column>
+
+        <ngx-datatable-column name="Price" prop="price" width="100">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            <div class="cell-line-height text-center">
+              {{ row.price | currency:'EGP'}}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+      </ngx-datatable>
+
+    </section>
+  </div>
 </div>
