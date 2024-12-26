@@ -11,7 +11,7 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
   
 })
 export class TermsConditionsComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public terms: any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -37,8 +37,8 @@ export class TermsConditionsComponent implements OnInit {
   requestTerms() { 
     this.apisService.requestTerms().subscribe({ 
       next:(response:any) => {
-        this.arrCoupons= response || [];
-        console.log(this.arrCoupons)
+        this.terms= response || [];
+        console.log(this.terms)
           
       },
       error:(err)=> {
@@ -58,7 +58,7 @@ export class TermsConditionsComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.terms = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;

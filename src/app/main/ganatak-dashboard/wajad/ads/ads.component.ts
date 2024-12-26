@@ -19,7 +19,7 @@ import {
 
 
 export class AdsComponent  implements OnInit {
-  public arrCoupons: any[] = [];
+  public ads: any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -41,8 +41,8 @@ export class AdsComponent  implements OnInit {
   ngOnInit(): void {
     this.apisService.requestAds().subscribe({ 
       next:(response:any)=> { 
-        this.arrCoupons = response.data || [] ;
-        console.log('response is' , this.arrCoupons)
+        this.ads = response.data || [] ;
+        console.log('response is' , this.ads)
       }, 
       error:(err)=> { 
         console.log('error in fetching', err)
@@ -62,7 +62,7 @@ export class AdsComponent  implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.ads = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;
