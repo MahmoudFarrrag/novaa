@@ -32,8 +32,10 @@ export class TagsComponent implements OnInit {
 
   ngOnInit(): void {
     // Tag id needed 
-    // this.tagsArticles(tag_id)
-    // this.tagsProducts(tag_id)
+    const tag_id = 1; 
+
+    this.tagsArticles(tag_id)
+    this.tagsProducts(tag_id)
   }
 
  tagsArticles(tag_id:any){ 
@@ -50,7 +52,7 @@ export class TagsComponent implements OnInit {
  }
 
  tagsProducts(tag_id:any){ 
-  this.apisService.requestTagArticles(tag_id).subscribe({
+  this.apisService.requestTagProducts(tag_id).subscribe({
     next:(reponse:any)=> {
       this.arrCoupons=reponse.data || {} ;
       console.log(this.arrCoupons)        
