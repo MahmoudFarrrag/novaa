@@ -30,10 +30,24 @@ export class ConsultingComponent implements OnInit {
   public ColumnMode = ColumnMode;
   public SelectionType = SelectionType;
 
+  public levels: any[] = [];
+
+
   ngOnInit(): void {
+    const consulting_id = 1; 
+
+    this.getLevels(consulting_id);
+ 
+  }
+  getLevels(consulting_id:any) {
+    this.apisService.consultant(consulting_id ).subscribe({
+      next: (response) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+    });
   }
 
- 
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);

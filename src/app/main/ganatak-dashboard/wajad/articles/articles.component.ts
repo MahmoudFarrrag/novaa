@@ -36,29 +36,29 @@ export class ArticlesComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
-    // this.getLevels();
-    this.apisService.article().subscribe({ 
-      next:(response:any)=> { 
-        this.levels = response.data || [] ;
-        console.log('response is' , this.levels)
-      }, 
-      error:(err)=> { 
-        console.log('error in fetching', err)
-      }
-    })
+    this.getLevels();
+  //   this.apisService.article().subscribe({ 
+  //     next:(response:any)=> { 
+  //       this.levels = response.data || [] ;
+  //       console.log('response is' , this.levels)
+  //     }, 
+  //     error:(err)=> { 
+  //       console.log('error in fetching', err)
+  //     }
+  //   })
   }
 
  
 
 
-  // getLevels() {
-  //   this.apisService.article().subscribe({
-  //     next: (response) => {
-  //       this.levels = response.data;
-  //       console.log(this.levels);
-  //     },
-  //   });
-  // }
+  getLevels() {
+    this.apisService.article().subscribe({
+      next: (response) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+    });
+  }
   // getLevels() {
   //   this.apisService.article().subscribe({
   //     next: (response: ApiResponse) => {

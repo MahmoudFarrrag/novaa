@@ -58,6 +58,9 @@ export class ApisService {
   companies(service_id: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'service-companies', {service_id: service_id});
   }
+  consultant(consulting_id: any): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'user/consultants', {consulting_id: consulting_id});
+  }
 
   requestAds():Observable<any> { 
     return this.http.post<any>(this.domain +'user-sliders',{});
