@@ -35,9 +35,35 @@ export class ConsultingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getconsulting()
+    const consulting_id = 1; 
+
+    this.getconsultingg(consulting_id)
+    this.getconsultings()
   }
   getconsulting() { 
     this.apisService.requestConsultations().subscribe({ 
+      next:(response:any)=> { 
+        this.arrCoupons= response.data || []
+        console.log(this.arrCoupons)
+      }, 
+      error(err) {
+          console.log("fetching error", err)
+      },
+    })
+  }
+  getconsultingg(consulting_id:any) { 
+    this.apisService.requestConsultationDetail(consulting_id).subscribe({ 
+      next:(response:any)=> { 
+        this.arrCoupons= response.data || []
+        console.log(this.arrCoupons)
+      }, 
+      error(err) {
+          console.log("fetching error", err)
+      },
+    })
+  }
+  getconsultings() { 
+    this.apisService.requestConsultationBook().subscribe({ 
       next:(response:any)=> { 
         this.arrCoupons= response.data || []
         console.log(this.arrCoupons)

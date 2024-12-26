@@ -74,12 +74,12 @@ export class ApisService {
   }
  //edit consultation
   requestConsultationDetail(consulting_id : any): Observable<ApiResponse>{ 
-    return this.http.post<ApiResponse>(this.domain+ 'user/consultant-details' ,{consulting_id:consulting_id} )
+    return this.http.post<ApiResponse>(this.domain+ 'user/make-consultant' ,{consulting_id:consulting_id} )
   }
   //make consultation
   requestConsultationBook() : Observable<ApiResponse> {  
     const headers = HttpHeaders
-    return this.http.post<ApiResponse>(this.domain+'user/make-consultant',{})
+    return this.http.post<ApiResponse>(this.domain+'user/consultant-details',{})
   }
   
   // companyRate(companyId: any): Observable<any> {
