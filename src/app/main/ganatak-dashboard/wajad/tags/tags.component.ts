@@ -11,7 +11,7 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
   
 })
 export class TagsComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public tags: any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -41,8 +41,8 @@ export class TagsComponent implements OnInit {
  tagsArticles(tag_id:any){ 
   this.apisService.requestTagArticles(tag_id).subscribe({
     next:(reponse:any)=> {
-      this.arrCoupons=reponse.data || {} ;
-      console.log(this.arrCoupons)        
+      this.tags=reponse.data || {} ;
+      console.log(this.tags)        
     },
     error:(err)=> {
       console.log("Error in fetching data",err)
@@ -54,8 +54,8 @@ export class TagsComponent implements OnInit {
  tagsProducts(tag_id:any){ 
   this.apisService.requestTagProducts(tag_id).subscribe({
     next:(reponse:any)=> {
-      this.arrCoupons=reponse.data || {} ;
-      console.log(this.arrCoupons)        
+      this.tags=reponse.data || {} ;
+      console.log(this.tags)        
     },
     error:(err)=> {
       console.log("Error in fetching data",err)
@@ -74,7 +74,7 @@ export class TagsComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.tags = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;

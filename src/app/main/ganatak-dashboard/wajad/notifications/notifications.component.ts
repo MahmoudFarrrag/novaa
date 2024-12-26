@@ -11,7 +11,7 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
   
 })
 export class NotificationsComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public notify: any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -44,7 +44,7 @@ export class NotificationsComponent implements OnInit {
   notificationsCount(){ 
     this.apisService.requestNotificationsCount().subscribe({
       next:(response)=> {
-        this.arrCoupons=response.data || []
+        this.notify=response.data || []
       },
       error:(err)=> {
         console.log("Error in fetching",err)
@@ -56,7 +56,7 @@ export class NotificationsComponent implements OnInit {
   notifications(page:number){
     this.apisService.requestNotifications(page).subscribe({ 
       next:(response)=> {
-        this.arrCoupons= response.data || []
+        this.notify= response.data || []
       },
       error:(err)=> {
         console.log("Error in Fetching data", err)
@@ -68,8 +68,8 @@ export class NotificationsComponent implements OnInit {
   seenNotifications(notification_id:number){ 
     this.apisService.requestNotificationSee(notification_id).subscribe({ 
       next:(reponse)=> {
-        this.arrCoupons=reponse.data || []; 
-        console.log(this.arrCoupons)
+        this.notify=reponse.data || []; 
+        console.log(this.notify)
           
       },
       error:(err)=> {
@@ -88,7 +88,7 @@ export class NotificationsComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.notify = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;
