@@ -35,6 +35,11 @@ export class ApisService {
     return this.http.post(this.domain + '/dashboard/companies',{});
   }
  
+
+  requestAds():Observable<any> { 
+    return this.http.post<any>(this.domain +'user-sliders',{});
+  }
+  
   // levels(): Observable<any> {
   //   return this.authenticatedGet(
   //     `${this.domain}/api/dashboard-auth-api/levels`
@@ -58,12 +63,23 @@ export class ApisService {
   companies(service_id: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'service-companies', {service_id: service_id});
   }
-  consultant(consulting_id: any): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.domain + 'user/consultants', {consulting_id: consulting_id});
+  //Consulting List
+  requestConsultations() : Observable<ApiResponse> {
+    //waiting for the token
+    // const Authorization = '1myQSGIIuD22gI3iruJXWOILoysWAOtF02y1P7XX' 
+    // const httpheaders :HttpHeaders = new HttpHeaders ().set(
+    //   'Authorization' , `Bearer ${Authorization}`
+    // )
+    return this.http.post<ApiResponse>(this.domain+ 'user/user-consultants', {} )
   }
-
-  requestAds():Observable<any> { 
-    return this.http.post<any>(this.domain +'user-sliders',{});
+ //edit consultation
+  requestConsultationDetail(consulting_id : any): Observable<ApiResponse>{ 
+    return this.http.post<ApiResponse>(this.domain+ 'user/consultant-details' ,{consulting_id:consulting_id} )
+  }
+  //make consultation
+  requestConsultationBook() : Observable<ApiResponse> {  
+    const headers = HttpHeaders
+    return this.http.post<ApiResponse>(this.domain+'user/make-consultant',{})
   }
   
   // companyRate(companyId: any): Observable<any> {
