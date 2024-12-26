@@ -48,7 +48,7 @@
         </div>
   
         <ngx-datatable
-          [rows]="arrCoupons" 
+          [rows]="levels" 
           [rowHeight]="58"
           class="bootstrap core-bootstrap bg-white"
           [limit]="itemsPerPage"
@@ -63,59 +63,37 @@
             [width]="20"
           ></ngx-datatable-column>
   
+
           <ngx-datatable-column
-            name="Code"
-            prop="code"
-            [width]="50"
-          >
-            <ng-template ngx-datatable-cell-template let-row="row">
-              <div class="cell-line-height">
-                <p class="font-medium-1 font-weight-bold mb-25">
-                  {{ row.code }}
-                </p>
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
+          name="Image"
+          [width]="100"
+        >
+          <ng-template ngx-datatable-cell-template let-row="row">
+            <div class="cell-line-height text-center">
+              <img [src]="row.image" alt="Ad Image" width="60" height="60" />
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+     
   
          
-        
-          <ngx-datatable-column
-            name="status"
-            prop="status"
-            [width]="50" 
-          >
-            <ng-template ngx-datatable-cell-template let-row="row">
-              <div class="cell-line-height">
-                <p
-                  class="mb-25 text-capitalize rounded-pill font-medium-1 font-weight-bold"
-                  [ngClass]="{
-                    'bg-light-success': row.is_valid,
-                    'bg-light-danger': !row.is_valid
-                  }"
-                >
-                  {{
-                    row.is_valid
-                      ? ("MENU.Active" | translate)
-                      : ("MENU.Expired" | translate)
-                  }}
-                </p>
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
+        <ngx-datatable-column
+        name="Name"
+        prop="name"
+        [width]="50"
+      >
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <div class="cell-line-height">
+            <p class="font-medium-1 font-weight-bold mb-25">
+              {{ row.name }}
+            </p>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+          
   
-          <ngx-datatable-column
-            name="exp"
-            prop="expiry_date"
-            [width]="50"
-          >
-            <ng-template ngx-datatable-cell-template let-row="row">
-              <div class="cell-line-height">
-                <p class="mb-25">
-                  {{ row.expires_at | date : "dd MMM yyyy" }}
-                </p>
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
+        
   
           <ngx-datatable-column
             name="actions"

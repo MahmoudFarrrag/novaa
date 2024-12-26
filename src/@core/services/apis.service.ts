@@ -54,6 +54,23 @@ export class ApisService {
     return this.http.post<ApiResponse>(this.domain + 'articles', {});
   }
   
+ 
+  about(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'about-app', {});
+  }
+ 
+  countries(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'countries', {});
+  }
+ 
+  ganatakCommunity(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'community-posts', {});
+  }
+
+  plantCards(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'user/make-order', {});
+  }
+  
   store(): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'active-store-products', {});
   }

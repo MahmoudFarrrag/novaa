@@ -24,6 +24,7 @@ export class GanatakCommunityComponent implements OnInit {
   public totalItems = 0;
 
   public tempData = [];
+  public levels: any[] = [];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -31,7 +32,22 @@ export class GanatakCommunityComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.getLevels();
+ 
   }
+
+ 
+
+
+  getLevels() {
+    this.apisService.ganatakCommunity().subscribe({
+      next: (response) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+    });
+  }
+ 
 
  
 

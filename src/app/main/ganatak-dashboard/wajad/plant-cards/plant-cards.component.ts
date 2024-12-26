@@ -24,6 +24,7 @@ export class PlantCardsComponent implements OnInit {
   public totalItems = 0;
 
   public tempData = [];
+  public levels: any[] = [];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -31,8 +32,22 @@ export class PlantCardsComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.getLevels();
+ 
   }
 
+ 
+
+
+  getLevels() {
+    this.apisService.plantCards().subscribe({
+      next: (response) => {
+        this.levels = response.data;
+        console.log(this.levels);
+      },
+    });
+  }
+ 
  
 
   addCoupon() {
