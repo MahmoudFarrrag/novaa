@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable} from 'rxjs';
-import {  map } from 'rxjs/operators';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import { Observable, throwError} from 'rxjs';
+import {  catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
+import { localStorageService } from './local-storage.service';
+import { AuthService } from './auth.service';
 
 interface ApiResponse {
   data: any;  // Define the type of 'data' based on your API response structure, e.g., `any[]` or a specific shape.
@@ -27,9 +29,19 @@ export class ApisService {
   email: any[] = [];
 
 
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private http: HttpClient,private router: Router, private authService: AuthService,
+    private localStorage: localStorageService
+  ) {}
 
-
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.status === 401) {
+      const deviceId = this.authService.getCurrentDevice()?.id;
+      this.authService.logout(deviceId);
+      this.localStorage.clear();
+      this.router.navigate(['/auth/login']); 
+    }
+    return throwError(error);
+  }
 
   company() {
     return this.http.post(this.domain + '/dashboard/companies',{});
@@ -146,7 +158,18 @@ export class ApisService {
   //   return this.http.post(`${this.domain}/dashboard/remove-department`,{departmentId});
   // }
   
-}
+
+  getLogin(data:any): Observable<any> {
+    const url = `${this.domain}user/login`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http
+      .post(url, data, { headers })
+      .pipe(catchError(this.handleError));
+  }
+} 
 
 
 

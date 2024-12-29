@@ -73,6 +73,8 @@ import { AddPaperformComponent } from '../ganatak-dashboard/add-pages/add-paperf
 import { AddSizesComponent } from '../ganatak-dashboard/add-pages/add-sizes/add-sizes.component';
 import { AddSlidersComponent } from '../ganatak-dashboard/add-pages/add-sliders/add-sliders.component';
 import { AddLanguageCounselorspaymentComponent } from '../ganatak-dashboard/add-pages/add-language-counselorspayment/add-language-counselorspayment.component';
+import { SignInComponent } from '../sign-in/sign-in.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
   {
@@ -500,11 +502,13 @@ const routes = [
   component: AddLanguageCounselorspaymentComponent,
   data: { animation: 'ads' }
 } ,
+{path:'sin-in', component: SignInComponent},
+
 ]; 
 
 @NgModule({
   declarations: [SampleComponent, HomeComponent],
-  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule,NgxDatatableModule, CommonModule ],
+  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule,NgxDatatableModule, CommonModule ,ReactiveFormsModule],
   exports: [SampleComponent, HomeComponent]
 })
 export class SampleModule {}

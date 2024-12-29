@@ -11,7 +11,10 @@
     </li>
   </ul>
   <!--/ Navbar brand -->
+  
 </div>
+
+
 
 <div class="navbar-container d-flex content">
   <div class="bookmark-wrapper d-flex align-items-center">
@@ -93,5 +96,24 @@
       </div>
     </li>
     <!--/ User Dropdown -->
+
+
+        <!-- Menu Toggler | Menu icon will be hidden in case of layout without menu -->
+        <ul class="nav navbar-nav d-xl-none" *ngIf="!coreConfig.layout.menu.hidden">
+          <li class="nav-item">
+            <a class="nav-link menu-toggle" (click)="toggleSidebar('menu')">
+              <span [data-feather]="'menu'" [class]="'ficon'"></span>
+            </a>
+          </li>
+        </ul>
+        <!--/ Menu Toggler -->
+    
+        <!-- Add Sign-In Button -->
+        <li class="nav-item">
+          <a class="btn btn-primary nav-link" [routerLink]="['/sin-in']">
+            <span [data-feather]="'log-in'" class="mr-50"></span> Sign In
+          </a>
+        </li>
+      
   </ul>
 </div>
