@@ -73,6 +73,17 @@ export class ApisService {
     return this.http.post<ApiResponse>(this.domain + 'about-app', {});
   }
  
+  getCountry(): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.domain + 'countries', {});
+  }
+ 
+  LoginOtp(data: any, token: any): Observable<any> {
+    const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.domain}user/active-profile`, data, { headers: header });
+  }
+  completeProfile(token: any, data: any) {
+    return this.http.post(`${this.domain}user/update-profile`, data, { headers: new HttpHeaders().set('Authorization', `Bearer ${token}`) });
+  }
   countries(): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'countries', {});
   }
@@ -85,6 +96,7 @@ export class ApisService {
     return this.http.post<ApiResponse>(this.domain + 'user/make-order', {});
   }
   
+ 
   store(): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(this.domain + 'active-store-products', {});
   }

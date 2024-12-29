@@ -1,33 +1,206 @@
-<!-- <app-product-header [headerTitle]="headerTitle"></app-product-header> -->
-
-<!-- Begin Main Content Area -->
 <main class="main-content">
-  <div class="breadcrumb-area breadcrumb-height mt-5" data-bg-image="assets/images/breadcrumb/bg/1-1-1919x388.jpg">
-
-  </div>
-  <div class="login-register-area section-space-y-axis-100 mt-5">
-    <div class="container">
-      <div class="row  d-flex justify-content-center">
-        <div class="col-7">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="login-form">
-              <h4 class="login-title">Enter Phone Number</h4>
-              <div class="row">
-                <div class="col-lg-12">
-                  <label for="mobile">Please enter your phone number</label>
-                  <input id="mobile" type="tel" placeholder="Enter your phone number" formControlName="mobile">
-                </div>
-                <div class="col-lg-12 pt-5">
-                  <button type="submit" class="custom-btn" (click)="debug()">
-                    Next
-                  </button>
-                </div>
+    <div class="breadcrumb-area breadcrumb-height mt-5" data-bg-image="assets/images/breadcrumb/bg/1-1-1919x388.jpg"></div>
+    <div class="login-register-area section-space-y-axis-100 mt-5">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-12 col-xl-7" [dir]="lang === 'en' ? 'ltr' : 'rtl'">
+            <form>
+              <div class="login-form">
+                <!-- Profile Form -->
+                <ng-container *ngIf="loginStep === 3">
+                  <h4 class="login-title" >Profile title</h4>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="mobile" >Profile descrption</label>
+                      <div [formGroup]="profileForm">
+                        <div class="image-preview-container">
+                          <img
+                            id="imagePreview"
+                            [src]="imagePreview || 'favicon.ico'"
+                            alt="Profile Preview"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="name" >Name</label>
+                          <input
+                            type="text"
+                            id="name"
+                            formControlName="name"
+                            placeholder="{{ 'auth.enter_name' | translate }}"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="email" >Email</label>
+                          <input
+                            type="email"
+                            id="email"
+                            formControlName="email"
+                            placeholder="{{ 'auth.enter_email' | translate }}"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="bio" >Bio</label>
+                          <textarea
+                            id="bio"
+                            class="form-control"
+                            formControlName="bio"
+                            placeholder="{{ 'auth.enter_bio' | translate }}"
+                            rows="4"
+                          ></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="image" >Profile image</label>
+                          <input
+                            type="file"
+                            id="image"
+                            formControlName="image"
+                            accept="image/*"
+                            (change)="onImageSelected($event)"
+                          />
+                        </div>
+                        <div class="col-lg-12 pt-5 justify-content-end d-flex">
+                          <button
+                            (click)="submitProfileForm()"
+                            class="custom-btn"
+                            
+                          >
+                            Submit profile
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+  
+                <!-- OTP Form -->
+                <ng-container *ngIf="loginStep === 2">
+                  <h4 class="login-title" >Code title</h4>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <label for="mobile" >Code descrption</label>
+                      <div class="otp-container">
+                        <input
+                          *ngFor="let digit of otpArray; let i = index"
+                          name="otp"
+                          type="text"
+                          maxlength="1"
+                          class="otp-input"
+                          [(ngModel)]="otpValues[i]"
+                          (input)="onInput($event, i)"
+                          (keydown)="onKeyDown($event, i)"
+                          #otpInput
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12 pt-5 justify-content-end d-flex">
+                      <button
+                        type="submit"
+                        (click)="onSubmit()"
+                        class="custom-btn"
+                        
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                </ng-container>
+  
+                <!-- Phone Form -->
+                <ng-container *ngIf="loginStep === 1">
+                  <h4 class="login-title" >Phone title</h4>
+                  <div [formGroup]="loginForm" class="row">
+                    <div class="col-lg-12">
+                      <label for="mobile" >Phone descrption</label>
+                      <div class="phone-part">
+                        <div
+                          class="selected-counters"
+                          (mouseleave)="selectedCounters.style.display = 'none'"
+                        >
+                          <div
+                            class="selected-counters-head"
+                            (click)="selectedCounters.style.display = 'block'"
+                          >
+                            <div class="selected-item">
+                              <img
+                                [src]="selectedCounter.image"
+                                [alt]="selectedCounter.name"
+                                style="width: 25px; height: 25px;"
+                              />
+                              <span class="name-item">{{ selectedCounter.code }}</span>
+                            </div>
+                          </div>
+                          <div
+                            class="selected-counters-body"
+                            #selectedCounters
+                          >
+                            <div
+                              *ngFor="let item of counteres"
+                              class="selected-item"
+                              [ngClass]="{
+                                active: item.id === selectedCounter.id
+                              }"
+                              (click)="selectedCountery(item); selectedCounters.style.display = 'none'"
+                            >
+                              <img
+                                [src]="item.image"
+                                [alt]="item.name"
+                                style="width: 25px; height: 25px;"
+                              />
+                              <span class="name-item">{{ item.code }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input
+                          id="mobile"
+                          type="number"
+                          placeholder="Enter_phone"
+                          formControlName="mobile"
+                        />
+                      </div>
+                      <div *ngIf="loginForm.get('mobile')?.touched && loginForm.get('mobile')?.errors">
+                        <small
+                          *ngIf="loginForm.get('mobile')?.errors?.['required']"
+                          class="text-danger"
+                          
+                        >
+                          Mobile required
+                        </small>
+                        <small
+                          *ngIf="loginForm.get('mobile')?.errors?.['invalidLength']"
+                          class="text-danger"
+                          
+                        >
+                          Mobeil invalidLength
+                          <span>{{ filterLingth }}</span>
+                        </small>
+                        <small
+                          *ngIf="loginForm.get('mobile')?.errors?.['invalidStart']"
+                          class="text-danger"
+                          
+                        >
+                        Mobeil invalidStart
+                          <span>{{ filterStartsWith }}</span>
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col-lg-12 pt-5 justify-content-end d-flex">
+                      <button
+                        (click)="goToOtp()"
+                        class="custom-btn"
+                        
+                      >
+                        Register
+                      </button>
+                    </div>
+                  </div>
+                </ng-container>
               </div>
-            </div>
-          </form>
-
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+  

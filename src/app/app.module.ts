@@ -82,6 +82,7 @@ import { AddLanguageCounselorspaymentComponent } from './main/ganatak-dashboard/
 import { AddSlidersComponent } from './main/ganatak-dashboard/add-pages/add-sliders/add-sliders.component';
 import { VouchersComponent } from './main/ganatak-dashboard/wajad/vouchers/vouchers.component';
 import { SignInComponent } from './main/sign-in/sign-in.component';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   {
@@ -138,7 +139,7 @@ SlidersComponent , AddCurrenciesComponent , AddCountriesComponent,AddCitiesCompo
     LayoutModule,
     SampleModule,
     NgxDatatableModule,
-     FormsModule,ReactiveFormsModule, 
+     FormsModule,ReactiveFormsModule, FormsModule , CommonModule
   ],
 
   bootstrap: [AppComponent]
