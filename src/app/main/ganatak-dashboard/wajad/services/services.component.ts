@@ -11,7 +11,7 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
   
 })
 export class ServicesComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public services : any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -31,9 +31,36 @@ export class ServicesComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.serviceRequeset()
+    this.subServiceRequest()
   }
 
- 
+serviceRequeset(){ 
+this.apisService.requestServiceCategories().subscribe({ 
+  next:(response :any )=> { 
+    this.services =response.data || []
+    console.log(this.services)
+  } , 
+  error(err) {
+      console.log("Fetching Error" , err)
+  },
+})
+}
+
+subServiceRequest(){ 
+  this.apisService.requestServiceSubCategories().subscribe({ 
+    next:(response:any)=> {
+      this.services=response.data || [] 
+      console.log(this.services)
+        
+    },
+    error(err) {
+        console.log("Fetching Error", err)
+    },
+  })
+}
+
+
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);
@@ -45,7 +72,7 @@ export class ServicesComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.services = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;

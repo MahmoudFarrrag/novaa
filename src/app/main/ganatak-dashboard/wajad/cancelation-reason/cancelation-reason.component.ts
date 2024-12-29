@@ -10,7 +10,9 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
     encapsulation: ViewEncapsulation.None,
 })
 export class CancelationReasonComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public reasons: any[] = [];
+  public cancel_orders: any[] = [];
+
 
   constructor( 
     private apisService: ApisService,
@@ -30,9 +32,38 @@ export class CancelationReasonComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.cancelReasons()
+    
+    //parameters needed
+    //testing parameters
+    this.cancelOrders(12 , 12)
   }
 
- 
+  cancelReasons() { 
+    this.apisService.requestCancelReasons().subscribe({
+      next:(response)=>{ 
+        this.reasons=response.data || []
+        console.log(this.reasons)
+      }, 
+      error(err) {
+          console.log("Fetching Error", err)
+      },
+    })
+  }
+
+  cancelOrders(order_id:number ,  cancellation_reason_id:number ){
+    this.apisService.requestCancelOrder(order_id , cancellation_reason_id).subscribe({ 
+      next:(response)=>{ 
+        this.cancel_orders= response.data ||  []
+        console.log(this.cancel_orders)
+      }, 
+      error(err) {
+          console.log("fetching error", err)
+      },
+    })
+  }
+
+
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);
@@ -44,7 +75,7 @@ export class CancelationReasonComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.reasons = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;

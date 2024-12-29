@@ -10,7 +10,9 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
     encapsulation: ViewEncapsulation.None,
 })
 export class OffersComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public offers: any[] = [];
+  public requestedOffers: any[] = [];
+  public catOffers: any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -30,13 +32,54 @@ export class OffersComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.homeOffers()
+
+    //parameters needed
+    //testing parameters 
+    this.requestOffers(1,'2','4','4')
+    this.categoryOffers(12)
   }
 
- 
+homeOffers() {
+  this.apisService.requestHomeOffers().subscribe({
+    next:(response:any)=>{ 
+      this.offers=response.data || []
+    },
+    error(err) {
+        console.log("Fetching Error" , err)
+    },
+  })
+}
+
+requestOffers(page:number , category_id:string , discount_sort:string, keyword:string){
+  this.apisService.requestOffers(page , category_id, discount_sort,keyword).subscribe({
+    next:(response:any)=> {
+        this.requestedOffers=response.data || []
+        console.log(this.requestedOffers)
+    },
+    error(err) {
+        console.log(err)
+    },
+  })
+}
+categoryOffers(category_id:number){ 
+  this.apisService.requestCategoryOffers(category_id).subscribe({ 
+    next(response) 
+    {
+    this.catOffers=response.data || []
+    console.log(this.catOffers)
+    },
+    error(err) {
+        console.log("Fetching Error", err)
+    },
+  })
+}
+  
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);
   }
+
 
   
 
@@ -44,7 +87,7 @@ export class OffersComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.offers = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;

@@ -10,7 +10,7 @@ import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-dat
     encapsulation: ViewEncapsulation.None,
 })
 export class CategoriesComponent implements OnInit {
-  public arrCoupons: any[] = [];
+  public category: any[] = [];
 
   constructor( 
     private apisService: ApisService,
@@ -30,9 +30,81 @@ export class CategoriesComponent implements OnInit {
   public SelectionType = SelectionType;
 
   ngOnInit(): void {
+    this.requestCategory()
+    this.requestShopProducts()
+    this.requestProducts()
+    this.requestArticleCategories()
+    //parameter needed
+    //testing param
+    this.requestShopProductsCategories(1)
   }
 
- 
+  requestCategory(){ 
+    this.apisService.requestMarketCategories().subscribe({ 
+      next:(response)=> {
+        this.category=response.data || []
+        console.log(this.category)
+          
+      },
+      error(err) {
+          console.log("fetching error", err )
+      },
+    })
+  }
+
+
+  requestShopProducts(){
+    this.apisService.requestShopProducts().subscribe({ 
+      next:(response)=> {
+        this.category=response.data || []
+        console.log(this.category)
+          
+      },
+      error(err) {
+          console.log("fetching error", err )
+      },
+    })
+  }
+
+  requestProducts(){ 
+    this.apisService.requestProducts().subscribe({ 
+      next:(response)=> {
+        this.category=response.data || []
+        console.log(this.category)
+          
+      },
+      error(err) {
+          console.log("fetching error", err )
+      },
+    })
+  }
+
+
+  requestArticleCategories(){ 
+    this.apisService.requestArticleCategories().subscribe({ 
+      next:(response)=> {
+        this.category=response.data || []
+        console.log(this.category)
+          
+      },
+      error(err) {
+          console.log("fetching error", err )
+      },
+    })
+  }
+
+  requestShopProductsCategories(shop_id:number){ 
+    this.apisService.requestShopProductsCategories(shop_id).subscribe({ 
+      next:(response)=> {
+        this.category=response.data || []
+        console.log(this.category)
+          
+      },
+      error(err) {
+          console.log("fetching error", err )
+      },
+    })
+  }
 
   addCoupon() {
     this.router.navigate(["main/coupons/add-coupon"]);
@@ -44,7 +116,7 @@ export class CategoriesComponent implements OnInit {
 
   filterUpdate(event) {
     const val = event.target.value.toLowerCase();
-    this.arrCoupons = this.tempData.filter((d) =>
+    this.category = this.tempData.filter((d) =>
       d.code.toLowerCase().includes(val)
     );
     this.table.offset = 0;
