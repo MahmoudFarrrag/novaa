@@ -31,9 +31,6 @@ export class VouchersComponent implements OnInit {
 
   }
 
- 
-
-
   getLevels() {
     this.apisService.store().subscribe({
       next: (response) => {

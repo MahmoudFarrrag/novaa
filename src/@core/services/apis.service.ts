@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 import { localStorageService } from './local-storage.service';
 import { AuthService } from './auth.service';
+import {   retry } from 'rxjs/operators';
+import { ScrollbarHelper } from '@swimlane/ngx-datatable';
 
 interface ApiResponse {
   data: any;  // Define the type of 'data' based on your API response structure, e.g., `any[]` or a specific shape.
@@ -141,6 +143,54 @@ export class ApisService {
     return this.http.post<ApiResponse>(this.domain+'user-seen-notifications',{notification_id:notification_id})
   }
 
+  requestServiceCategories():Observable<ApiResponse> { 
+    return this.http.post<ApiResponse>(this.domain+'services' ,{})
+
+  }
+
+  requestServiceSubCategories():Observable<ApiResponse>{ 
+    return this.http.post<ApiResponse>(this.domain+'sub-services',{})
+  }
+
+  requestOffers(page:number , category_id:string , discount_sort:string ,keyword:string):Observable<ApiResponse>{ 
+    return this.http.post<ApiResponse>(this.domain+'search-offers',
+      {page:page , category_id:category_id , discount_sort:discount_sort , keyword:keyword})
+  }
+requestHomeOffers():Observable<ApiResponse>{
+  return this.http.post<ApiResponse>(this.domain+'home-products',{})
+}
+
+requestCategoryOffers(category_id:number):Observable<ApiResponse>{
+  return this.http.post<ApiResponse>(this.domain+'category-offer',{category_id:category_id})
+}
+
+requestCancelReasons():Observable<ApiResponse>{ 
+  return this.http.post<ApiResponse>(this.domain+'user/cancelOrderReasons',{})
+}
+requestCancelOrder(order_id:number , cancellation_reason_id:number ):Observable<ApiResponse>{
+  return this.http.post<ApiResponse>(this.domain+'user/cancelOrder', 
+    {order_id:order_id , cancellation_reason_id:cancellation_reason_id})
+}
+requestMarketCategories():Observable<ApiResponse>{ 
+  return this.http.post<ApiResponse>(this.domain+'categories-list',{})
+}
+
+requestShops():Observable<ApiResponse>{ 
+  return this.http.post<ApiResponse>(this.domain+'category-stores',{})
+}
+requestShopProductsCategories(shop_id:number):Observable<ApiResponse>{
+  return this.http.post<ApiResponse>(this.domain+'store-id-categories',{shop_id:shop_id})
+}
+
+requestShopProducts():Observable<ApiResponse>{ 
+  return this.http.post<ApiResponse>(this.domain+'store-category-id-products',{})
+}
+requestProducts():Observable<ApiResponse>{ 
+  return this.http.post<ApiResponse>(this.domain+'category-store-id-products',{})
+}
+requestArticleCategories():Observable<ApiResponse>{ 
+  return this.http.post<ApiResponse>(this.domain+'articles-categories-list' ,{})
+}
 
   // companyRate(companyId: any): Observable<any> {
   //   return this.http.post(`${this.domain}/dashboard/company-rates`, { companyId: companyId });
