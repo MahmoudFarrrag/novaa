@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import 'hammerjs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -83,6 +83,7 @@ import { AddSlidersComponent } from './main/ganatak-dashboard/add-pages/add-slid
 import { VouchersComponent } from './main/ganatak-dashboard/wajad/vouchers/vouchers.component';
 import { SignInComponent } from './main/sign-in/sign-in.component';
 import { CommonModule } from '@angular/common';
+import { JwtInterceptor } from './auth/helpers';
 
 const appRoutes: Routes = [
   {
@@ -142,6 +143,7 @@ SlidersComponent , AddCurrenciesComponent , AddCountriesComponent,AddCitiesCompo
      FormsModule,ReactiveFormsModule, FormsModule , CommonModule
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [{provide:HTTP_INTERCEPTORS , useClass:JwtInterceptor, multi:true}]
 })
 export class AppModule {}

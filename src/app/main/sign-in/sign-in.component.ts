@@ -2,7 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApisService } from '@core/services/apis.service';
+import { AuthenticationService } from 'app/auth/service';
 import { FooterComponent } from 'app/layout/components/footer/footer.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
@@ -31,13 +33,15 @@ export class SignInComponent implements OnInit {
   filterLingth:number=10;
   filterStartsWith:any='1';
   selectedCounter:any;
-  constructor(private fb: FormBuilder) {
+  
+  constructor(private fb: FormBuilder , private _toastrService: ToastrService , private authentication: AuthenticationService ) {
     this.otpArray = Array(this.otpLength).fill(0);
     this.otpValues = Array(this.otpLength).fill('');
     if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       this.lang = localStorage.getItem('language')
       
     }
+    
   }
   ngOnInit(): void {
     this.setValue()
@@ -103,9 +107,11 @@ export class SignInComponent implements OnInit {
       console.log('form',formData);
 
       this.apiService.completeProfile(this.token, formData).subscribe({
-        next: (response) => {
+        next: (response:any) => {
           if (typeof window !== 'undefined' && typeof window.location !== 'undefined') {
-            localStorage.setItem('ganatak_token', this.token);
+            // localStorage.setItem('ganatak_token', this.token);
+            this.setToken(response.data)
+
             location.replace('/');
           }        },
         error: (error) => {
@@ -115,13 +121,46 @@ export class SignInComponent implements OnInit {
       );
     
   }
+
+setToken(data) {
+ 
+    const user= {
+      firstName : data.name ,token : this.token, role : 'admin'
+    };
+      // login successful if there's a jwt token in the response
+      if (user && user.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+  
+        // Display welcome toast!
+        setTimeout(() => {
+          this._toastrService.success(
+            'You have successfully logged in as an ' +
+              user.role +
+              ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
+            '👋 Welcome, ' + user.firstName + '!',
+            { toastClass: 'toast ngx-toastr', closeButton: true }
+          );
+        }, 2500);
+
+        // notify
+        this.authentication.setCurrentValue(user);
+      }
+
+    
+  
+}
+ 
+
+
   onSubmit() {
     const otp = { 'activationCode': this.otpComplete }
     this.apiService.LoginOtp(otp, this.token).subscribe((data) => {
       let datas = data.data
       if (datas.is_data_complete) {
         if (typeof window !== 'undefined' && typeof window.location !== 'undefined') {
-          localStorage.setItem('ganatak_token', this.token);
+          // localStorage.setItem('ganatak_token', this.token);
+          this.setToken(datas)
           location.replace('/');
         }
       } else {
@@ -146,7 +185,7 @@ export class SignInComponent implements OnInit {
 
       this.apiService.getLogin(formData).subscribe({
         next: (response) => {
-          localStorage.setItem('ganatak_token', response.access_token);
+          // localStorage.setItem('ganatak_token', response.access_token);
           if (response.access_token) {
             this.token = response.access_token
             this.loginStep = 2

@@ -81,6 +81,9 @@ export class AuthenticationService {
       );
   }
 
+  setCurrentValue(next) {
+    this.currentUserSubject.next(next);
+  }
   /**
    * User logout
    *
