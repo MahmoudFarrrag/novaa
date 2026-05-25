@@ -1,18 +1,103 @@
 @import '@core/scss/core.scss';
 @import './assets/scss/styles';
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600');
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-BLACK.TTF') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-BOLD.TTF') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-/* Apply Montserrat font globally */
-body {
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  /* Optionally apply it to specific elements */
-  h1, h2, h3, h4, h5, h6, p, span, div {
-    font-family: 'Montserrat', sans-serif;
-  }
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-EXTRABOLD.TTF') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-EXTRALIGHT.TTF') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-LIGHT.TTF') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-MEDIUM.TTF') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-REGULAR.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-SEMIBOLD.TTF') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-Arabic';
+  src: url('./assets/fonts/ARBFONTS-MONTSERRAT-ARABIC-THIN.TTF') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+html,
+body,
+button,
+input,
+select,
+textarea,
+label,
+small,
+span,
+div,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.ngx-datatable,
+.main-menu,
+.navigation,
+.card,
+.modal,
+.dropdown-menu {
+  font-family: 'Montserrat-Arabic', sans-serif !important;
+}
 
   .card-text{
     text-align: start;
@@ -34,7 +119,31 @@ body {
 // html[dir='rtl'] .navbar {
 //   text-align: right;
 // }
-
+.icon-disc:before {
+    color: #306ADA !important;
+}
+.main-menu .navbar-header .navbar-brand .brand-text {
+    color: #306ADA !important;
+    padding-left: 1rem;
+    margin-bottom: 0;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    font-size: 1.45rem;
+    animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
+}
+.main-menu.menu-light .navigation > li ul .active > a {
+    color: #fff;
+    background-color: #306ADA !important;
+}
+.btn-primary {
+    border-color: #306ADA !important;
+    background-color: #306ADA !important;
+    color: #fff !important;
+}
+.anmar-dashboard .datatable-header {
+    background-color: white !important ;
+    // margin-bottom: 50px;
+}
 .main-menu.menu-light .navigation li a {
   color: #000000;
   padding: 10px 15px 10px 15px;
@@ -42,8 +151,29 @@ body {
   font-weight: bold;
 }
 
+html[dir="rtl"] .main-menu .navbar-header .navbar-brand .brand-logo img,
+body[dir="rtl"] .main-menu .navbar-header .navbar-brand .brand-logo img,
+[dir="rtl"] .main-menu .navbar-header .navbar-brand .brand-logo img {
+  max-width: 36px;
+  margin-right: -80px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    margin: 10px;
+}
 .card-text{
   text-align: start;
+}
+html[dir="rtl"] select.form-control.form-control-sm,
+body[dir="rtl"] select.form-control.form-control-sm,
+[dir="rtl"] select.form-control.form-control-sm {
+  background-position:
+    calc(100% - 12px) 8px,
+    calc(100% - 20px) 8px,
+    100% 0;
+  padding-right: 50px;
+  margin-left: 10px;
 }
 
 html:dir(rtl) .content.app-content {

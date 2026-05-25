@@ -1,0 +1,110 @@
+<div class="content-wrapper container-xxl p-0 anmar-dashboard">
+  <div class="content-body">
+    <section id="anmar-resource-list">
+      <div class="card">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-1">
+          <div>
+            <h4 class="card-title mb-50">{{ getModuleTranslateKey() | translate }}</h4>
+            <p class="card-text mb-0">{{ 'ANMAR_PAGES.COMMON.LIST' | translate }}</p>
+          </div>
+          <button *ngIf="config.allowCreate" class="btn btn-primary" type="button" (click)="navigateToAdd()">
+            {{ 'ANMAR_PAGES.COMMON.ADD' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row d-flex justify-content-between align-items-end mb-2">
+            <div class="col-md-2 col-sm-12 mb-1 mb-md-0">
+              <div class="form-group mb-0">
+                <label for="itemsPerPage" class="mr-2">{{ 'ANMAR_PAGES.COMMON.SHOW' | translate }}</label>
+                <div class="d-flex align-items-center">
+                  <select id="itemsPerPage" class="form-control form-control-sm mr-2" [(ngModel)]="itemsPerPage">
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                  </select>
+                  <span>{{ 'ANMAR_PAGES.COMMON.ENTRIES' | translate }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="form-group mb-0">
+                <label for="searchInput" class="mr-2">{{ 'ANMAR_PAGES.COMMON.SEARCH' | translate }}</label>
+                <input id="searchInput" type="search" [placeholder]="'ANMAR_PAGES.COMMON.SEARCH' | translate" class="form-control form-control-sm" (keyup)="filterUpdate($event)" (search)="filterUpdate($event)" />
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="loading" class="anmar-loading-wrap mb-2">
+            <div class="anmar-loading-card" *ngFor="let skeleton of [1, 2, 3]">
+              <div class="anmar-loading-brand">
+                <img src="assets/images/logo/shap.png" alt="Anmar" class="anmar-loading-logo" />
+                <div>
+                  <div class="anmar-loading-line short"></div>
+                  <div class="anmar-loading-line tiny"></div>
+                </div>
+              </div>
+              <div class="anmar-loading-bar"></div>
+              <div class="anmar-loading-line"></div>
+              <div class="anmar-loading-line medium"></div>
+              <div class="anmar-loading-line short"></div>
+            </div>
+            <p class="anmar-loading-text mb-0">{{ 'ANMAR_PAGES.COMMON.LOADING' | translate }}</p>
+          </div>
+
+          <div *ngIf="!loading && errorMessage" class="alert alert-danger mb-2">
+            {{ errorMessage }}
+          </div>
+
+          <div *ngIf="!loading && !errorMessage && !filteredRows.length" class="anmar-state anmar-empty text-center py-3">
+            <div class="empty-icon mb-1">∅</div>
+            <h5 class="mb-50">{{ 'ANMAR_PAGES.COMMON.NO_DATA' | translate }}</h5>
+            <p class="mb-0">{{ 'ANMAR_PAGES.COMMON.EMPTY_HELP' | translate }}</p>
+          </div>
+
+          <ngx-datatable *ngIf="!loading && filteredRows.length" [rows]="filteredRows" [rowHeight]="58" class="bootstrap core-bootstrap bg-white" [limit]="itemsPerPage" [columnMode]="ColumnMode.force" [headerHeight]="45" [footerHeight]="50" [scrollbarH]="true">
+            <ngx-datatable-column [name]="'ANMAR_PAGES.FIELDS.ID' | translate" prop="id" [width]="70"></ngx-datatable-column>
+
+            <ngx-datatable-column *ngFor="let column of config.columns" [name]="getFieldTranslateKey(column) | translate" [prop]="column" [width]="160">
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <div class="cell-line-height">
+                  <ng-container *ngIf="isImageColumn(column); else defaultColumnTemplate">
+                    <img [src]="getImageSource(row[column])" [alt]="getModuleTranslateKey() | translate" class="anmar-thumb" (error)="onImageError($event)" />
+                  </ng-container>
+                  <ng-template #defaultColumnTemplate>
+                    <span [title]="getCellDisplay(row, column)">
+                      {{ getCellDisplay(row, column) }}
+                    </span>
+                  </ng-template>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column [name]="'ANMAR_PAGES.COMMON.ACTIONS' | translate" [width]="120" [sortable]="false">
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <div ngbDropdown container="body">
+                  <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle>
+                    <i data-feather="more-vertical"></i>
+                  </button>
+                  <div ngbDropdownMenu>
+                    <a ngbDropdownItem (click)="navigateToEdit(row.id)">
+                      <i data-feather="edit-2" class="mr-50"></i>
+                      <span>{{ config.allowCreate ? ('ANMAR_PAGES.COMMON.EDIT' | translate) : ('ANMAR_PAGES.COMMON.VIEW' | translate) }}</span>
+                    </a>
+                    <a ngbDropdownItem (click)="confirmDelete(row.id)">
+                      <i data-feather="trash" class="mr-50"></i>
+                      <span>{{ 'ANMAR_PAGES.COMMON.DELETE' | translate }}</span>
+                    </a>
+                  </div>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

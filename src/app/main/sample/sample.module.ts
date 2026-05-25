@@ -75,6 +75,7 @@ import { AddSlidersComponent } from '../ganatak-dashboard/add-pages/add-sliders/
 import { AddLanguageCounselorspaymentComponent } from '../ganatak-dashboard/add-pages/add-language-counselorspayment/add-language-counselorspayment.component';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AnmarModule } from '../ganatak-dashboard/anmar/anmar.module';
 
 const routes = [
   {
@@ -508,7 +509,7 @@ const routes = [
 
 @NgModule({
   declarations: [SampleComponent, HomeComponent],
-  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule,NgxDatatableModule, CommonModule ,ReactiveFormsModule],
+  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule, NgxDatatableModule, CommonModule, ReactiveFormsModule, AnmarModule],
   exports: [SampleComponent, HomeComponent]
 })
 export class SampleModule {}

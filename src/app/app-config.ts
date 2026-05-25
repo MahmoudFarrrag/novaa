@@ -16,9 +16,9 @@ import { CoreConfig } from '@core/types';
 // prettier-ignore
 export const coreConfig: CoreConfig = {
   app: {
-    appName     : 'Ganatak',                                        // App Name
-    appTitle    : 'Ganatak', // App Title
-    appLogoImage: 'assets/images/logo/logo.svg',                  // App Logo
+    appName     : 'ANMAR',                                        // App Name
+    appTitle    : 'ANMAR', // App Title
+    appLogoImage: 'assets/images/logo/shap.png',                  // App Logo
     appLanguage : 'en',                                           // App Default Language (en, fr, de, pt etc..)
   },
   layout: {

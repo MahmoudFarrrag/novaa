@@ -1,0 +1,80 @@
+<div class="content-wrapper container-xxl p-0 anmar-dashboard">
+  <div class="content-body">
+    <section id="anmar-resource-form">
+      <div class="card">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-1">
+          <div>
+            <h4 class="card-title mb-50">{{ (isEditMode ? 'ANMAR_PAGES.COMMON.EDIT' : 'ANMAR_PAGES.COMMON.ADD') | translate }} {{ getModuleTranslateKey() | translate }}</h4>
+            <p class="card-text mb-0">{{ (isEditMode ? 'ANMAR_PAGES.COMMON.UPDATE_ENTRY' : 'ANMAR_PAGES.COMMON.CREATE_ENTRY') | translate }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div *ngIf="loading" class="anmar-loading-wrap anmar-loading-form mb-2">
+            <div class="anmar-loading-card anmar-loading-card-form">
+              <div class="anmar-loading-brand">
+                <img src="assets/images/logo/shap.png" alt="Anmar" class="anmar-loading-logo" />
+                <div>
+                  <div class="anmar-loading-line short"></div>
+                  <div class="anmar-loading-line tiny"></div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-6 mb-1" *ngFor="let skeleton of [1,2,3,4,5,6]">
+                  <div class="anmar-loading-line tiny mb-50"></div>
+                  <div class="anmar-loading-input"></div>
+                </div>     
+              </div>
+            </div>
+            <p class="anmar-loading-text mb-0">{{ 'ANMAR_PAGES.COMMON.LOADING' | translate }}</p>
+          </div>
+
+          <div *ngIf="!loading && errorMessage" class="alert alert-danger mb-2">
+            {{ errorMessage }}
+          </div>
+
+          <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+            <div class="row">
+              <div class="col-md-6" *ngFor="let field of config.fields">
+                <div class="form-group" [ngClass]="{ 'anmar-checkbox-group': field.type === 'checkbox' }">
+                  <label *ngIf="field.type !== 'checkbox'" [for]="field.name">
+                    {{ getFieldTranslateKey(field.name) | translate }}
+                    <span class="text-danger" *ngIf="field.required">*</span>
+                  </label>
+
+                  <input *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'date'" [id]="field.name" [type]="field.type" class="form-control" [formControlName]="field.name" [readonly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate" />
+
+                  <textarea *ngIf="field.type === 'textarea' || field.type === 'array-text'" [id]="field.name" class="form-control" rows="4" [formControlName]="field.name" [readOnly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate"></textarea>
+
+                  <select *ngIf="field.type === 'select'" [id]="field.name" class="form-control" [formControlName]="field.name">
+                    <option value="">{{ getFieldTranslateKey(field.name) | translate }}</option>
+                    <option *ngFor="let option of normalizeOptions(field)" [ngValue]="option.value">{{ option.label }}</option>
+                  </select>
+
+                  <div *ngIf="field.type === 'checkbox'" class="custom-control custom-switch custom-switch-primary mt-2">
+                    <input type="checkbox" class="custom-control-input" [id]="field.name" [formControlName]="field.name" />
+                    <label class="custom-control-label" [for]="field.name">{{ getFieldTranslateKey(field.name) | translate }}</label>
+                  </div>
+
+                  <small *ngIf="field.type === 'array-text'" class="form-text text-muted">{{ 'ANMAR_PAGES.COMMON.ARRAY_HINT' | translate }}</small>
+
+                  <div *ngIf="isInvalid(field.name)" class="invalid-feedback d-block">{{ 'ANMAR_PAGES.COMMON.REQUIRED_FIELD' | translate }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-end mt-2">
+              <button type="button" class="btn btn-outline-primary mr-1" (click)="cancel()">{{ 'ANMAR_PAGES.COMMON.CANCEL' | translate }}</button>
+              <button type="submit" class="btn btn-primary" [disabled]="submitting">
+                <span *ngIf="submitting" class="spinner-border spinner-border-sm mr-50"></span>
+                {{ (isEditMode ? 'ANMAR_PAGES.COMMON.UPDATE' : 'ANMAR_PAGES.COMMON.SAVE') | translate }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

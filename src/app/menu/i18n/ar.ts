@@ -24,28 +24,44 @@ export const locale = {
         "articles": "المقالات",
         "offers": "العروض",
         "plantcards": "بطاقات النباتات",
-
         "Settings": "الإعدادات",
-    "ShowDetails": "عرض التفاصيل",
-    "TermsAndConditions": "الشروط والأحكام",
-    "About": "حول",
-    "Notifications": "الإشعارات",
-    "Currencies": "العملات",
-    "Countries": "الدول",
-    "Cities": "المدن",
-    "plans": "الخطط",
-      "light": "الضوء",
-      "root": "الجذر",
-      "seed": "البذرة",
-      "soil": "التربة",
-      "stem": "الجذع",
-      "counselorspayment": "دفع المستشارين",
-      "OpenScreens": "الشاشات المفتوحة",
-    "GanatakCommunity": "مجتمع جانتاك",
-    "Paperform": "نموذج الورقة",
-    "Sizes": "الأحجام",
-    "Sliders": "المنزلقات"
-
+        "ShowDetails": "عرض التفاصيل",
+        "TermsAndConditions": "الشروط والأحكام",
+        "About": "حول",
+        "Notifications": "الإشعارات",
+        "Currencies": "العملات",
+        "Countries": "الدول",
+        "Cities": "المدن",
+        "plans": "الخطط",
+        "light": "الضوء",
+        "root": "الجذر",
+        "seed": "البذرة",
+        "soil": "التربة",
+        "stem": "الجذع",
+        "counselorspayment": "دفع المستشارين",
+        "OpenScreens": "الشاشات المفتوحة",
+        "GanatakCommunity": "مجتمع جانتاك",
+        "Paperform": "نموذج الورقة",
+        "Sizes": "الأحجام",
+        "Sliders": "المنزلقات"
+      },
+      ANMAR: {
+        TITLE: "أنمار",
+        HOME_DETAILS: "تفاصيل الرئيسية",
+        HOME_ABOUT: "نبذة الرئيسية",
+        HOME_SERVICES: "خدمات الرئيسية",
+        HOME_WORK: "أعمالنا",
+        HOME_CLIENTS: "عملاؤنا",
+        HOME_PARTNERS: "شركاؤنا",
+        ABOUT_DATES: "تواريخ من نحن",
+        ABOUT_VISION: "الرؤية",
+        ABOUT_VALUE: "القيم",
+        ABOUT_TEAM: "الفريق",
+        SERVICES_STEPS: "خطوات الخدمات",
+        CONTACT_MESSAGES: "رسائل التواصل",
+        BLOG: "المدونة",
+        LIST: "القائمة",
+        ADD: "إضافة"
       },
       USERS_SECTION: "العملاء",
       USERS: {
@@ -70,11 +86,13 @@ export const locale = {
       STORES_OFFERS: {
         Title: "عروض المتاجر",
         LIST: "قائمة العروض"
-      }, VOUCHER: {
+      },
+      VOUCHER: {
         Title: "العروض الترويجية",
         TYPE: "أنواع العروض الترويجية",
         LIST: "قائمة العروض الترويجية"
-      }, cancelation_reasons: {
+      },
+      cancelation_reasons: {
         Title: "سبب الالغاء",
         LIST: "قائمة أسباب الإلغاء",
         ADD: "إضافة سبب"
@@ -87,8 +105,9 @@ export const locale = {
       },
       consulting: {
         Title: "الاستشارات",
-        LIST: "قائمة الاستشارات",
-      }, SERVICES: {
+        LIST: "قائمة الاستشارات"
+      },
+      SERVICES: {
         Title: "الخدمات",
         LIST: "قائمة الخدمات",
         ADD: "إضافة خدمة"
@@ -98,14 +117,13 @@ export const locale = {
         LIST: "قائمة الاقسام",
         TYPES: "انواع القسائم",
         ADD: "إضافة قسم"
-
       },
       ARTICLES: {
         Title: "المقالات",
         LIST: "قائمة المقالات",
         Plant_groups: "المجموعات النباتية",
         ADD: "إضافة ",
-        various: "مقالات زراعية متنوعة",
+        various: "مقالات زراعية متنوعة"
       },
       TAGS: {
         Title: "التاجات",
@@ -122,65 +140,135 @@ export const locale = {
         LIST: "قائمة ",
         ADD: "إضافة"
       },
-
-      "PLANTCARDS": {
-        "TITLE": "بطاقات النباتات",
-        "LIST": "قائمة بطاقات النباتات",
-        "ADD": "إضافة بطاقة نبات",
-        "LEAVERSCOLOR": {
-          "TITLE": "ألوان أوراق النباتات",
-          "LIST": "قائمة ألوان أوراق النباتات",
-          "ADD": "إضافة لون لأوراق النباتات"
+      PLANTCARDS: {
+        TITLE: "بطاقات النباتات",
+        LIST: "قائمة بطاقات النباتات",
+        ADD: "إضافة بطاقة نبات",
+        LEAVERSCOLOR: {
+          TITLE: "ألوان أوراق النباتات",
+          LIST: "قائمة ألوان أوراق النباتات",
+          ADD: "إضافة لون لأوراق النباتات"
         },
-        "LEAVERSFORM": {
-          "TITLE": "أشكال أوراق النباتات",
-          "LIST": "قائمة أشكال أوراق النباتات",
-          "ADD": "إضافة شكل لأوراق النباتات"
+        LEAVERSFORM: {
+          TITLE: "أشكال أوراق النباتات",
+          LIST: "قائمة أشكال أوراق النباتات",
+          ADD: "إضافة شكل لأوراق النباتات"
         },
-        "FLOWERFORM": {
-          "TITLE": "أشكال الأزهار",
-          "LIST": "قائمة أشكال الأزهار",
-          "ADD": "إضافة شكل للأزهار"
+        FLOWERFORM: {
+          TITLE: "أشكال الأزهار",
+          LIST: "قائمة أشكال الأزهار",
+          ADD: "إضافة شكل للأزهار"
         },
-        "FLOWERCOLOR": {
-          "TITLE": "ألوان الأزهار",
-          "LIST": "قائمة ألوان الأزهار",
-          "ADD": "إضافة لون للأزهار"
+        FLOWERCOLOR: {
+          TITLE: "ألوان الأزهار",
+          LIST: "قائمة ألوان الأزهار",
+          ADD: "إضافة لون للأزهار"
         },
-        "ENVIRONMENTLIGHT": {
-          "TITLE": "إضاءة البيئة",
-          "LIST": "قائمة إضاءة البيئة",
-          "ADD": "إضافة إضاءة بيئة"
+        ENVIRONMENTLIGHT: {
+          TITLE: "إضاءة البيئة",
+          LIST: "قائمة إضاءة البيئة",
+          ADD: "إضافة إضاءة بيئة"
         },
-        "ENVIRONMENTTEMP": {
-          "TITLE": "درجة حرارة البيئة",
-          "LIST": "قائمة درجات حرارة البيئة",
-          "ADD": "إضافة درجة حرارة بيئة"
+        ENVIRONMENTTEMP: {
+          TITLE: "درجة حرارة البيئة",
+          LIST: "قائمة درجات حرارة البيئة",
+          ADD: "إضافة درجة حرارة بيئة"
         },
-        "ENVIRONMENHUMIDITY": {
-          "TITLE": "رطوبة البيئة",
-          "LIST": "قائمة رطوبة البيئة",
-          "ADD": "إضافة رطوبة بيئة"
+        ENVIRONMENHUMIDITY: {
+          TITLE: "رطوبة البيئة",
+          LIST: "قائمة رطوبة البيئة",
+          ADD: "إضافة رطوبة بيئة"
         },
-        "REPRODUCTIONS": {
-          "TITLE": "التكاثر",
-          "LIST": "قائمة طرق التكاثر",
-          "ADD": "إضافة طريقة تكاثر"
+        REPRODUCTIONS: {
+          TITLE: "التكاثر",
+          LIST: "قائمة طرق التكاثر",
+          ADD: "إضافة طريقة تكاثر"
         },
-        "PLANTCARDSOIL": {
-          "TITLE": "أنواع التربة",
-          "LIST": "قائمة أنواع التربة",
-          "ADD": "إضافة نوع تربة"
-        },
-
-        
-
-
- 
-
+        PLANTCARDSOIL: {
+          TITLE: "أنواع التربة",
+          LIST: "قائمة أنواع التربة",
+          ADD: "إضافة نوع تربة"
+        }
       }
-
+    },
+    ANMAR_PAGES: {
+      COMMON: {
+        LIST: "القائمة",
+        ADD: "إضافة",
+        EDIT: "تعديل",
+        VIEW: "عرض",
+        DELETE: "حذف",
+        SAVE: "حفظ",
+        UPDATE: "تحديث",
+        CANCEL: "إلغاء",
+        ACTIONS: "الإجراءات",
+        LOADING: "جاري التحميل...",
+        NO_DATA: "لا توجد بيانات",
+        CONFIRM_DELETE: "هل أنت متأكد من حذف هذا العنصر؟",
+        CREATED_SUCCESS: "تمت الإضافة بنجاح",
+        UPDATED_SUCCESS: "تم التحديث بنجاح",
+        DELETED_SUCCESS: "تم الحذف بنجاح",
+        ERROR: "حدث خطأ ما",
+        ACTIVE: "نشط",
+        INACTIVE: "غير نشط",
+        YES: "نعم",
+        NO: "لا",
+        SEARCH: "بحث",
+        SHOW: "عرض",
+        ENTRIES: "عناصر",
+        EMPTY_HELP: "جرّب إضافة عنصر جديد أو تغيير نص البحث.",
+        CREATE_ENTRY: "إضافة عنصر جديد",
+        UPDATE_ENTRY: "تحديث البيانات الحالية",
+        ARRAY_HINT: "أدخل القيم مفصولة بفواصل وسيتم إرسالها كمصفوفة.",
+        REQUIRED_FIELD: "يرجى تعبئة الحقول المطلوبة"
+      },
+      FIELDS: {
+        ID: "المعرف",
+        IMAGE: "الصورة",
+        ICON: "الأيقونة",
+        VIDEO: "الفيديو",
+        TITLE_AR: "العنوان بالعربية",
+        TITLE_EN: "العنوان بالإنجليزية",
+        DESCRIPTION_AR: "الوصف بالعربية",
+        DESCRIPTION_EN: "الوصف بالإنجليزية",
+        CONTENT_AR: "المحتوى بالعربية",
+        CONTENT_EN: "المحتوى بالإنجليزية",
+        NAME: "الاسم",
+        NAME_AR: "الاسم بالعربية",
+        NAME_EN: "الاسم بالإنجليزية",
+        EMAIL: "البريد الإلكتروني",
+        TYPE: "النوع",
+        ABOUT: "الموضوع",
+        STATUS: "الحالة",
+        VALUE: "القيمة",
+        KEY: "المفتاح",
+        SLUG: "الرابط المختصر",
+        DATE: "التاريخ",
+        YEAR: "السنة",
+        CATEGORY: "التصنيف",
+        CATEGORIES: "التصنيفات",
+        LANGUAGES: "اللغات",
+        PROGRAMMING_LANGUAGES: "لغات البرمجة",
+        WEBSITE_URL: "رابط الموقع",
+        STEP_NUMBER: "رقم الخطوة",
+        SORT_ORDER: "ترتيب العرض",
+        IS_ACTIVE: "نشط"
+      },
+      MODULES: {
+        HOME_DETAILS: "تفاصيل الرئيسية",
+        HOME_ABOUT: "نبذة الرئيسية",
+        HOME_SERVICES: "خدمات الرئيسية",
+        HOME_WORK: "أعمال الرئيسية",
+        HOME_CLIENTS: "عملاء الرئيسية",
+        HOME_PARTNERS: "شركاء الرئيسية",
+        ABOUT_DATES: "تواريخ من نحن",
+        ABOUT_VISION: "الرؤية",
+        ABOUT_VALUE: "القيم",
+        ABOUT_TEAM: "الفريق",
+        SERVICES_STEPS: "خطوات الخدمات",
+        CONTACT_MESSAGES: "رسائل التواصل",
+        BLOG: "المدونة"
+      }
     }
-  
   }
-}
+};

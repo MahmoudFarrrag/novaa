@@ -1,8 +1,293 @@
-@import '@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
+@import '@core/scss/base/bootstrap-extended/include';
 @import '@core/scss/base/pages/page-auth.scss';
 
-.auth-help-icon {
+.anmar-auth-screen {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(48, 106, 218, 0.24), transparent 36%),
+    radial-gradient(circle at bottom right, rgba(195, 216, 255, 0.42), transparent 38%),
+    linear-gradient(135deg, #f7faff 0%, #eef4ff 45%, #fdfefe 100%);
+}
+
+.anmar-auth-inner {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.anmar-auth-orb {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  border-radius: 50%;
+  filter: blur(12px);
+  opacity: 0.55;
+  animation: floatOrb 12s ease-in-out infinite;
+}
+
+.anmar-auth-orb-1 {
+  top: 8%;
+  left: 6%;
+  width: 220px;
+  height: 220px;
+  background: rgba(48, 106, 218, 0.14);
+}
+
+.anmar-auth-orb-2 {
+  right: 8%;
+  bottom: 12%;
+  width: 280px;
+  height: 280px;
+  background: rgba(195, 216, 255, 0.65);
+  animation-duration: 16s;
+}
+
+.anmar-auth-orb-3 {
+  top: 40%;
+  right: 42%;
+  width: 120px;
+  height: 120px;
+  background: rgba(48, 106, 218, 0.18);
+  animation-duration: 10s;
+}
+
+.anmar-brand-logo {
+  top: 2rem;
+  left: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 5;
+}
+
+.anmar-brand-logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+
+.anmar-brand-subtitle {
+  display: block;
+  margin-left: 0.3rem;
+  color: #6e7b91;
+  letter-spacing: 0.04em;
+}
+
+.anmar-auth-visual-side {
+  position: relative;
+}
+
+.anmar-visual-wrap {
+  position: relative;
+  width: min(100%, 560px);
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anmar-visual-glow {
+  position: absolute;
+  inset: 12% 18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(48, 106, 218, 0.16) 0%, rgba(48, 106, 218, 0.03) 60%, transparent 72%);
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.anmar-visual-card {
+  position: absolute;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(48, 106, 218, 0.12);
+  box-shadow: 0 24px 60px rgba(48, 106, 218, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.anmar-visual-card-main {
+  width: 360px;
+  min-height: 320px;
+  padding: 2.25rem 2rem;
+  text-align: center;
+  animation: floatCard 7s ease-in-out infinite;
+}
+
+.anmar-visual-logo {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin-bottom: 1.25rem;
+}
+
+.anmar-visual-card-main h1 {
+  color: #306ada;
+  font-weight: 700;
+  font-size: 2.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.anmar-visual-card-main p {
+  color: #667085;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.anmar-visual-card-small {
+  padding: 0.95rem 1.2rem;
+  color: #306ada;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.anmar-visual-card-top {
+  top: 70px;
+  right: 40px;
+  animation: floatBadge 6s ease-in-out infinite;
+}
+
+.anmar-visual-card-bottom {
+  left: 30px;
+  bottom: 85px;
+  animation: floatBadge 8s ease-in-out infinite reverse;
+}
+
+.anmar-auth-form-side {
+  position: relative;
+}
+
+.anmar-login-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(48, 106, 218, 0.14);
+  border-radius: 28px;
+  box-shadow: 0 24px 65px rgba(17, 24, 39, 0.1);
+  padding: 2rem 1.6rem;
+  backdrop-filter: blur(16px);
+  animation: fadeSlideUp 0.8s ease-out;
+}
+
+.anmar-login-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+
+.anmar-login-card .card-title {
+  color: #1f2937;
+  font-size: 1.9rem;
+}
+
+.anmar-login-card .card-text {
+  color: #6b7280;
+}
+
+.anmar-login-card .form-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.anmar-login-card .form-control,
+.anmar-login-card .input-group-text {
+  border-radius: 14px;
+  min-height: 52px;
+}
+
+.anmar-login-card .form-control {
+  border-color: rgba(48, 106, 218, 0.16);
+  box-shadow: none;
+  transition: all 0.25s ease;
+}
+
+.anmar-login-card .form-control:focus {
+  border-color: #306ada;
+  box-shadow: 0 0 0 0.2rem rgba(48, 106, 218, 0.12);
+  transform: translateY(-1px);
+}
+
+.anmar-login-card .input-group-text {
+  border-color: rgba(48, 106, 218, 0.16);
+  background: #fff;
+}
+
+.anmar-login-btn {
+  min-height: 52px;
+  border-radius: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #306ada 0%, #4e86f0 100%);
+  border: none;
+  box-shadow: 0 14px 30px rgba(48, 106, 218, 0.24);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.anmar-login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(48, 106, 218, 0.28);
+}
+
+.anmar-login-btn:disabled {
+  opacity: 0.85;
+}
+
+@media (max-width: 991.98px) {
+  .anmar-brand-logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 1.5rem auto 0;
+    justify-content: center;
+  }
+
+  .anmar-auth-form-side {
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .anmar-login-card {
+    padding: 1.5rem 1rem;
+    border-radius: 22px;
+  }
+
+  .anmar-login-card .card-title {
+    font-size: 1.55rem;
+  }
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -18px, 0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
