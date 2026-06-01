@@ -7,6 +7,17 @@ import { environment } from 'environments/environment';
 import { User, Role } from 'app/auth/models';
 import { ToastrService } from 'ngx-toastr';
 
+interface LoginResponse {
+  message: string;
+  token: string;
+  token_type: string;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+  };
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   //public
@@ -53,30 +64,36 @@ export class AuthenticationService {
    */
   login(email: string, password: string) {
     return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+      .post<LoginResponse>(`${environment.dashboardApiBase}/login`, { email, password })
       .pipe(
-        map(user => {
-          // login successful if there's a jwt token in the response
-          if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
+        map(response => {
+          if (response && response.token) {
+            const currentUser: User = {
+              id: response.user.id,
+              email: response.user.email,
+              firstName: response.user.name,
+              lastName: '',
+              avatar: '',
+              role: Role.Admin,
+              token: response.token,
+              password: ''
+            };
 
-            // Display welcome toast!
+            localStorage.setItem('authToken', response.token);
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
             setTimeout(() => {
               this._toastrService.success(
-                'You have successfully logged in as an ' +
-                  user.role +
-                  ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
-                '👋 Welcome, ' + user.firstName + '!',
+                'You have successfully logged in to ANMAR dashboard.',
+                'Welcome, ' + response.user.name,
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
-            }, 2500);
+            }, 500);
 
-            // notify
-            this.currentUserSubject.next(user);
+            this.currentUserSubject.next(currentUser);
           }
 
-          return user;
+          return response;
         })
       );
   }
@@ -89,9 +106,8 @@ export class AuthenticationService {
    *
    */
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    // notify
+    localStorage.removeItem('authToken');
     this.currentUserSubject.next(null);
   }
 }

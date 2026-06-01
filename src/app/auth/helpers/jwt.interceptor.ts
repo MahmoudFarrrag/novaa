@@ -20,16 +20,19 @@ export class JwtInterceptor implements HttpInterceptor {
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this._authenticationService.currentUserValue;
-    const isLoggedIn = currentUser && currentUser.token;
-    const isApiUrl = request.url.startsWith(environment.apiUrl);
-    if (currentUser && currentUser.token) {
+    const savedToken = currentUser?.token || localStorage.getItem('authToken');
+    const dashboardApiBase = ((environment as any).dashboardApiBase || '').replace(/\/+$/, '');
+    const isProtectedDashboardRequest =
+      request.url.startsWith(`${dashboardApiBase}/dashboard`) || request.url.startsWith(`${dashboardApiBase}/logout`);
+
+    if (savedToken && isProtectedDashboardRequest) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${currentUser.token}`
+          Authorization: `Bearer ${savedToken}`
         }
       });
     }
+
     return next.handle(request);
-    
   }
 }

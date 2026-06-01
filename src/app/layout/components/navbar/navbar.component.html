@@ -37,7 +37,7 @@
     <!--/ Toggle skin --> 
   </div>
 
-  <ul class="nav navbar-nav align-items-center ml-auto">
+  <ul class="nav navbar-nav align-items-center ml-auto" [class.navbar-ar-desktop-left]="currentLang === 'ar'">
     <!-- ? Language selection | Uncomment if needed -->
     <li ngbDropdown class="nav-item dropdown dropdown-language">
       <a class="nav-link dropdown-toggle" id="dropdown-flag" ngbDropdownToggle>

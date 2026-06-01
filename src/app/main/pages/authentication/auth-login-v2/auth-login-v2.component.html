@@ -1,37 +1,18 @@
-<div class="auth-wrapper auth-v2 anmar-auth-screen">
-  <div class="anmar-auth-orb anmar-auth-orb-1"></div>
-  <div class="anmar-auth-orb anmar-auth-orb-2"></div>
-  <div class="anmar-auth-orb anmar-auth-orb-3"></div>
+<div class="auth-wrapper auth-v2 anmar-auth-screen" [class.anmar-page-rtl]="isArabic">
+  <div class="auth-inner anmar-auth-inner">
+    <div class="anmar-auth-container">
+      <div class="anmar-auth-form-side">
+        <div class="anmar-login-card" [class.anmar-auth-rtl]="isArabic">
+          <div class="anmar-login-topbar">
+            <button type="button" class="btn btn-outline-primary btn-sm anmar-lang-btn" (click)="toggleLanguage()">
+              {{ t.language }}
+            </button>
+          </div>
 
-  <div class="auth-inner row m-0 anmar-auth-inner">
-    <!-- <a class="brand-logo anmar-brand-logo" href="javascript:void(0);">
-      <img src="assets/images/logo/shap.png" alt="ANMAR" height="44" />
-      <div>
-        <h2 class="brand-text text-primary mb-0 ml-1">ANMAR</h2>
-        <small class="anmar-brand-subtitle">Admin Dashboard</small>
-      </div>
-    </a> -->
-
-    <div class="d-none d-lg-flex col-lg-7 align-items-center justify-content-center p-5 anmar-auth-visual-side">
-      <div class="anmar-visual-wrap">
-        <div class="anmar-visual-glow"></div>
-        <div class="anmar-visual-card anmar-visual-card-main">
-          <img src="assets/images/logo/shap.png" alt="ANMAR logo" class="anmar-visual-logo" />
-          <h1>ANMAR</h1>
-          <p>Smart control panel with a clean, focused experience.</p>
-        </div>
-        <div class="anmar-visual-card anmar-visual-card-small anmar-visual-card-top">Secure Access</div>
-        <div class="anmar-visual-card anmar-visual-card-small anmar-visual-card-bottom">Modern Dashboard</div>
-      </div>
-    </div>
-
-    <div class="d-flex col-lg-5 align-items-center auth-bg px-2 p-lg-5 anmar-auth-form-side">
-      <div class="col-12 col-sm-10 col-md-8 col-lg-11 col-xl-10 px-xl-3 mx-auto">
-        <div class="anmar-login-card">
           <div class="text-center mb-3">
             <img src="assets/images/logo/shap.png" alt="ANMAR" class="anmar-login-logo mb-2" />
-            <h2 class="card-title font-weight-bold mb-1">Welcome to ANMAR</h2>
-            <p class="card-text mb-0">Sign in to continue to your dashboard.</p>
+            <h2 class="card-title font-weight-bold mb-1">{{ t.title }}</h2>
+            <p class="card-text mb-0">{{ t.subtitle }}</p>
           </div>
 
           <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="error" class="mb-2">
@@ -42,26 +23,27 @@
 
           <form class="auth-login-form mt-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label class="form-label" for="login-email">Email</label>
+              <label class="form-label" for="login-email">{{ t.emailLabel }}</label>
               <input
                 id="login-email"
                 type="text"
                 formControlName="email"
                 class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                placeholder="admin@anmar.com"
+                [placeholder]="t.emailPlaceholder"
                 aria-describedby="login-email"
-                autofocus=""
+                [dir]="isArabic ? 'rtl' : 'ltr'"
+                autofocus
                 tabindex="1"
               />
               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">Email is required</div>
-                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                <div *ngIf="f.email.errors.required">{{ t.emailRequired }}</div>
+                <div *ngIf="f.email.errors.email">{{ t.emailInvalid }}</div>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="login-password">Password</label>
+              <label class="form-label" for="login-password">{{ t.passwordLabel }}</label>
               <div class="input-group input-group-merge form-password-toggle">
                 <input
                   id="login-password"
@@ -69,21 +51,22 @@
                   formControlName="password"
                   class="form-control form-control-merge"
                   [ngClass]="{ 'is-invalid error': submitted && f.password.errors }"
-                  placeholder="••••••••••••"
+                  [placeholder]="t.passwordPlaceholder"
                   aria-describedby="login-password"
+                  [dir]="isArabic ? 'rtl' : 'ltr'"
                   tabindex="2"
                 />
                 <div class="input-group-append">
-                  <span class="input-group-text cursor-pointer"
-                    ><i
+                  <span class="input-group-text cursor-pointer">
+                    <i
                       class="feather font-small-4"
                       [ngClass]="{
                         'icon-eye-off': passwordTextType,
                         'icon-eye': !passwordTextType
                       }"
                       (click)="togglePasswordTextType()"
-                    ></i
-                  ></span>
+                    ></i>
+                  </span>
                 </div>
               </div>
               <div
@@ -91,20 +74,20 @@
                 class="invalid-feedback"
                 [ngClass]="{ 'd-block': submitted && f.password.errors }"
               >
-                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.required">{{ t.passwordRequired }}</div>
               </div>
             </div>
 
             <div class="form-group d-flex align-items-center justify-content-between flex-wrap mb-2">
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" id="remember-me" type="checkbox" tabindex="3" />
-                <label class="custom-control-label" for="remember-me">Remember Me</label>
+                <label class="custom-control-label" for="remember-me">{{ t.remember }}</label>
               </div>
             </div>
 
             <button [disabled]="loading" class="btn btn-primary btn-block anmar-login-btn" tabindex="4" rippleEffect>
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              Sign in
+              {{ t.submit }}
             </button>
           </form>
         </div>

@@ -92,7 +92,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/pages',
+    redirectTo: '/anmar/home-details',
     pathMatch: 'full'
   },
   {

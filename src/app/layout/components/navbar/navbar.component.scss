@@ -48,3 +48,10 @@ app-navbar-bookmark {
   padding: 5px 15px;
   border-radius: 5px;
 }
+
+@media (min-width: 992px) {
+  .navbar-container > .navbar-ar-desktop-left {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+}
