@@ -7,7 +7,11 @@ import { environment } from 'environments/environment';
   providedIn: 'root'
 })
 export class AnmarApiService {
-  private readonly baseUrl = (environment as any).dashboardApiBase || (environment as any).apiBaseUrl || (environment as any).productionDomain || 'http://127.0.0.1:8000/api';
+  private readonly baseUrl =
+    (environment as any).dashboardApiBase ||
+    (environment as any).apiBaseUrl ||
+    (environment as any).productionDomain ||
+    'https://site-api.onmr.sa/public/api';
 
   constructor(private http: HttpClient) {}
 

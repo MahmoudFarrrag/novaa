@@ -210,3 +210,8 @@ html:dir(rtl) .avatar {
 // }
 
 
+
+html[dir="rtl"] .vertical-layout .header-navbar .navbar-container ul.navbar-nav li.dropdown .dropdown-menu {
+  top: 41px !important;
+  margin-right: -80px !important;
+}

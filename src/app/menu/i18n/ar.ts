@@ -47,9 +47,9 @@ export const locale = {
       },
       ANMAR: {
         TITLE: "أنمار",
-        HOME_DETAILS: "تفاصيل الرئيسية",
-        HOME_ABOUT: "نبذة الرئيسية",
-        HOME_SERVICES: "خدمات الرئيسية",
+        HOME_DETAILS: " الرئيسية",
+        HOME_ABOUT: "نبذة عنا ",
+        HOME_SERVICES: "الخدمات ",
         HOME_WORK: "أعمالنا",
         HOME_CLIENTS: "عملاؤنا",
         HOME_PARTNERS: "شركاؤنا",
@@ -58,7 +58,7 @@ export const locale = {
         ABOUT_VALUE: "القيم",
         ABOUT_TEAM: "الفريق",
         SERVICES_STEPS: "خطوات الخدمات",
-        CONTACT_MESSAGES: "رسائل التواصل",
+        CONTACT_MESSAGES: "الرسائل ",
         BLOG: "المدونة",
         LIST: "القائمة",
         ADD: "إضافة"

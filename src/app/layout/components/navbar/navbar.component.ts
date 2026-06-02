@@ -98,7 +98,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         flag: 'us',
       },
       ar: {
-        title: 'Arabic',
+        title: 'العربية',
         flag: 'ae',
       },
     };
