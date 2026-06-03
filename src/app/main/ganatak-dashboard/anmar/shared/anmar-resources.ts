@@ -230,6 +230,11 @@ export const ANMAR_RESOURCES: Record<string, AnmarResourceConfig> = {
         "type": "text"
       },
       {
+        "name": "link",
+        "label": "Link",
+        "type": "text"
+      },
+      {
         "name": "description_ar",
         "label": "Description (AR)",
         "type": "textarea"
@@ -268,6 +273,7 @@ export const ANMAR_RESOURCES: Record<string, AnmarResourceConfig> = {
       "title_en",
       "languages",
       "video",
+      "link",
       "description_ar",
       "description_en",
       "category",

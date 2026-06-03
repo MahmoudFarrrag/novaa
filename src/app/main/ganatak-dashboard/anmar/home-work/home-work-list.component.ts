@@ -17,4 +17,23 @@ export class HomeWorkListComponent extends AnmarBaseListComponent {
   constructor(api: AnmarApiService, router: Router, toastr: ToastrService) {
     super(api, router, toastr);
   }
+
+  getLinkHref(value: any): string {
+    const link = String(value || '').trim();
+
+    if (!link) {
+      return '';
+    }
+
+    if (/^https?:\/\//i.test(link)) {
+      return link;
+    }
+
+    return `https://${link.replace(/^\/+/, '')}`;
+  }
+
+  getLinkDisplay(value: any): string {
+    const link = String(value || '').trim();
+    return link ? this.truncateText(link, 40) : '-';
+  }
 }

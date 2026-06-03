@@ -52,7 +52,7 @@
                   </ng-container>
 
                   <ng-template #standardInputTemplate>
-                    <input *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'date'" [id]="field.name" [type]="field.type" class="form-control" [formControlName]="field.name" [readonly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate" />
+                    <input *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'date'" [id]="field.name" [type]="getInputType(field)" class="form-control" [formControlName]="field.name" [readonly]="field.readonly" [placeholder]="getFieldPlaceholder(field)" />
                   </ng-template>
 
                   <textarea *ngIf="field.type === 'textarea' || field.type === 'array-text'" [id]="field.name" class="form-control" rows="4" [formControlName]="field.name" [readOnly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate"></textarea>

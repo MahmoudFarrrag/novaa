@@ -228,6 +228,7 @@ export const locale = {
         IMAGE: "Image",
         ICON: "Icon",
         VIDEO: "Video",
+        LINK: "Link",
         TITLE_AR: "Arabic Title",
         TITLE_EN: "English Title",
         DESCRIPTION_AR: "Arabic Description",

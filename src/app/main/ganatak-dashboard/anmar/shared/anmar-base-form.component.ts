@@ -57,6 +57,26 @@ export abstract class AnmarBaseFormComponent implements OnInit {
     return field.name === 'image';
   }
 
+  getInputType(field: AnmarFieldConfig): string {
+    if (field.type === 'number' || field.type === 'date') {
+      return field.type;
+    }
+
+    if (field.name === 'link' || field.name === 'website_url') {
+      return 'url';
+    }
+
+    return 'text';
+  }
+
+  getFieldPlaceholder(field: AnmarFieldConfig): string {
+    if (field.name === 'link' || field.name === 'website_url') {
+      return 'https://example.com';
+    }
+
+    return this.translate.instant(this.getFieldTranslateKey(field.name));
+  }
+
   onFileSelected(event: Event, fieldName: string): void {
     const input = event.target as HTMLInputElement | null;
     const file = input?.files?.[0] || null;

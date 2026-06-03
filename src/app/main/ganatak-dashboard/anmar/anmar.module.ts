@@ -98,7 +98,7 @@ const routes: Routes = [
     AboutDatesListComponent,
     AboutDatesFormComponent,
     AboutVisionListComponent,
-    AboutVisionFormComponent,
+    AboutVisionFormComponent, 
     AboutValueListComponent,
     AboutValueFormComponent,
     AboutTeamListComponent,
