@@ -156,7 +156,8 @@ export abstract class AnmarBaseListComponent {
   }
 
   getImageSource(value: any): string {
-    return value || 'assets/images/logo/shap.png';
+    const imageUrl = this.api.getImageUrl(String(value || ''));
+    return imageUrl || 'assets/images/logo/shap.png';
   }
 
   onImageError(event: Event): void {

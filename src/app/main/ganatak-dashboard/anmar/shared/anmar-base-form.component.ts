@@ -16,6 +16,8 @@ export abstract class AnmarBaseFormComponent implements OnInit {
   isEditMode = false;
   recordId: string | null = null;
   errorMessage = '';
+  imagePreviewUrls: Record<string, string> = {};
+  selectedFiles: Record<string, File | null> = {};
   protected translate = inject(TranslateService);
 
   protected constructor(
@@ -51,6 +53,33 @@ export abstract class AnmarBaseFormComponent implements OnInit {
     return '';
   }
 
+  isImageField(field: AnmarFieldConfig): boolean {
+    return field.name === 'image';
+  }
+
+  onFileSelected(event: Event, fieldName: string): void {
+    const input = event.target as HTMLInputElement | null;
+    const file = input?.files?.[0] || null;
+    this.selectedFiles[fieldName] = file;
+
+    if (file) {
+      this.form.get(fieldName)?.setValue(file.name);
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewUrls[fieldName] = String(reader.result || '');
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+
+    this.imagePreviewUrls[fieldName] = this.isEditMode ? this.imagePreviewUrls[fieldName] || '' : '';
+  }
+
+  getImagePreview(fieldName: string): string {
+    const preview = this.imagePreviewUrls[fieldName] || '';
+    return this.api.getImageUrl(preview);
+  }
+
   loadRecord(id: string): void {
     this.loading = true;
     this.api.getById(this.config.endpoint, id).subscribe({
@@ -67,6 +96,9 @@ export abstract class AnmarBaseFormComponent implements OnInit {
           }
           if (field.type === 'date' && value) {
             value = String(value).slice(0, 10);
+          }
+          if (this.isImageField(field) && value) {
+            this.imagePreviewUrls[field.name] = this.api.getImageUrl(String(value));
           }
           patch[field.name] = value ?? this.getDefaultValue(field);
         });
@@ -113,12 +145,16 @@ export abstract class AnmarBaseFormComponent implements OnInit {
   buildPayload(): any {
     const formValue = this.form.getRawValue();
     const payload: Record<string, any> = {};
+    let hasSelectedFile = false;
 
     this.config.fields.forEach((field) => {
       let value = formValue[field.name];
 
       if (field.type === 'array-text') {
-        value = String(value || '').split(',').map((entry) => entry.trim()).filter(Boolean);
+        value = String(value || '')
+          .split(',')
+          .map((entry) => entry.trim())
+          .filter(Boolean);
       }
 
       if (field.type === 'number') {
@@ -129,10 +165,50 @@ export abstract class AnmarBaseFormComponent implements OnInit {
         value = !!value;
       }
 
+      if (this.isImageField(field)) {
+        const selectedFile = this.selectedFiles[field.name];
+        if (selectedFile) {
+          payload[field.name] = selectedFile;
+          hasSelectedFile = true;
+        } else if (value !== '' && value !== null && value !== undefined) {
+          payload[field.name] = value;
+        }
+        return;
+      }
+
       payload[field.name] = value;
     });
 
-    return payload;
+    return hasSelectedFile ? this.toFormData(payload) : payload;
+  }
+
+  private toFormData(payload: Record<string, any>): FormData {
+    const formData = new FormData();
+
+    Object.entries(payload).forEach(([key, value]) => {
+      if (value === null || value === undefined || value === '') {
+        return;
+      }
+
+      if (Array.isArray(value)) {
+        value.forEach((entry) => formData.append(`${key}[]`, String(entry)));
+        return;
+      }
+
+      if (value instanceof File) {
+        formData.append(key, value);
+        return;
+      }
+
+      if (typeof value === 'boolean') {
+        formData.append(key, value ? '1' : '0');
+        return;
+      }
+
+      formData.append(key, String(value));
+    });
+
+    return formData;
   }
 
   cancel(): void {

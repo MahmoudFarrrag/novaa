@@ -45,7 +45,7 @@ export const menu: CoreMenu[] = [
         title: "Home About",
         translate: "MENU.ANMAR.HOME_ABOUT",
         type: "collapsible",
-        icon: "home",
+        icon: "info",
         children: [
           { id: "anmar-home-about-list", title: "List", translate: "MENU.ANMAR.LIST", type: "item", icon: "list", url: "anmar/home-about" },
           // { id: "anmar-home-about-add", title: "Add", translate: "MENU.ANMAR.ADD", type: "item", icon: "plus", url: "anmar/home-about/add" }
@@ -56,7 +56,7 @@ export const menu: CoreMenu[] = [
         title: "Home Services",
         translate: "MENU.ANMAR.HOME_SERVICES",
         type: "collapsible",
-        icon: "settings",
+        icon: "tool",
         children: [
           { id: "anmar-home-services-list", title: "List", translate: "MENU.ANMAR.LIST", type: "item", icon: "list", url: "anmar/home-services" },
           // { id: "anmar-home-services-add", title: "Add", translate: "MENU.ANMAR.ADD", type: "item", icon: "plus", url: "anmar/home-services/add" }
@@ -73,6 +73,16 @@ export const menu: CoreMenu[] = [
           // { id: "anmar-home-work-add", title: "Add", translate: "MENU.ANMAR.ADD", type: "item", icon: "plus", url: "anmar/home-work/add" }
         ]
       },
+      // {
+      //   id: "anmar-home-business",
+      //   title: "Business",
+      //   translate: "MENU.ANMAR.HOME_BUSINESS",
+      //   type: "collapsible",
+      //   icon: "briefcase",
+      //   children: [
+      //     { id: "anmar-home-business-list", title: "List", translate: "MENU.ANMAR.LIST", type: "item", icon: "list", url: "anmar/home-business" }
+      //   ]
+      // },
       {
         id: "anmar-home-clients",
         title: "Home Clients",
@@ -89,7 +99,7 @@ export const menu: CoreMenu[] = [
         title: "Home Partners",
         translate: "MENU.ANMAR.HOME_PARTNERS",
         type: "collapsible",
-        icon: "link",
+        icon: "share-2",
         children: [
           { id: "anmar-home-partners-list", title: "List", translate: "MENU.ANMAR.LIST", type: "item", icon: "list", url: "anmar/home-partners" },
           // { id: "anmar-home-partners-add", title: "Add", translate: "MENU.ANMAR.ADD", type: "item", icon: "plus", url: "anmar/home-partners/add" }
@@ -122,7 +132,7 @@ export const menu: CoreMenu[] = [
         title: "About Value",
         translate: "MENU.ANMAR.ABOUT_VALUE",
         type: "collapsible",
-        icon: "star",
+        icon: "award",
         children: [
           { id: "anmar-about-value-list", title: "List", translate: "MENU.ANMAR.LIST", type: "item", icon: "list", url: "anmar/about-value" },
           // { id: "anmar-about-value-add", title: "Add", translate: "MENU.ANMAR.ADD", type: "item", icon: "plus", url: "anmar/about-value/add" }
@@ -144,7 +154,7 @@ export const menu: CoreMenu[] = [
         title: "Services Steps",
         translate: "MENU.ANMAR.SERVICES_STEPS",
         type: "collapsible",
-        icon: "list",
+        icon: "check-square",
         children: [
           { id: "anmar-services-steps-list", title: "List", translate: "MENU.ANMAR.LIST", type: "item", icon: "list", url: "anmar/services-steps" },
           // { id: "anmar-services-steps-add", title: "Add", translate: "MENU.ANMAR.ADD", type: "item", icon: "plus", url: "anmar/services-steps/add" }

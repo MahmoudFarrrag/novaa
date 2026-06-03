@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit, HostBinding, HostListener, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostBinding, HostListener, ViewEncapsulation } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 
-import * as _ from 'lodash';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,10 +12,9 @@ import { CoreMediaService } from '@core/services/media.service';
 
 import { User } from 'app/auth/models';
 
-import { coreConfig } from 'app/app-config';
 import { Router } from '@angular/router'; 
 import { localStorageService } from '@core/services/local-storage.service';
-import { DOCUMENT } from '@angular/common';
+import { AppLanguageService } from '@core/services/app-language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -37,7 +35,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public languageOptions: any;
   public navigation: any;
   public selectedLanguage: any;
-  lang: any;
   currentLang: string;
 
   @HostBinding('class.fixed-top')
@@ -87,7 +84,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private _mediaObserver: MediaObserver,
     public _translateService: TranslateService,
     private localStorage: localStorageService,
-    @Inject(DOCUMENT) private document: Document
+    private _appLanguageService: AppLanguageService
   ) {
     this._authenticationService.currentUser.subscribe(x => (this.currentUser = x));
 
@@ -124,20 +121,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * @param language
    */
   setLanguage(lang: string): void {
-  
-    this._translateService.use(lang);
-    this.currentLang = lang;
-    this.localStorage.setItem('currentLang', lang);
-  
-    // Update the `dir` attribute
-    const htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;  
-    
-    htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-    htmlTag.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-    htmlTag.style.textAlign = lang === 'ar' ? 'right' : 'left';
-
-    
- 
+    this._appLanguageService.setLanguage(lang);
   }
   
   
@@ -183,13 +167,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    console.log(this.languageOptions); // Should only contain 'en' and 'ar'
-  console.log(this._translateService.getLangs()); 
+    const savedLang = this.localStorage.getItem('currentLang') || this.localStorage.getItem('lang') || 'en';
+    this.currentLang = savedLang;
+    this.selectedLanguage = this.languageOptions[savedLang];
 
-      // Get the saved language or fallback to default
-  const savedLang = this.localStorage.getItem('currentLang') || 'en';
-  this.setLanguage(savedLang);
-
+    this._appLanguageService.language$.pipe(takeUntil(this._unsubscribeAll)).subscribe(lang => {
+      this.currentLang = lang;
+      this.selectedLanguage = this.languageOptions[lang];
+    });
 
     // get the currentUser details from localStorage
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -224,10 +209,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
     }
 
-    // Set the selected language from default languageOptions
-    this.selectedLanguage = _.find(this.languageOptions, {
-      id: this._translateService.currentLang
-    });
   }
 
   /**

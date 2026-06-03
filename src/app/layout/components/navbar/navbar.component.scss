@@ -21,6 +21,17 @@ app-navbar-bookmark {
   display: flex;
 }
 
+:host {
+  width: 100%;
+  max-width: 100%;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
 // Apply style on window scroll for navbar static type
 .navbar-static-style-on-scroll {
   background-color: #fff !important;

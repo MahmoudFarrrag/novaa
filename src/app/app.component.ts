@@ -12,11 +12,11 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
 import { CoreConfigService } from '@core/services/config.service';
 import { CoreLoadingScreenService } from '@core/services/loading-screen.service';
 import { CoreTranslationService } from '@core/services/translation.service';
+import { AppLanguageService } from '@core/services/app-language.service';
 
 import { menu } from 'app/menu/menu';
 import { locale as menuEnglish } from 'app/menu/i18n/en';
 import { locale as menuArabic } from 'app/menu/i18n/ar';
-import { localStorageService } from '@core/services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -28,11 +28,9 @@ export class AppComponent implements OnInit, OnDestroy {
   menu: any;
   defaultLanguage: 'en'; // This language will be used as a fallback when a translation isn't found in the current language
   appLanguage: 'en'; // Set application default language i.e fr
-  lang = 'ar';
-  // currentLang = 'en';
   // Private
   private _unsubscribeAll: Subject<any>;
-  public currentLang = this.localStorage.getItem('currentLang');
+  public currentLang: 'en' | 'ar' = 'en';
 
   /**
    * Constructor
@@ -59,17 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private _coreMenuService: CoreMenuService,
     private _coreTranslationService: CoreTranslationService,
     private _translateService: TranslateService,
-    private localStorage: localStorageService
+    private _appLanguageService: AppLanguageService
   ) {
-    // Get the application main menu
-    this.menu = menu;
-
-    // Register the menu to the menu service
-    this._coreMenuService.register('main', this.menu);
-
-    // Set the main menu as our current menu
-    this._coreMenuService.setCurrentMenu('main');
-
     // Add languages to the translation service
     this._translateService.addLangs(['en' , 'ar']);
 
@@ -79,10 +68,20 @@ export class AppComponent implements OnInit, OnDestroy {
     // Set the translations for the menu
     this._coreTranslationService.translate(menuEnglish, menuArabic);
 
+    // Apply saved language before building the menu
+    this.currentLang = this._appLanguageService.initLanguage('en');
+
+    // Get the application main menu
+    this.menu = menu;
+
+    // Register the menu to the menu service
+    this._coreMenuService.register('main', this.menu);
+
+    // Set the main menu as our current menu
+    this._coreMenuService.setCurrentMenu('main');
+
     // Set the private defaults
     this._unsubscribeAll = new Subject();
-    this.lang = this.localStorage.getItem('lang') || 'ar';
-    this._translateService.setDefaultLang(this.lang);
   }
 
   // Lifecycle hooks
@@ -95,66 +94,14 @@ export class AppComponent implements OnInit, OnDestroy {
     // Init wave effect (Ripple effect) 
     Waves.init();
 
-    
-    const htmlTag = this.document.getElementsByTagName("body")[0] as HTMLHtmlElement;
-
-    htmlTag.style.direction = this.currentLang == 'ar' ? 'rtl' : 'ltr';
-    htmlTag.style.textAlign = this.currentLang == 'ar' ? 'right' : 'left';
-
-      // Check if the language is stored in localStorage
-      const lang = localStorage.getItem('selectedLanguage');
-
-      // If there's a language in localStorage, use it
-      if (lang) {
-        this._translateService.use(lang);
-      } else {
-        // Default language if no language is saved
-        this._translateService.use('en');
-      }
+    this._appLanguageService.language$.pipe(takeUntil(this._unsubscribeAll)).subscribe(lang => {
+      this.currentLang = lang;
+      this._coreMenuService.setCurrentMenu('main');
+    });
     
     // Subscribe to config changes
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       this.coreConfig = config;
-
-      // Set application default language.
-
-      // Change application language? Read the ngxTranslate Fix
-
-      // ? Use app-config.ts file to set default language
-      const appLanguage = this.coreConfig.app.appLanguage || 'en';
-      this._translateService.use(appLanguage);
-
-      // ? OR
-      // ? User the current browser lang if available, if undefined use 'en'
-      // const browserLang = this._translateService.getBrowserLang();
-      // this._translateService.use(browserLang.match(/en|fr|de|pt/) ? browserLang : 'en');
-
-      /**
-       * ! Fix : ngxTranslate
-       * ----------------------------------------------------------------------------------------------------
-       */
-
-      /**
-       *
-       * Using different language than the default ('en') one i.e French?
-       * In this case, you may find the issue where application is not properly translated when your app is initialized.
-       *
-       * It's due to ngxTranslate module and below is a fix for that.
-       * Eventually we will move to the multi language implementation over to the Angular's core language service.
-       *
-       **/
-
-      // Set the default language to 'en' and then back to 'fr'.
-
-      setTimeout(() => {
-        this._translateService.setDefaultLang('en');
-        this._translateService.setDefaultLang(appLanguage);
-      });
-
-      /**
-       * !Fix: ngxTranslate
-       * ----------------------------------------------------------------------------------------------------
-       */
 
       // Layout
       //--------
@@ -254,28 +201,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.document.body.classList.remove('default-layout', 'bordered-layout', 'dark-layout', 'semi-dark-layout');
         this.document.body.classList.add(this.coreConfig.layout.skin + '-layout');
       }
+
+      this._title.setTitle(this.coreConfig.app.appTitle);
     });
-
-    // Set the application page title
-    this._title.setTitle(this.coreConfig.app.appTitle);
-
-
-     // Watch for changes in the language setting in localStorage
-  this.detectLanguageChange();
-  }
-
-  detectLanguageChange(): void {
-    // Save the initial language
-    let currentLang = this.currentLang;
-  
-    setInterval(() => {
-      const newLang = this.localStorage.getItem('currentLang');
-      if (newLang && newLang !== currentLang) {
-        // If the language has changed, reload the page
-        currentLang = newLang;
-        location.reload();
-      }
-    }, 1000); // Check every second (adjust interval as needed)
   }
   
   /**

@@ -275,6 +275,80 @@ export const ANMAR_RESOURCES: Record<string, AnmarResourceConfig> = {
       "sort_order"
     ]
   },
+  "homeBusiness": {
+    "key": "homeBusiness",
+    "route": "home-business",
+    "title": "Business",
+    "endpoint": "/dashboard/home/business",
+    "icon": "briefcase",
+    "allowCreate": true,
+    "fields": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "text"
+      },
+      {
+        "name": "title_ar",
+        "label": "Title (AR)",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "title_en",
+        "label": "Title (EN)",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "languages",
+        "label": "Languages",
+        "type": "array-text"
+      },
+      {
+        "name": "video",
+        "label": "Video",
+        "type": "text"
+      },
+      {
+        "name": "description_ar",
+        "label": "Description (AR)",
+        "type": "textarea"
+      },
+      {
+        "name": "description_en",
+        "label": "Description (EN)",
+        "type": "textarea"
+      },
+      {
+        "name": "category",
+        "label": "Category",
+        "type": "text"
+      },
+      {
+        "name": "is_active",
+        "label": "Active",
+        "type": "checkbox"
+      },
+      {
+        "name": "sort_order",
+        "label": "Sort Order",
+        "type": "number"
+      }
+    ],
+    "columns": [
+      "image",
+      "title_ar",
+      "title_en",
+      "languages",
+      "video",
+      "description_ar",
+      "description_en",
+      "category",
+      "is_active",
+      "sort_order"
+    ]
+  },
   "homeClients": {
     "key": "homeClients",
     "route": "home-clients",

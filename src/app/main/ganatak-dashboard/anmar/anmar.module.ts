@@ -12,6 +12,8 @@ import { HomeAboutListComponent } from './home-about/home-about-list.component';
 import { HomeAboutFormComponent } from './home-about/home-about-form.component';
 import { HomeServicesListComponent } from './home-services/home-services-list.component';
 import { HomeServicesFormComponent } from './home-services/home-services-form.component';
+import { HomeBusinessListComponent } from './home-business/home-business-list.component';
+import { HomeBusinessFormComponent } from './home-business/home-business-form.component';
 import { HomeWorkListComponent } from './home-work/home-work-list.component';
 import { HomeWorkFormComponent } from './home-work/home-work-form.component';
 import { HomeClientsListComponent } from './home-clients/home-clients-list.component';
@@ -43,6 +45,9 @@ const routes: Routes = [
   { path: 'anmar/home-services', component: HomeServicesListComponent },
   { path: 'anmar/home-services/add', component: HomeServicesFormComponent },
   { path: 'anmar/home-services/edit/:id', component: HomeServicesFormComponent },
+  { path: 'anmar/home-business', component: HomeBusinessListComponent },
+  { path: 'anmar/home-business/add', component: HomeBusinessFormComponent },
+  { path: 'anmar/home-business/edit/:id', component: HomeBusinessFormComponent },
   { path: 'anmar/home-work', component: HomeWorkListComponent },
   { path: 'anmar/home-work/add', component: HomeWorkFormComponent },
   { path: 'anmar/home-work/edit/:id', component: HomeWorkFormComponent },
@@ -82,6 +87,8 @@ const routes: Routes = [
     HomeAboutFormComponent,
     HomeServicesListComponent,
     HomeServicesFormComponent,
+    HomeBusinessListComponent,
+    HomeBusinessFormComponent,
     HomeWorkListComponent,
     HomeWorkFormComponent,
     HomeClientsListComponent,

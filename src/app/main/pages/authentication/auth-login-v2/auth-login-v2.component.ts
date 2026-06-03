@@ -108,6 +108,54 @@ export class AuthLoginV2Component implements OnInit {
     return this.content[this.isArabic ? 'ar' : 'en'];
   }
 
+  private getLocalizedLoginError(type: 'invalidCredentials' | 'network' | 'validation' | 'generic'): string {
+    const messages = {
+      en: {
+        invalidCredentials: 'Invalid email or password.',
+        network: 'Unable to connect to server. Please try again.',
+        validation: 'Please enter a valid email and password.',
+        generic: 'Login failed. Please try again.'
+      },
+      ar: {
+        invalidCredentials: 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+        network: 'تعذر الاتصال بالخادم. حاول مرة أخرى.',
+        validation: 'يرجى إدخال بريد إلكتروني وكلمة مرور صحيحة.',
+        generic: 'فشل تسجيل الدخول. حاول مرة أخرى.'
+      }
+    };
+
+    return messages[this.isArabic ? 'ar' : 'en'][type];
+  }
+
+  private resolveLoginErrorMessage(err: any): string {
+    const backendMessage = (err?.error?.message || '').toString().trim().toLowerCase();
+    const hasValidationErrors = !!err?.error?.errors?.email?.length || !!err?.error?.errors?.password?.length;
+    const status = err?.status;
+
+    if (status === 0 || status >= 500) {
+      return this.getLocalizedLoginError('network');
+    }
+
+    if (
+      status === 422 ||
+      hasValidationErrors
+    ) {
+      return this.getLocalizedLoginError('validation');
+    }
+
+    if (
+      status === 401 ||
+      backendMessage === 'invalid credentials.' ||
+      backendMessage === 'invalid credentials' ||
+      backendMessage === 'these credentials do not match our records.' ||
+      backendMessage === 'these credentials do not match our records'
+    ) {
+      return this.getLocalizedLoginError('invalidCredentials');
+    }
+
+    return this.getLocalizedLoginError('generic');
+  }
+
   /**
    * Toggle password
    */
@@ -137,6 +185,7 @@ export class AuthLoginV2Component implements OnInit {
     this.error = '';
 
     if (this.loginForm.invalid) {
+      this.error = this.getLocalizedLoginError('validation');
       return;
     }
 
@@ -148,14 +197,14 @@ export class AuthLoginV2Component implements OnInit {
       .pipe(finalize(() => (this.loading = false)))
       .subscribe({
         next: () => {
-          this._router.navigateByUrl(this.returnUrl || '/');
+          this._router.navigateByUrl('/anmar/home-details').then(navigated => {
+            if (navigated) {
+              window.location.reload();
+            }
+          });
         },
         error: err => {
-          this.error =
-            err?.error?.message ||
-            err?.error?.errors?.email?.[0] ||
-            err?.error?.errors?.password?.[0] ||
-            'Login failed. Please check your credentials and try again.';
+          this.error = this.resolveLoginErrorMessage(err);
         }
       });
   }

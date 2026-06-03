@@ -90,11 +90,11 @@
                     <i data-feather="more-vertical"></i>
                   </button>
                   <div ngbDropdownMenu>
-                    <a ngbDropdownItem (click)="navigateToEdit(row.id)">
+                    <a ngbDropdownItem class="anmar-action-item" (click)="navigateToEdit(row.id)">
                       <i data-feather="edit-2" class="mr-50"></i>
                       <span>{{ config.allowCreate ? ('ANMAR_PAGES.COMMON.EDIT' | translate) : ('ANMAR_PAGES.COMMON.VIEW' | translate) }}</span>
                     </a>
-                    <a ngbDropdownItem (click)="confirmDelete(row.id)">
+                    <a ngbDropdownItem class="anmar-action-item" (click)="confirmDelete(row.id)">
                       <i data-feather="trash" class="mr-50"></i>
                       <span>{{ 'ANMAR_PAGES.COMMON.DELETE' | translate }}</span>
                     </a>

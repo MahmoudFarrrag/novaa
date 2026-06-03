@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
 
@@ -12,7 +13,7 @@ import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoreMenuComponent implements OnInit {
+export class CoreMenuComponent implements OnInit, OnDestroy {
   currentUser: any;
 
   @Input()
@@ -29,7 +30,11 @@ export class CoreMenuComponent implements OnInit {
    * @param {ChangeDetectorRef} _changeDetectorRef
    * @param {CoreMenuService} _coreMenuService
    */
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private _coreMenuService: CoreMenuService) {
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _coreMenuService: CoreMenuService,
+    private _translateService: TranslateService
+  ) {
     // Set the private defaults
     this._unsubscribeAll = new Subject();
   }
@@ -53,5 +58,14 @@ export class CoreMenuComponent implements OnInit {
 
       this._changeDetectorRef.markForCheck();
     });
+
+    this._translateService.onLangChange.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
+      this._changeDetectorRef.markForCheck();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }

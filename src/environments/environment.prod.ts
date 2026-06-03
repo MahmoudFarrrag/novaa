@@ -4,5 +4,6 @@ export const environment = {
   apiUrl: 'http://localhost:4000',
   productionDomain: "http://api.ganatak.com/public/api/",
   developmentDomain: "http://api.ganatak.com/public/api/",
-  dashboardApiBase: 'https://site-api.onmr.sa/public/api'
+  dashboardApiBase: 'https://site-api.onmr.sa/public/api',
+  mediaBaseUrl: 'https://site-api.onmr.sa/public'
 };

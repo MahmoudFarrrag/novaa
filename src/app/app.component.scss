@@ -1,28 +1,75 @@
 :host {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+// html[dir='rtl'] {
+//   body {
+//     direction: rtl;
+//   }
+//   .navbar {
+//     text-align: right;
+//   }
+// }
+
+// html[dir='rtl'] body {
+//   direction: rtl;
+// }
+
+// html[dir='rtl'] .navbar {
+//   text-align: right;
+// }
+
+.movertl {
+  &.rtl {
+    margin-right: 150px;
+  }
+}
+
+:host ::ng-deep .app-content {
+  .content-area-wrapper,
+  .content-wrapper,
+  .content-body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
-  // html[dir='rtl'] {
-  //   body {
-  //     direction: rtl;
-  //   }
-  //   .navbar {
-  //     text-align: right;
-  //   }
-  // }
+  .content-wrapper.anmar-dashboard {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+  }
 
-  // html[dir='rtl'] body {
-  //   direction: rtl;
-  // }
-  
-  // html[dir='rtl'] .navbar {
-  //   text-align: right;
-  // }
+  .content-wrapper.anmar-dashboard.container-xxl {
+    max-width: none;
+  }
 
-  .movertl{
-    &.rtl {
-        margin-right: 150px;
-    
-    
-      } 
+  .content-wrapper.anmar-dashboard > .content-body,
+  .content-wrapper.anmar-dashboard section,
+  .content-wrapper.anmar-dashboard .card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .anmar-action-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .anmar-action-item i,
+  .anmar-action-item svg {
+    flex: 0 0 auto;
+    margin: 0 !important;
+  }
+
+  .anmar-action-item span {
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 991.98px) {
+  :host ::ng-deep .app-content .content-wrapper.anmar-dashboard {
+    min-width: 0;
+  }
 }

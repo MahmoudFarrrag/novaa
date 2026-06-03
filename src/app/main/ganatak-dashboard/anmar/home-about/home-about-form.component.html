@@ -44,7 +44,16 @@
                     <span class="text-danger" *ngIf="field.required">*</span>
                   </label>
 
-                  <input *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'date'" [id]="field.name" [type]="field.type" class="form-control" [formControlName]="field.name" [readonly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate" />
+                  <ng-container *ngIf="isImageField(field); else standardInputTemplate">
+                    <input [id]="field.name" type="file" accept="image/*" class="form-control" (change)="onFileSelected($event, field.name)" />
+                    <div *ngIf="getImagePreview(field.name)" class="mt-1">
+                      <img [src]="getImagePreview(field.name)" [alt]="getFieldTranslateKey(field.name) | translate" class="anmar-thumb" />
+                    </div>
+                  </ng-container>
+
+                  <ng-template #standardInputTemplate>
+                    <input *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'date'" [id]="field.name" [type]="field.type" class="form-control" [formControlName]="field.name" [readonly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate" />
+                  </ng-template>
 
                   <textarea *ngIf="field.type === 'textarea' || field.type === 'array-text'" [id]="field.name" class="form-control" rows="4" [formControlName]="field.name" [readOnly]="field.readonly" [placeholder]="getFieldTranslateKey(field.name) | translate"></textarea>
 
@@ -78,3 +87,5 @@
     </section>
   </div>
 </div>
+
+
