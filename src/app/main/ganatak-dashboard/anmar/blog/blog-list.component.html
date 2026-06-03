@@ -75,7 +75,7 @@
                     <img [src]="getImageSource(row[column])" [alt]="getModuleTranslateKey() | translate" class="anmar-thumb" (error)="onImageError($event)" />
                   </ng-container>
                   <ng-template #defaultColumnTemplate>
-                    <span [title]="getCellDisplay(row, column)">
+                    <span [title]="getCellTitle(row, column)">
                       {{ getCellDisplay(row, column) }}
                     </span>
                   </ng-template>

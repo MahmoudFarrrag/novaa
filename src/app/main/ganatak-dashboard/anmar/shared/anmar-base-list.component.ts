@@ -126,6 +126,10 @@ export abstract class AnmarBaseListComponent {
   }
 
   getCellDisplay(row: any, column: string): string {
+    return this.truncateText(this.getCellTitle(row, column), this.getColumnTextLimit(column));
+  }
+
+  getCellTitle(row: any, column: string): string {
     const value = row?.[column];
 
     if (column === 'is_active') {
@@ -178,6 +182,30 @@ export abstract class AnmarBaseListComponent {
 
   getFieldTranslateKey(fieldName: string): string {
     return `ANMAR_PAGES.FIELDS.${this.toKey(fieldName)}`;
+  }
+
+  truncateText(text: string, limit = 80): string {
+    const normalizedText = String(text || '').trim();
+
+    if (!normalizedText || normalizedText === '-' || normalizedText.length <= limit) {
+      return normalizedText || '-';
+    }
+
+    return `${normalizedText.slice(0, limit).trim()}...`;
+  }
+
+  private getColumnTextLimit(column: string): number {
+    const normalizedColumn = String(column || '').toLowerCase();
+
+    if (/(description|content|details|message|body|summary|text)/.test(normalizedColumn)) {
+      return 80;
+    }
+
+    if (/title/.test(normalizedColumn)) {
+      return 50;
+    }
+
+    return 60;
   }
 
   private toKey(value: string): string {
