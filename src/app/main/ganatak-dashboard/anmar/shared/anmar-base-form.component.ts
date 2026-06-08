@@ -62,7 +62,7 @@ export abstract class AnmarBaseFormComponent implements OnInit {
       return field.type;
     }
 
-    if (field.name === 'link' || field.name === 'website_url') {
+    if (field.name === 'website_url' || field.name.endsWith('link') || field.name.endsWith('_link')) {
       return 'url';
     }
 
@@ -70,7 +70,7 @@ export abstract class AnmarBaseFormComponent implements OnInit {
   }
 
   getFieldPlaceholder(field: AnmarFieldConfig): string {
-    if (field.name === 'link' || field.name === 'website_url') {
+    if (field.name === 'website_url' || field.name.endsWith('link') || field.name.endsWith('_link')) {
       return 'https://example.com';
     }
 

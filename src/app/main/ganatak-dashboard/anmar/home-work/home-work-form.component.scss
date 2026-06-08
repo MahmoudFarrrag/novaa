@@ -14,6 +14,16 @@
   .custom-switch .custom-control-input:checked ~ .custom-control-label::before { border-color: #306ADA; background-color: #306ADA; }
   .anmar-checkbox-group { min-height: 70px; }
 
+  .anmar-steps-section {
+    border-top: 1px solid rgba(48, 106, 218, 0.12);
+    padding-top: 1.5rem;
+  }
+
+  .anmar-step-card {
+    border: 1px solid rgba(48, 106, 218, 0.16);
+    box-shadow: 0 6px 18px rgba(48, 106, 218, 0.05);
+  }
+
   .anmar-loading-wrap {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

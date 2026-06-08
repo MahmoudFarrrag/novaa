@@ -118,7 +118,7 @@ const routes: Routes = [
     NgxDatatableModule,
     CoreCommonModule,
     NgbModule,
-    NgbDropdownModule,
+    NgbDropdownModule, 
     TranslateModule
   ],
   exports: [RouterModule]

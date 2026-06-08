@@ -75,12 +75,19 @@
                     <img [src]="getImageSource(row[column])" [alt]="getModuleTranslateKey() | translate" class="anmar-thumb" (error)="onImageError($event)" />
                   </ng-container>
                   <ng-template #defaultColumnTemplate>
-                    <ng-container *ngIf="column === 'link'; else defaultTextColumnTemplate">
+                    <ng-container *ngIf="isLinkColumn(column); else stepsOrTextColumnTemplate">
                       <a *ngIf="getLinkHref(row[column]); else emptyLinkTemplate" [href]="getLinkHref(row[column])" [title]="getCellTitle(row, column)" target="_blank" rel="noopener noreferrer">
                         {{ getLinkDisplay(row[column]) }}
                       </a>
                       <ng-template #emptyLinkTemplate>-</ng-template>
                     </ng-container>
+                    <ng-template #stepsOrTextColumnTemplate>
+                      <ng-container *ngIf="isStepsColumn(column); else defaultTextColumnTemplate">
+                        <span class="badge badge-light-secondary" [title]="getStepsTitle(row[column])">
+                          {{ getStepsDisplay(row[column]) }}
+                        </span>
+                      </ng-container>
+                    </ng-template>
                     <ng-template #defaultTextColumnTemplate>
                       <span [title]="getCellTitle(row, column)">
                         {{ getCellDisplay(row, column) }}

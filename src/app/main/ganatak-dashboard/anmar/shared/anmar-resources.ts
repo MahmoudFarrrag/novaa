@@ -230,8 +230,18 @@ export const ANMAR_RESOURCES: Record<string, AnmarResourceConfig> = {
         "type": "text"
       },
       {
-        "name": "link",
-        "label": "Link",
+        "name": "website_link",
+        "label": "Website Link",
+        "type": "text"
+      },
+      {
+        "name": "android_link",
+        "label": "Android Link",
+        "type": "text"
+      },
+      {
+        "name": "ios_link",
+        "label": "iOS Link",
         "type": "text"
       },
       {
@@ -273,7 +283,10 @@ export const ANMAR_RESOURCES: Record<string, AnmarResourceConfig> = {
       "title_en",
       "languages",
       "video",
-      "link",
+      "website_link",
+      "android_link",
+      "ios_link",
+      "steps",
       "description_ar",
       "description_en",
       "category",
