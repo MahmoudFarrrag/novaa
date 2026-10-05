@@ -122,7 +122,8 @@ SlidersComponent , AddCurrenciesComponent , AddCountriesComponent,AddCitiesCompo
     HttpClientModule,
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled', // Add options right here
-      relativeLinkResolution: 'legacy'
+      relativeLinkResolution: 'legacy',
+      useHash: true
     }),
     TranslateModule.forRoot(),
 
